@@ -1,13 +1,10 @@
 #include "time0.h"
+#include "power_on.h"
 
-// u8 ms_cnt = 0;
-// volatile bit tmr0_flag = 0;
-
-static volatile u8 cnt_during_power_on = 0;       // 开机缓启动，调节pwm占空比时，使用到的计数值
-volatile bit flag_time_comes_during_power_on = 0; // 标志位，开机缓启动期间，调节时间到来
+// static volatile u8 cnt_during_power_on = 0;       // 开机缓启动，调节pwm占空比时，使用到的计数值
 
 /**
- * @brief 配置定时器TMR0，定时器默认关闭
+ * @brief 配置定时器TMR0
  */
 void tmr0_config(void)
 {
@@ -66,42 +63,18 @@ void TIMR0_IRQHandler(void) interrupt TMR0_IRQn
     {
         TMR0_CONH |= TMR_PRD_PND(0x1); // 清除pending
 
-        // ms_cnt++;
-        cnt_during_power_on++;
-
-        // if (ms_cnt >= 25)
+        // cnt_during_power_on++;
+        // if (cnt_during_power_on >= 13) // 13ms
         // {
-        //     ms_cnt = 0;
-        //     // tmr0_flag = 1;
+        //     cnt_during_power_on = 0;
+        //     flag_time_comes_during_power_on = 1; // 开机缓启动期间，控制每次调节PWM占空比的时间
         // }
 
-        if (cnt_during_power_on >= 13) // 13ms
-        {
-            cnt_during_power_on = 0;
-            flag_time_comes_during_power_on = 1; // 开机缓启动期间，控制每次调节PWM占空比的时间
-        }
+        flag_time_comes_during_power_on = 1; // 开机缓启动期间，控制每次调节PWM占空比的时间
 
         if (rf_key_para.cur_scan_times < 255)
         {
             rf_key_para.cur_scan_times++; // 用于433遥控器按键扫描
-        }
-
-        { // rf对码功能计时，从 上电后 到 RF_LEARN_TIMES期间，使能对码功能
-            static u16 rf_learn_cnt = 0;
-
-            if (flag_is_rf_enable && flag_is_in_rf_learning)
-            {
-                rf_learn_cnt++;
-                if (rf_learn_cnt >= RF_LEARN_TIMES)
-                {
-                    rf_learn_cnt = 0;
-                    flag_is_in_rf_learning = 0;
-                }
-            }
-            else
-            {
-                rf_learn_cnt = 0;
-            }
         }
 
         { // 风扇状态检测，累计一段时间后更新状态
@@ -131,19 +104,6 @@ void TIMR0_IRQHandler(void) interrupt TMR0_IRQn
                 }
             }
         } // 风扇状态检测，累计一段时间后更新状态
-
-        // {
-        //     static volatile u32 cnt = 0;
-
-        //     if (TEMP_75 == temp_status)
-        //     {
-        //         cnt++;
-        //         if (cnt >= (u32)TMR1_CNT_5_MINUTES)
-        //         {
-
-        //         }
-        //     }
-        // }
     }
 
     // 退出中断设置IP，不可删除

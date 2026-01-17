@@ -466,6 +466,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\engine.c</FilePath>
             </File>
+            <File>
+              <FileName>power_on.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\power_on.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

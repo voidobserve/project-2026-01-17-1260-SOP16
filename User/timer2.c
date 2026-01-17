@@ -1,7 +1,8 @@
 #include "timer2.h"
+#include "power_on.h"
 #define TIMER2_PEROID_VAL (SYSCLK / 128 / 10000 - 1) // 周期值=系统时钟/分频/频率 - 1
 
-extern volatile bit flag_is_in_power_on; // 是否处于开机缓启动
+
 
 static volatile u16 pwm_duty_add_cnt; // 用于控制pwm增加的时间计数
 static volatile u16 pwm_duty_sub_cnt; // 用于控制pwm递减的时间计数

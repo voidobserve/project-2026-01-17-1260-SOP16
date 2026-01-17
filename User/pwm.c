@@ -37,9 +37,6 @@ void pwm_init(void)
 
     P1_MD1 &= ~GPIO_P16_MODE_SEL(0x03); // P16 14脚
     P1_MD1 |= GPIO_P16_MODE_SEL(0x01);
-    P1_MD1 &= ~GPIO_P14_MODE_SEL(0x03); // P14 16脚
-    P1_MD1 |= GPIO_P14_MODE_SEL(0x01);
-    FOUT_S14 = GPIO_FOUT_AF_FUNC;      // AF功能输出
     FOUT_S16 = GPIO_FOUT_STMR0_PWMOUT; // stmr0_pwmout
 
     // P15 15脚 作为第2路PWM输出
@@ -83,9 +80,6 @@ void set_pwm_channel_1_duty(u16 channel_duty)
     STMR1_CMPAL = STMR_CMPA_VAL_L(((channel_duty) >> 0) & 0xFF); // 比较值
     STMR_LOADEN |= STMR_1_LOAD_EN(0x1);                          // 自动装载使能
 }
-
-
-
 
 // 根据9脚的电压来设定16脚的电平（过压保护）
 // void according_pin9_to_adjust_pin16(void)
@@ -190,8 +184,7 @@ void pwm_channel_1_disable(void)
 u16 get_pwm_channel_x_adjust_duty(u16 pwm_adjust_duty)
 {
     // 存放函数的返回值 -- 最终的目标占空比
-    // 根据设定的目标占空比，更新经过旋钮限制之后的目标占空比：
-    u16 tmp_pwm_duty = (u32)pwm_adjust_duty * limited_max_pwm_duty / MAX_PWM_DUTY; // pwm_adjust_duty * 旋钮限制的占空比系数
+    u16 tmp_pwm_duty = (u32)pwm_adjust_duty;
 
     // 温度、发动机异常功率不稳定、风扇异常，都是强制限定占空比
 

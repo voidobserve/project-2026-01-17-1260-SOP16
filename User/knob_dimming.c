@@ -1,5 +1,7 @@
 #include "knob_dimming.h" // 旋钮调光头文件
 
+#if KNOB_DIMMING_ENABLE
+
 volatile u16 limited_max_pwm_duty = MAX_PWM_DUTY; // 存放经过旋钮限制之后的最大占空比（对所有pwm通道有效）
 // volatile u16 limited_adjust_pwm_duty;  // 存放旋钮限制之后的，待调整的占空比值
 
@@ -81,3 +83,5 @@ void update_max_pwm_duty_coefficient(void)
         }
     }
 }
+
+#endif

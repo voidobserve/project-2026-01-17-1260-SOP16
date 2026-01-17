@@ -1,10 +1,10 @@
-#ifndef __MY_CONFIG_H
-#define __MY_CONFIG_H
+#ifndef __MY_CONFIG_H__
+#define __MY_CONFIG_H__
 
 #include "include.h" // 芯片官方提供的头文件
 
 // MY_DEBUG:
-#define USE_MY_DEBUG 0 // 是否使用打印调试
+#define USE_MY_DEBUG 1 // 是否使用打印调试
 
 // MY_DEBUG:
 /*

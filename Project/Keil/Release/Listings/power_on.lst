@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/17/2026 16:42:35 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE POWER_ON
+OBJECT MODULE PLACED IN .\Release\Objects\power_on.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\User\power_on.c LARGE OPTIMIZE(9,SIZE) BROWSE INTVECTOR(0X000C) IN
+                    -CDIR(..\..\Libraries\Include;..\..\User) INTERVAL(3) DEBUG OBJECTEXTEND PRINT(.\Release\Listings\power_on.lst) OBJECT(.\
+                    -Release\Objects\power_on.obj)
+
+line level    source
+
+   1          #include "power_on.h"
+   2          #include "include.h"
+   3          #include "pwm.h"
+   4          #include <math.h>
+   5          
+   6          float step = 70;
+   7          float mi; // 幂
+   8          
+   9          volatile bit flag_is_in_power_on = 0; // 是否处于开机缓启动
+  10          static volatile u32 power_on_step = 0;
+  11          volatile bit flag_time_comes_during_power_on = 0; // 标志位，开机缓启动期间，调节时间到�
+             -�（由定时器置位）
+  12            
+  13          void power_on_handle(void)
+  14          { 
+  15   1          cur_pwm_channel_0_duty = 0;
+  16   1          cur_pwm_channel_1_duty = 0;
+  17   1          flag_is_in_power_on = 1; // 表示到了开机缓启动
+  18   1      
+  19   1          while (1)
+  20   1          {
+  21   2      #if USE_MY_DEBUG // 直接打印0，防止在串口+图像上看到错位
+  22   2                       // printf(",b=0,"); // 防止在串口图像错位
+  23   2      #endif
+  24   2              if (cur_pwm_channel_0_duty >= DEST_POWER_ON_DUTY_VAL &&
+  25   2                  cur_pwm_channel_1_duty >= DEST_POWER_ON_DUTY_VAL)
+  26   2              {
+  27   3                  // 当两路pwm都到对应的占空比值之后，才退出开机缓启动
+  28   3                  break;
+  29   3              }
+  30   2      
+  31   2              if (flag_time_comes_during_power_on) // 如果调节时间到来
+  32   2              {
+  33   3                  flag_time_comes_during_power_on = 0;
+  34   3                  power_on_step += POWER_ON_ADJUST_STEP; // 累计步长
+  35   3                  if (power_on_step >= 1000)
+  36   3                  {
+  37   4                      power_on_step -= 1000;
+  38   4                      cur_pwm_channel_0_duty++;
+  39   4                      cur_pwm_channel_1_duty = cur_pwm_channel_0_duty;
+  40   4                  }
+  41   3              }
+  42   2      
+  43   2              set_pwm_channel_0_duty(cur_pwm_channel_0_duty);
+  44   2              set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
+  45   2          }
+  46   1      
+  47   1          // 缓启动后，立即更新 adjust_duty 的值：
+  48   1          adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
+  49   1          adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
+  50   1          flag_is_in_power_on = 0; // 表示退出了开机缓启动
+  51   1      }
+
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/17/2026 16:42:35 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    209    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     12    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
