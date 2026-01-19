@@ -103,7 +103,7 @@ void TIMR0_IRQHandler(void) interrupt TMR0_IRQn
                     cur_fan_status = FAN_STATUS_NORMAL;
                 }
             }
-        } // 风扇状态检测，累计一段时间后更新状态
+        } // 风扇状态检测，累计一段时间后更新状态      
     }
 
     // 退出中断设置IP，不可删除

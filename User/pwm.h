@@ -8,12 +8,30 @@
 #define MAX_PWM_DUTY (6000) // 100%占空比   (SYSCLK 4800 0000 /  8000  == 6000)
 enum
 {
-    PWM_DUTY_100_PERCENT = 6000, // 100%占空比
-    PWM_DUTY_80_PERCENT = 4800,  // 80%
-    PWM_DUTY_75_PERCENT = 4500,  // 75%占空比
-    PWM_DUTY_50_PERCENT = 3000,  // 50%占空比
-    PWM_DUTY_30_PERCENT = 1800,  // 30%占空比
-    PWM_DUTY_25_PERCENT = 1500,  // 25%占空比
+    PWM_DUTY_100_PERCENT = (u16)MAX_PWM_DUTY,
+    PWM_DUTY_80_PERCENT = (u16)((u32)MAX_PWM_DUTY * 80 / 100),
+    PWM_DUTY_60_PERCENT = (u16)((u32)MAX_PWM_DUTY * 40 / 100),
+    PWM_DUTY_50_PERCENT = (u16)((u32)MAX_PWM_DUTY * 50 / 100),
+    PWM_DUTY_40_PERCENT = (u16)((u32)MAX_PWM_DUTY * 40 / 100),
+    PWM_DUTY_30_PERCENT = (u16)((u32)MAX_PWM_DUTY * 30 / 100),
+    PWM_DUTY_25_PERCENT = (u16)((u32)MAX_PWM_DUTY * 25 / 100),
+    PWM_DUTY_20_PERCENT = (u16)((u32)MAX_PWM_DUTY * 20 / 100),
+    PWM_DUTY_0_PERCENT = (u16)((u32)MAX_PWM_DUTY * 0 / 100),
+};
+
+// 定义 pwm 模式
+enum
+{
+    PWM_MODE_COLOR_TEMPERATURE_1, // 色温1
+    PWM_MODE_COLOR_TEMPERATURE_2,
+    PWM_MODE_COLOR_TEMPERATURE_3,
+    PWM_MODE_COLOR_TEMPERATURE_4,
+
+    PWM_MODE_PULSE, // 脉冲模式
+
+    PWM_MODE_COLOR_BLUE,  // 蓝光
+    PWM_MODE_COLOR_CYAN,  // 青光
+    PWM_MODE_COLOR_GREEN, // 绿光
 };
 
 // 由温度限制的PWM占空比 （对所有PWM通道都生效）
@@ -27,10 +45,11 @@ extern volatile u16 cur_pwm_channel_0_duty;           // 当前设置的、 pwm_
 extern volatile u16 expect_adjust_pwm_channel_0_duty; // 存放期望调节到的 pwm_channle_0 占空比
 extern volatile u16 adjust_pwm_channel_0_duty;        // pwm_channle_0 要调整到的占空比
 
-extern volatile u16 cur_pwm_channel_1_duty;    // 当前设置的第二路PWN的占空比
+extern volatile u16 cur_pwm_channel_1_duty;           // 当前设置的第二路PWN的占空比
 extern volatile u16 expect_adjust_pwm_channel_1_duty; // 存放期望调节到的 pwm_channle_1 占空比
-extern volatile u16 adjust_pwm_channel_1_duty; // pwm_channle_1 要调整到的占空比
- 
+extern volatile u16 adjust_pwm_channel_1_duty;        // pwm_channle_1 要调整到的占空比
+
+extern volatile u8 pwm_mode; 
 
 void pwm_init(void);
 
@@ -50,6 +69,8 @@ extern void pwm_channel_1_disable(void);
 void set_pwm_channel_0_duty(u16 channel_duty);
 void set_pwm_channel_1_duty(u16 channel_duty);
 
-u16 get_pwm_channel_x_adjust_duty(u16 pwm_adjust_duty);
+u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty);
+
+void pwm_mode_handle(void);
 
 #endif

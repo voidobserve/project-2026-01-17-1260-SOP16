@@ -4,20 +4,17 @@
 #include "include.h" // 芯片官方提供的头文件
 
 // MY_DEBUG:
-#define USE_MY_DEBUG 1 // 是否使用打印调试
+#define USE_MY_DEBUG 0 // 是否使用打印调试
 
 // MY_DEBUG:
 /*
     测试引脚：
     使用 P00 作为 串口打印输出 （实际用到的芯片的第4脚）
+
     rf检测引脚 用 P01 代替 P03
     pwm_channel_1 输出引脚 用 P05 代替 P15
-    用 p06 代替 xx
 */
 #define USE_MY_TEST_PIN 0 // 是否使用测试用的引脚（开发板没有相关的引脚，用其他空闲的引脚来代替）
-
-// MY_DEBUG:
-#define USE_MY_TEST_433_REMOTE 0 // 是否使用测试用的433遥控器按键，用于修改特定值，观察变化
 
 #if USE_MY_DEBUG
 #include <stdio.h>

@@ -1,11 +1,11 @@
-C51 COMPILER V9.60.7.0   TIME0                                                             01/17/2026 16:42:33 PAGE 1   
+C51 COMPILER V9.60.7.0   TIME0                                                             01/19/2026 17:23:13 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIME0
 OBJECT MODULE PLACED IN .\Release\Objects\time0.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\User\time0.c LARGE OPTIMIZE(9,SIZE) BROWSE INTVECTOR(0X000C) INCDI
-                    -R(..\..\Libraries\Include;..\..\User) INTERVAL(3) DEBUG OBJECTEXTEND PRINT(.\Release\Listings\time0.lst) OBJECT(.\Releas
-                    -e\Objects\time0.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\User\time0.c LARGE OPTIMIZE(9,SPEED) BROWSE INTVECTOR(0X000C) INCD
+                    -IR(..\..\Libraries\Include;..\..\User) INTERVAL(3) DEBUG OBJECTEXTEND PRINT(.\Release\Listings\time0.lst) OBJECT(.\Relea
+                    -se\Objects\time0.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   47          //     TMR0_CNTH = 0;
   48          
   49          //     __DisableIRQ(TMR0_IRQn); // 关闭中断（不使能中断）
-C51 COMPILER V9.60.7.0   TIME0                                                             01/17/2026 16:42:33 PAGE 2   
+C51 COMPILER V9.60.7.0   TIME0                                                             01/19/2026 17:23:13 PAGE 2   
 
   50          // }
   51          
@@ -122,18 +122,18 @@ line level    source
  103   5                          cur_fan_status = FAN_STATUS_NORMAL;
  104   5                      }
  105   4                  }
- 106   3              } // 风扇状态检测，累计一段时间后更新状态
+ 106   3              } // 风扇状态检测，累计一段时间后更新状态      
  107   2          }
  108   1      
  109   1          // 退出中断设置IP，不可删除
-C51 COMPILER V9.60.7.0   TIME0                                                             01/17/2026 16:42:33 PAGE 3   
+C51 COMPILER V9.60.7.0   TIME0                                                             01/19/2026 17:23:13 PAGE 3   
 
  110   1          __IRQnIPnPop(TMR0_IRQn);
  111   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    165    ----
+   CODE SIZE        =    175    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      4    ----
    PDATA SIZE       =   ----    ----

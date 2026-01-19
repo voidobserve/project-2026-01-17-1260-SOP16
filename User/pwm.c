@@ -16,6 +16,9 @@ volatile u16 cur_pwm_channel_1_duty;                          // 当前设置的
 volatile u16 expect_adjust_pwm_channel_1_duty = MAX_PWM_DUTY; // 存放期望调节到的 pwm_channle_1 占空比
 volatile u16 adjust_pwm_channel_1_duty = MAX_PWM_DUTY;        // pwm_channle_1 要调整到的占空比
 
+// 记录pwm的模式
+volatile u8 pwm_mode = 0;
+
 #define STMR0_PEROID_VAL (SYSCLK / 8000 - 1)
 #define STMR1_PEROID_VAL (SYSCLK / 8000 - 1)
 void pwm_init(void)
@@ -181,29 +184,58 @@ void pwm_channel_1_disable(void)
  *
  * @return u16 最终的目标占空比
  */
-u16 get_pwm_channel_x_adjust_duty(u16 pwm_adjust_duty)
+u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
 {
     // 存放函数的返回值 -- 最终的目标占空比
     u16 tmp_pwm_duty = (u32)pwm_adjust_duty;
+    u16 limited_pwm_duty_val; // 由后续的计算来赋值
 
     // 温度、发动机异常功率不稳定、风扇异常，都是强制限定占空比
 
-    // 判断经过旋钮限制之后的占空比 会不会 大于 温度过热之后限制的占空比
-    if (tmp_pwm_duty >= limited_pwm_duty_due_to_temp)
+    // 判断占空比会不会 大于 温度过热之后限制的占空比
+    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_temp)
+    // {
+    //     tmp_pwm_duty = limited_pwm_duty_due_to_temp;
+    // }
+
+    // 判断占空比会不会 大于 温度过热之后限制的占空比
+    if (limited_pwm_duty_due_to_temp != MAX_PWM_DUTY)
     {
-        tmp_pwm_duty = limited_pwm_duty_due_to_temp;
+        limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_temp / MAX_PWM_DUTY);
+        if (tmp_pwm_duty >= limited_pwm_duty_val)
+        {
+            tmp_pwm_duty = limited_pwm_duty_val;
+        }
     }
 
     // 如果限制之后的占空比 大于 由于发动机不稳定而限制的、可以调节的最大占空比
-    if (tmp_pwm_duty >= limited_pwm_duty_due_to_unstable_engine)
+    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_unstable_engine)
+    // {
+    //     tmp_pwm_duty = limited_pwm_duty_due_to_unstable_engine;
+    // }
+
+    if (limited_pwm_duty_due_to_unstable_engine != MAX_PWM_DUTY)
     {
-        tmp_pwm_duty = limited_pwm_duty_due_to_unstable_engine;
+        limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_unstable_engine / MAX_PWM_DUTY);
+        if (tmp_pwm_duty >= limited_pwm_duty_val)
+        {
+            tmp_pwm_duty = limited_pwm_duty_val;
+        }
     }
 
     // 如果限制之后的占空比 大于 由于风扇异常，限制的可以调节到的最大占空比
-    if (tmp_pwm_duty >= limited_pwm_duty_due_to_fan_err)
+    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_fan_err)
+    // {
+    //     tmp_pwm_duty = limited_pwm_duty_due_to_fan_err;
+    // }
+
+    if (limited_pwm_duty_due_to_fan_err != MAX_PWM_DUTY)
     {
-        tmp_pwm_duty = limited_pwm_duty_due_to_fan_err;
+        limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_fan_err / MAX_PWM_DUTY);
+        if (tmp_pwm_duty >= limited_pwm_duty_val)
+        {
+            tmp_pwm_duty = limited_pwm_duty_val;
+        }
     }
 
     return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
@@ -214,3 +246,95 @@ u16 get_pwm_channel_x_adjust_duty(u16 pwm_adjust_duty)
 // {
 //     adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
 // }
+
+// 根据 PWM 模式，执行对应的功能
+void pwm_mode_handle(void)
+{
+    switch (pwm_mode)
+    {
+    case PWM_MODE_COLOR_TEMPERATURE_1:
+    {
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_20_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_80_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_TEMPERATURE_2:
+    {
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_40_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_60_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_TEMPERATURE_3:
+    {
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_80_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_20_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_TEMPERATURE_4:
+    {
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_60_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_40_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_PULSE:
+    {
+        // 目标pwm值不变，让定时器来控制闪烁
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_BLUE:
+    {
+        // 获取最终的目标占空比
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_100_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_0_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_CYAN:
+    {
+        // 获取最终的目标占空比
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_50_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_50_PERCENT;
+    }
+    break;
+    // ===========================================================
+    case PWM_MODE_COLOR_GREEN:
+    {
+        // 获取最终的目标占空比
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_0_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_100_PERCENT;
+    }
+    break;
+        // ===========================================================
+
+    default:
+    {
+        return;
+    }
+        break;
+    }
+
+    
+
+    // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
+    //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)
+    // {
+    //     P14 = 0; // 测试时使用
+    // }
+
+    // {
+    //     static u16 cnt = 0;
+    //     cnt++;
+    //     if (cnt >= 10000)
+    //     {
+    //         cnt = 0;
+    //         printf("pwm_mode = %bu\n", pwm_mode);
+    //         printf("expect_adjust_pwm_channel_0_duty = %u\n", expect_adjust_pwm_channel_0_duty);
+    //         printf("expect_adjust_pwm_channel_1_duty = %u\n", expect_adjust_pwm_channel_1_duty);
+    //     }
+    // }
+}

@@ -22,10 +22,6 @@
 #include <stdio.h>
 #include "power_on.h"
 
-
-
-
-
 #if USE_MY_DEBUG // 打印串口配置
 
 #define UART0_BAUD 115200
@@ -60,7 +56,6 @@ void my_debug_config(void)
 }
 #endif // USE_MY_DEBUG // 打印串口配置
 
-
 void main(void)
 {
     // 看门狗默认打开, 复位时间2s
@@ -78,24 +73,6 @@ void main(void)
 
     my_debug_config();
     printf("sys reset\n");
-
-    // // P01 配置为输出模式
-    // P0_MD0 &= ~(0x03 << 2);
-    // P0_MD0 |= 0x01 << 2;
-    // FOUT_S01 = GPIO_FOUT_AF_FUNC;
-    // P01 = 0;
-
-    // // P02 配置为输出模式
-    // P0_MD0 &= ~(0x03 << 4); // 清空对应的寄存器配置
-    // P0_MD0 |= 0x01 << 4;    // 输出模式
-    // FOUT_S02 = GPIO_FOUT_AF_FUNC;
-    // P02 = 0;
-
-    // // P05 配置为输出模式
-    // P0_MD1 &= ~(0x03 << 2);
-    // P0_MD1 |= 0x01 << 2;
-    // FOUT_S05 = GPIO_FOUT_AF_FUNC;
-    // P05 = 0;
 
     // // P06 配置为输出模式
     // P0_MD1 &= ~(0x03 << 4);
@@ -123,7 +100,7 @@ void main(void)
     adc_pin_config(); // 配置使用到adc的引脚
     adc_config();
 
-    tmr0_config(); //   
+    tmr0_config(); //
     pwm_init();    // 配置pwm输出的引脚
     tmr1_config();
 
@@ -144,61 +121,26 @@ void main(void)
     limited_pwm_duty_due_to_temp = MAX_PWM_DUTY;
     limited_pwm_duty_due_to_unstable_engine = MAX_PWM_DUTY;
 
+    pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
     power_on_handle();
 
     while (1)
     {
 #if 1
-        // USER_TO_DO 测试的时候暂时屏蔽
-        // update_max_pwm_duty_coefficient(); // 根据当前旋钮的挡位，限制能调节到的最大的pwm占空比
-        temperature_scan();                // 检测热敏电阻一端的电压值
-        fan_scan();                        // 检测风扇的状态是否异常，并根据结果来限制pwm占空比
-        set_duty();                        // 设定到要调节到的脉宽 (设置adjust_duty)
+        temperature_scan(); // 检测热敏电阻一端的电压值
+        fan_scan();         // 检测风扇的状态是否异常，并根据结果来限制pwm占空比
+        set_duty();         // 设定到要调节到的脉宽 (设置adjust_duty)
 
-        if (flag_is_rf_enable) // 如果使能了rf遥控器的功能
-        {
-            key_driver_scan(&rf_key_para);
-            rf_key_handle();
-        }
+        key_driver_scan(&rf_key_para);
+        rf_key_handle();
 
-        {
-            // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channel_x_duty
-            adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
-            adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
-        }
+        // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channel_x_duty
+        adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
+        adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
 
         // 风扇控制：
-        fan_ctl();
+        // fan_ctl(); // 没有了线控调光，这里目前用不上，没有关灯的功能
 #endif
-
-        // P02 = ~P02; // 测试主循环一轮所需时间
-
-        // 测试用：
-        // {
-        //     static u16 cnt = 0;
-        //     cnt++;
-
-        //     // if (cnt >= 10)
-        //     if (cnt >= 100)
-        //     {
-        //         cnt = 0;
-        //         // printf("expect_adjust_pwm_channel_0_duty: %u\n", expect_adjust_pwm_channel_0_duty);
-        //         // printf("expect_adjust_pwm_channel_1_duty: %u\n", expect_adjust_pwm_channel_1_duty);
-        //         // printf("adjust_pwm_channel_0_duty: %u\n", adjust_pwm_channel_0_duty);
-        //         // printf("adjust_pwm_channel_1_duty: %u\n", adjust_pwm_channel_1_duty);
-        //         // printf("cur_pwm_channel_0_duty: %u\n", cur_pwm_channel_0_duty);
-        //         // printf("cur_pwm_channel_1_duty: %u\n", cur_pwm_channel_1_duty);
-
-        //         // printf("__LINE__ %u\n", __LINE__);
-        //         // printf("val %u\n", ADC_OVER_DRIVE_VAL);
-        //         // printf("val %u\n", (u16)adc_val_from_fan);
-        //         // printf("val %u\n", (u16)adc_val_from_temp);
-        //         // printf("val %u\n", (u16)adc_val_from_knob);
-        //         // printf("val %u\n", (u16)adc_val_from_engine);
-
-        //         // P02 = ~P02;
-        //     }
-        // }
     }
 }
 

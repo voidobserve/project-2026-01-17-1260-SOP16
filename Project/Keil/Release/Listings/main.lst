@@ -1,11 +1,11 @@
-C51 COMPILER V9.60.7.0   MAIN                                                              01/17/2026 16:42:33 PAGE 1   
+C51 COMPILER V9.60.7.0   MAIN                                                              01/19/2026 17:24:28 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN .\Release\Objects\main.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\User\main.c LARGE OPTIMIZE(9,SIZE) BROWSE INTVECTOR(0X000C) INCDIR
-                    -(..\..\Libraries\Include;..\..\User) INTERVAL(3) DEBUG OBJECTEXTEND PRINT(.\Release\Listings\main.lst) OBJECT(.\Release\
-                    -Objects\main.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\User\main.c LARGE OPTIMIZE(9,SPEED) BROWSE INTVECTOR(0X000C) INCDI
+                    -R(..\..\Libraries\Include;..\..\User) INTERVAL(3) DEBUG OBJECTEXTEND PRINT(.\Release\Listings\main.lst) OBJECT(.\Release
+                    -\Objects\main.obj)
 
 line level    source
 
@@ -33,207 +33,145 @@ line level    source
   22          #include <stdio.h>
   23          #include "power_on.h"
   24          
-  25          
-  26          
-  27          
-  28          
-  29          #if USE_MY_DEBUG // 打印串口配置
-  30          
-  31          #define UART0_BAUD 115200
-  32          #define USER_UART0_BAUD ((SYSCLK - UART0_BAUD) / (UART0_BAUD))
-  33          // 重写puchar()函数
-  34          char putchar(char c)
-  35          {
-  36   1          while (!(UART0_STA & UART_TX_DONE(0x01)))
-  37   1              ;
-  38   1          UART0_DATA = c;
-  39   1          return c;
-  40   1      }
-  41          
-  42          void my_debug_config(void)
-  43          {
-  44   1          // 作为发送引脚
-  45   1          // P1_MD0 &= (GPIO_P13_MODE_SEL(0x3));
-  46   1          // P1_MD0 |= GPIO_P13_MODE_SEL(0x1);            // 配置为输出模式
-  47   1          // FOUT_S13 |= GPIO_FOUT_UART0_TX;              // 配置为UART0_TX
-  48   1          // UART0_BAUD1 = (USER_UART0_BAUD >> 8) & 0xFF; // 配置波特率高八位
-  49   1          // UART0_BAUD0 = USER_UART0_BAUD & 0xFF;        // 配置波特率低八位
-  50   1          // UART0_CON0 = UART_STOP_BIT(0x0) |
-  51   1          //              UART_EN(0x1); // 8bit数据，1bit停止位
-  52   1      
-  53   1          P0_MD0 &= ~(GPIO_P00_MODE_SEL(0x3));
-C51 COMPILER V9.60.7.0   MAIN                                                              01/17/2026 16:42:33 PAGE 2   
+  25          #if USE_MY_DEBUG // 打印串口配置
+              
+              #define UART0_BAUD 115200
+              #define USER_UART0_BAUD ((SYSCLK - UART0_BAUD) / (UART0_BAUD))
+              // 重写puchar()函数
+              char putchar(char c)
+              {
+                  while (!(UART0_STA & UART_TX_DONE(0x01)))
+                      ;
+                  UART0_DATA = c;
+                  return c;
+              }
+              
+              void my_debug_config(void)
+              {
+                  // 作为发送引脚
+                  // P1_MD0 &= (GPIO_P13_MODE_SEL(0x3));
+                  // P1_MD0 |= GPIO_P13_MODE_SEL(0x1);            // 配置为输出模式
+                  // FOUT_S13 |= GPIO_FOUT_UART0_TX;              // 配置为UART0_TX
+                  // UART0_BAUD1 = (USER_UART0_BAUD >> 8) & 0xFF; // 配置波特率高八位
+                  // UART0_BAUD0 = USER_UART0_BAUD & 0xFF;        // 配置波特率低八位
+                  // UART0_CON0 = UART_STOP_BIT(0x0) |
+                  //              UART_EN(0x1); // 8bit数据，1bit停止位
+              
+                  P0_MD0 &= ~(GPIO_P00_MODE_SEL(0x3));
+                  P0_MD0 |= GPIO_P00_MODE_SEL(0x1);            // 配置为输出模式
+                  FOUT_S00 |= GPIO_FOUT_UART0_TX;              // 配置为UART0_TX
+                  UART0_BAUD1 = (USER_UART0_BAUD >> 8) & 0xFF; // 配置波特率高八位
+                  UART0_BAUD0 = USER_UART0_BAUD & 0xFF;        // 配置波特率低八位
+C51 COMPILER V9.60.7.0   MAIN                                                              01/19/2026 17:24:28 PAGE 2   
 
-  54   1          P0_MD0 |= GPIO_P00_MODE_SEL(0x1);            // 配置为输出模式
-  55   1          FOUT_S00 |= GPIO_FOUT_UART0_TX;              // 配置为UART0_TX
-  56   1          UART0_BAUD1 = (USER_UART0_BAUD >> 8) & 0xFF; // 配置波特率高八位
-  57   1          UART0_BAUD0 = USER_UART0_BAUD & 0xFF;        // 配置波特率低八位
-  58   1          UART0_CON0 = UART_STOP_BIT(0x0) |
-  59   1                       UART_EN(0x1); // 8bit数据，1bit停止位
-  60   1      }
-  61          #endif // USE_MY_DEBUG // 打印串口配置
-  62          
-  63          
-  64          void main(void)
-  65          {
-  66   1          // 看门狗默认打开, 复位时间2s
-  67   1          WDT_KEY = WDT_KEY_VAL(0xDD); //  关闭看门狗 (如需配置看门狗请查看“WDT\WDT_Reset”示
+                  UART0_CON0 = UART_STOP_BIT(0x0) |
+                               UART_EN(0x1); // 8bit数据，1bit停止位
+              }
+              #endif // USE_MY_DEBUG // 打印串口配置
+  58          
+  59          void main(void)
+  60          {
+  61   1          // 看门狗默认打开, 复位时间2s
+  62   1          WDT_KEY = WDT_KEY_VAL(0xDD); //  关闭看门狗 (如需配置看门狗请查看“WDT\WDT_Reset”示
              -例)
-  68   1      
-  69   1          system_init();
-  70   1      
-  71   1          // 关闭HCK和HDA的调试功能
-  72   1          WDT_KEY = 0x55;  // 解除写保护
-  73   1          IO_MAP &= ~0x01; // 清除这个寄存器的值，实现关闭HCK和HDA引脚的调试功能（解除�
+  63   1      
+  64   1          system_init();
+  65   1      
+  66   1          // 关闭HCK和HDA的调试功能
+  67   1          WDT_KEY = 0x55;  // 解除写保护
+  68   1          IO_MAP &= ~0x01; // 清除这个寄存器的值，实现关闭HCK和HDA引脚的调试功能（解除�
              -��射）
-  74   1          WDT_KEY = 0xBB;  // 写一个无效的数据，触发写保护
-  75   1      
-  76   1      #if USE_MY_DEBUG // 打印串口配置
-  77   1          // 初始化打印
-  78   1      
-  79   1          my_debug_config();
-  80   1          printf("sys reset\n");
-  81   1      
-  82   1          // // P01 配置为输出模式
-  83   1          // P0_MD0 &= ~(0x03 << 2);
-  84   1          // P0_MD0 |= 0x01 << 2;
-  85   1          // FOUT_S01 = GPIO_FOUT_AF_FUNC;
-  86   1          // P01 = 0;
-  87   1      
-  88   1          // // P02 配置为输出模式
-  89   1          // P0_MD0 &= ~(0x03 << 4); // 清空对应的寄存器配置
-  90   1          // P0_MD0 |= 0x01 << 4;    // 输出模式
-  91   1          // FOUT_S02 = GPIO_FOUT_AF_FUNC;
-  92   1          // P02 = 0;
-  93   1      
-  94   1          // // P05 配置为输出模式
-  95   1          // P0_MD1 &= ~(0x03 << 2);
-  96   1          // P0_MD1 |= 0x01 << 2;
-  97   1          // FOUT_S05 = GPIO_FOUT_AF_FUNC;
-  98   1          // P05 = 0;
-  99   1      
- 100   1          // // P06 配置为输出模式
- 101   1          // P0_MD1 &= ~(0x03 << 4);
- 102   1          // P0_MD1 |= 0x01 << 4;
- 103   1          // FOUT_S06 = GPIO_FOUT_AF_FUNC;
- 104   1          // P06 = 0;
- 105   1      
- 106   1          // // P21 配置为输出模式
- 107   1          // P2_MD0 &= ~(0x03 << 2);
- 108   1          // P2_MD0 |= 0x01 << 2; // 输出模式
- 109   1          // FOUT_S21 = GPIO_FOUT_AF_FUNC;
- 110   1          // P21 = 0;
- 111   1      
- 112   1          // 输出模式：
- 113   1          // P1_MD0 &= (GPIO_P13_MODE_SEL(0x3));
-C51 COMPILER V9.60.7.0   MAIN                                                              01/17/2026 16:42:33 PAGE 3   
+  69   1          WDT_KEY = 0xBB;  // 写一个无效的数据，触发写保护
+  70   1      
+  71   1      #if USE_MY_DEBUG // 打印串口配置
+                  // 初始化打印
+              
+                  my_debug_config();
+                  printf("sys reset\n");
+              
+                  // // P06 配置为输出模式
+                  // P0_MD1 &= ~(0x03 << 4);
+                  // P0_MD1 |= 0x01 << 4;
+                  // FOUT_S06 = GPIO_FOUT_AF_FUNC;
+                  // P06 = 0;
+              
+                  // // P21 配置为输出模式
+                  // P2_MD0 &= ~(0x03 << 2);
+                  // P2_MD0 |= 0x01 << 2; // 输出模式
+                  // FOUT_S21 = GPIO_FOUT_AF_FUNC;
+                  // P21 = 0;
+              
+                  // 输出模式：
+                  // P1_MD0 &= (GPIO_P13_MODE_SEL(0x3));
+                  // P1_MD0 |= GPIO_P13_MODE_SEL(0x1); // 配置为输出模式
+                  // FOUT_S13 = GPIO_FOUT_AF_FUNC;     // 选择AF功能输出
+              
+                  P2_MD1 &= ~(GPIO_P26_MODE_SEL(0x3));
+                  P2_MD1 |= GPIO_P26_MODE_SEL(0x01); // 输出模式
+                  FOUT_S26 = GPIO_FOUT_AF_FUNC;
+              #endif // 打印串口配置
+  98   1      
+  99   1      #if 1
+ 100   1          adc_pin_config(); // 配置使用到adc的引脚
+ 101   1          adc_config();
+ 102   1      
+ 103   1          tmr0_config(); //
+ 104   1          pwm_init();    // 配置pwm输出的引脚
+ 105   1          tmr1_config();
+ 106   1      
+ 107   1          timer2_config();
+ 108   1          timer3_config(); // 要等adc完成初始化，再调用timer3的初始化
+ 109   1      
+ 110   1          rf_recv_init(); // rf功能初始化
+ 111   1          fan_ctl_config();
+ 112   1      
+ 113   1          P1_MD1 &= ~GPIO_P14_MODE_SEL(0x03); // P14 16脚
+C51 COMPILER V9.60.7.0   MAIN                                                              01/19/2026 17:24:28 PAGE 3   
 
- 114   1          // P1_MD0 |= GPIO_P13_MODE_SEL(0x1); // 配置为输出模式
- 115   1          // FOUT_S13 = GPIO_FOUT_AF_FUNC;     // 选择AF功能输出
- 116   1      
- 117   1          P2_MD1 &= ~(GPIO_P26_MODE_SEL(0x3));
- 118   1          P2_MD1 |= GPIO_P26_MODE_SEL(0x01); // 输出模式
- 119   1          FOUT_S26 = GPIO_FOUT_AF_FUNC;
- 120   1      #endif // 打印串口配置
- 121   1      
- 122   1      #if 1
- 123   1          adc_pin_config(); // 配置使用到adc的引脚
- 124   1          adc_config();
- 125   1      
- 126   1          tmr0_config(); //   
- 127   1          pwm_init();    // 配置pwm输出的引脚
- 128   1          tmr1_config();
- 129   1      
- 130   1          timer2_config();
- 131   1          timer3_config(); // 要等adc完成初始化，再调用timer3的初始化
- 132   1      
- 133   1          rf_recv_init(); // rf功能初始化
- 134   1          fan_ctl_config();
- 135   1      
- 136   1          P1_MD1 &= ~GPIO_P14_MODE_SEL(0x03); // P14 16脚
- 137   1          P1_MD1 |= GPIO_P14_MODE_SEL(0x01);
- 138   1          FOUT_S14 = GPIO_FOUT_AF_FUNC; // AF功能输出
- 139   1          P14 = 0;                      //
- 140   1      #endif
- 141   1      
- 142   1          // limited_max_pwm_duty = MAX_PWM_DUTY;
- 143   1          limited_pwm_duty_due_to_fan_err = MAX_PWM_DUTY;
- 144   1          limited_pwm_duty_due_to_temp = MAX_PWM_DUTY;
- 145   1          limited_pwm_duty_due_to_unstable_engine = MAX_PWM_DUTY;
- 146   1      
- 147   1          power_on_handle();
- 148   1      
- 149   1          while (1)
- 150   1          {
- 151   2      #if 1
- 152   2              // USER_TO_DO 测试的时候暂时屏蔽
- 153   2              // update_max_pwm_duty_coefficient(); // 根据当前旋钮的挡位，限制能调节到的最大
-             -的pwm占空比
- 154   2              temperature_scan();                // 检测热敏电阻一端的电压值
- 155   2              fan_scan();                        // 检测风扇的状态是否异常，并根据结果来限制
-             -pwm占空比
- 156   2              set_duty();                        // 设定到要调节到的脉宽 (设置adjust_duty)
- 157   2      
- 158   2              if (flag_is_rf_enable) // 如果使能了rf遥控器的功能
- 159   2              {
- 160   3                  key_driver_scan(&rf_key_para);
- 161   3                  rf_key_handle();
- 162   3              }
- 163   2      
- 164   2              {
- 165   3                  // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channe
-             -l_x_duty
- 166   3                  adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
- 167   3                  adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
- 168   3              }
- 169   2      
- 170   2              // 风扇控制：
- 171   2              fan_ctl();
- 172   2      #endif
-C51 COMPILER V9.60.7.0   MAIN                                                              01/17/2026 16:42:33 PAGE 4   
-
- 173   2      
- 174   2              // P02 = ~P02; // 测试主循环一轮所需时间
- 175   2      
- 176   2              // 测试用：
- 177   2              // {
- 178   2              //     static u16 cnt = 0;
- 179   2              //     cnt++;
- 180   2      
- 181   2              //     // if (cnt >= 10)
- 182   2              //     if (cnt >= 100)
- 183   2              //     {
- 184   2              //         cnt = 0;
- 185   2              //         // printf("expect_adjust_pwm_channel_0_duty: %u\n", expect_adjust_pwm_channel_0_duty);
- 186   2              //         // printf("expect_adjust_pwm_channel_1_duty: %u\n", expect_adjust_pwm_channel_1_duty);
- 187   2              //         // printf("adjust_pwm_channel_0_duty: %u\n", adjust_pwm_channel_0_duty);
- 188   2              //         // printf("adjust_pwm_channel_1_duty: %u\n", adjust_pwm_channel_1_duty);
- 189   2              //         // printf("cur_pwm_channel_0_duty: %u\n", cur_pwm_channel_0_duty);
- 190   2              //         // printf("cur_pwm_channel_1_duty: %u\n", cur_pwm_channel_1_duty);
- 191   2      
- 192   2              //         // printf("__LINE__ %u\n", __LINE__);
- 193   2              //         // printf("val %u\n", ADC_OVER_DRIVE_VAL);
- 194   2              //         // printf("val %u\n", (u16)adc_val_from_fan);
- 195   2              //         // printf("val %u\n", (u16)adc_val_from_temp);
- 196   2              //         // printf("val %u\n", (u16)adc_val_from_knob);
- 197   2              //         // printf("val %u\n", (u16)adc_val_from_engine);
- 198   2      
- 199   2              //         // P02 = ~P02;
- 200   2              //     }
- 201   2              // }
- 202   2          }
- 203   1      }
- 204          
- 205          /**
- 206           * @}
- 207           */
- 208          
- 209          /*************************** (C) COPYRIGHT 2022 HUGE-IC ***** END OF FILE *****/
+ 114   1          P1_MD1 |= GPIO_P14_MODE_SEL(0x01);
+ 115   1          FOUT_S14 = GPIO_FOUT_AF_FUNC; // AF功能输出
+ 116   1          P14 = 0;                      //
+ 117   1      #endif
+ 118   1      
+ 119   1          // limited_max_pwm_duty = MAX_PWM_DUTY;
+ 120   1          limited_pwm_duty_due_to_fan_err = MAX_PWM_DUTY;
+ 121   1          limited_pwm_duty_due_to_temp = MAX_PWM_DUTY;
+ 122   1          limited_pwm_duty_due_to_unstable_engine = MAX_PWM_DUTY;
+ 123   1      
+ 124   1          pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
+ 125   1          power_on_handle();
+ 126   1      
+ 127   1          while (1)
+ 128   1          {
+ 129   2      #if 1
+ 130   2              temperature_scan(); // 检测热敏电阻一端的电压值
+ 131   2              fan_scan();         // 检测风扇的状态是否异常，并根据结果来限制pwm占空比
+ 132   2              set_duty();         // 设定到要调节到的脉宽 (设置adjust_duty)
+ 133   2      
+ 134   2              key_driver_scan(&rf_key_para);
+ 135   2              rf_key_handle();
+ 136   2      
+ 137   2              // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channel_x_
+             -duty
+ 138   2              adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
+ 139   2              adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
+ 140   2      
+ 141   2              // 风扇控制：
+ 142   2              // fan_ctl(); // 没有了线控调光，这里目前用不上，没有关灯的功能
+ 143   2      #endif
+ 144   2          }
+ 145   1      }
+ 146          
+ 147          /**
+ 148           * @}
+ 149           */
+ 150          
+ 151          /*************************** (C) COPYRIGHT 2022 HUGE-IC ***** END OF FILE *****/
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    221    ----
-   CONSTANT SIZE    =     11    ----
+   CODE SIZE        =    159    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----

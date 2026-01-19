@@ -16,7 +16,7 @@
 /*
     开机缓启动，每ms调节的pwm占空比值，单位：0.001（注意单位）
 
-    这里是每次调节的步长，尽量让每ms调节的步长小于等于1（POWER_ON_ADJUST_STEP <= 1000）
+    这里是每次调节的步长，尽量让每ms调节的步长小于等于1（ POWER_ON_ADJUST_STEP <= 1000 ）
 */
 #define POWER_ON_ADJUST_STEP ((u32)DEST_POWER_ON_DUTY_VAL * 1000 / POWER_ON_TIMES)
 

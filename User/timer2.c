@@ -2,8 +2,6 @@
 #include "power_on.h"
 #define TIMER2_PEROID_VAL (SYSCLK / 128 / 10000 - 1) // 周期值=系统时钟/分频/频率 - 1
 
-
-
 static volatile u16 pwm_duty_add_cnt; // 用于控制pwm增加的时间计数
 static volatile u16 pwm_duty_sub_cnt; // 用于控制pwm递减的时间计数
 
@@ -186,14 +184,14 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
 #endif // rf信号接收 （100us调用一次）
 
 #if 1 // 调节PWM占空比
-      // if (pwm_duty_change_cnt >= 10) // 1000us,1ms
+
+        // if (pwm_duty_change_cnt >= 10) // 1000us,1ms
         // if (pwm_duty_change_cnt >= 1) // 100us（用遥控器调节，在50%以上调节pwm占空比的时候，灯光会有抖动）
         // if (pwm_duty_change_cnt >= 5) // 500us
         // if (pwm_duty_change_cnt >= 10) // x * 100us （用遥控器调节到50%以下pwm占空比的时候，灯光会有抖动）
         if (pwm_duty_change_cnt >= 20) // x * 100us （ 用遥控器调节时，灯光不会有抖动，样机最高功率为870W--加上风扇）
         // if (pwm_duty_change_cnt >= 30) // x * 100us （用遥控器调节时，灯光不会有抖动，但是调节时间过长，感觉不跟手）
         {
-
             pwm_duty_change_cnt = 0;
 
             if (0 == flag_is_in_power_on) // 不处于开机缓启动，才使能PWM占空比调节
@@ -225,6 +223,7 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                 set_pwm_channel_0_duty(cur_pwm_channel_0_duty);
                 set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
 
+#if 0
                 if (cur_pwm_channel_0_duty <= 0)
                 {
                     // 小于某个值，直接输出0%占空比，关闭PWM输出，引脚配置为输出模式
@@ -244,6 +243,7 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                 {
                     pwm_channel_1_enable();
                 }
+#endif
 
             } // if (0 == flag_is_in_power_on) // 不处于开机缓启动，才使能PWM占空比调节
 
@@ -253,6 +253,68 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
 #endif
         }
 #endif // 调节PWM占空比
+
+        {
+            static volatile u16 cnt = 0; // 控制闪烁灯的时间间隔
+            static volatile bit dir = 0; // 控制闪烁灯的闪烁方向
+
+            if (pwm_mode == PWM_MODE_PULSE)
+            {
+                cnt++;
+                if (cnt >= 625) // 每62.5ms亮，62.5ms灭
+                // if (cnt >= 1250)
+                {
+                    cnt = 0;
+                    dir = !dir;
+
+                    if (dir == 0)
+                    {
+                        if (!get_pwm_channel_0_status())
+                        {
+                            pwm_channel_0_enable();
+                        }
+
+                        if (!get_pwm_channel_1_status())
+                        {
+                            pwm_channel_1_enable();
+                        }
+                    }
+                    else
+                    {
+                        if (get_pwm_channel_0_status())
+                        {
+                            pwm_channel_0_disable();
+                        }
+
+                        if (get_pwm_channel_1_status())
+                        {
+                            pwm_channel_1_disable();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // 如果不在脉冲模式
+                cnt = 0;
+                dir = 0;
+
+                /*
+                    目前只有脉冲模式（pwm_mode == PWM_MODE_PULSE）下
+                    会把pwm关闭，如果退出了脉冲模式，要重新打开pwm
+                */
+
+                if (!get_pwm_channel_0_status())
+                {
+                    pwm_channel_0_enable();
+                }
+
+                if (!get_pwm_channel_1_status())
+                {
+                    pwm_channel_1_enable();
+                }
+            }
+        }
     }
 
     // 退出中断设置IP，不可删除

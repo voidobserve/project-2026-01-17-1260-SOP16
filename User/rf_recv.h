@@ -19,12 +19,12 @@
     用在定时器中断，注意不能超过变量的最大值
     这里已经调试好了，不推荐再修改
 */
-#define RF_KEY_SCAN_CIRCLE_TIMES (50)
+#define RF_KEY_SCAN_CIRCLE_TIMES (80) // 收到的一帧数据可能有40ms，加上每帧间隔10ms，这里的扫描间隔要更大
 #define RF_KEY_FILTER_TIMES (0)               // 按键消抖次数
 #define RF_LONG_PRESS_TIME_THRESHOLD_MS (750) // 长按时间阈值（单位：ms）
 #define RF_HOLD_PRESS_TIME_THRESHOLD_MS (150) // 长按持续(不松手)的时间阈值(单位：ms)，每隔 xx 时间认为有一次长按持续事件
-#define RF_ADJUST_TOTAL_TIMES_FOR_HOLD (6000) // 长按调节亮度的总时间（从0%占空比 调节到 100%占空比的时间），单位：ms
-#define RF_LEARN_TIMES ((u16)60000)           // 每次上电后，可以进行对码的时间，单位：ms
+// #define RF_ADJUST_TOTAL_TIMES_FOR_HOLD (6000) // 长按调节亮度的总时间（从0%占空比 调节到 100%占空比的时间），单位：ms
+// #define RF_LEARN_TIMES ((u16)60000)           // 每次上电后，可以进行对码的时间，单位：ms
 
 // 固定地址的遥控器对应的地址码
 #define RF_KEY_ADDR ((u16)0x5555)
@@ -60,10 +60,19 @@ enum
     RF_433_KEY_EVENT_R2C1_CLICK,
     RF_433_KEY_EVENT_R2C1_LONG,
 
+    RF_433_KEY_EVENT_R2C2_CLICK,
+    RF_433_KEY_EVENT_R2C2_LONG,
+
     RF_433_KEY_EVENT_R3C1_CLICK,
+    RF_433_KEY_EVENT_R3C1_LONG,
+
+    RF_433_KEY_EVENT_R3C2_CLICK,
     RF_433_KEY_EVENT_R3C2_LONG,
 
     RF_433_KEY_EVENT_R4C1_CLICK,
+    RF_433_KEY_EVENT_R4C1_LONG,
+
+    RF_433_KEY_EVENT_R4C2_CLICK,
     RF_433_KEY_EVENT_R4C2_LONG,
 };
 

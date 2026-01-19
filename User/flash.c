@@ -1,5 +1,7 @@
 #include "flash.h"
 
+#if FLASH_ENABLE
+
 #if 0
     // 扇区擦除
     flash_erase_sector(FLASH_START_ADDR);
@@ -64,3 +66,5 @@ void flash_read(u8 addr, u8 *p_data, u8 len)
         len--;
     }
 }
+
+#endif
