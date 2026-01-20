@@ -186,17 +186,14 @@ void pwm_channel_1_disable(void)
  */
 u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
 {
+    // u16 tmp_pwm_duty = pwm_adjust_duty;
+
+#if 1
     // 存放函数的返回值 -- 最终的目标占空比
-    u16 tmp_pwm_duty = (u32)pwm_adjust_duty;
+    u16 tmp_pwm_duty = pwm_adjust_duty;
     u16 limited_pwm_duty_val; // 由后续的计算来赋值
 
     // 温度、发动机异常功率不稳定、风扇异常，都是强制限定占空比
-
-    // 判断占空比会不会 大于 温度过热之后限制的占空比
-    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_temp)
-    // {
-    //     tmp_pwm_duty = limited_pwm_duty_due_to_temp;
-    // }
 
     // 判断占空比会不会 大于 温度过热之后限制的占空比
     if (limited_pwm_duty_due_to_temp != MAX_PWM_DUTY)
@@ -208,12 +205,6 @@ u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
         }
     }
 
-    // 如果限制之后的占空比 大于 由于发动机不稳定而限制的、可以调节的最大占空比
-    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_unstable_engine)
-    // {
-    //     tmp_pwm_duty = limited_pwm_duty_due_to_unstable_engine;
-    // }
-
     if (limited_pwm_duty_due_to_unstable_engine != MAX_PWM_DUTY)
     {
         limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_unstable_engine / MAX_PWM_DUTY);
@@ -223,12 +214,6 @@ u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
         }
     }
 
-    // 如果限制之后的占空比 大于 由于风扇异常，限制的可以调节到的最大占空比
-    // if (tmp_pwm_duty >= limited_pwm_duty_due_to_fan_err)
-    // {
-    //     tmp_pwm_duty = limited_pwm_duty_due_to_fan_err;
-    // }
-
     if (limited_pwm_duty_due_to_fan_err != MAX_PWM_DUTY)
     {
         limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_fan_err / MAX_PWM_DUTY);
@@ -237,6 +222,7 @@ u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
             tmp_pwm_duty = limited_pwm_duty_val;
         }
     }
+#endif
 
     return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
 }
@@ -315,10 +301,8 @@ void pwm_mode_handle(void)
     {
         return;
     }
-        break;
+    break;
     }
-
-    
 
     // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
     //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)

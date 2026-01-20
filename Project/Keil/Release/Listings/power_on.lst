@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   POWER_ON                                                          01/19/2026 17:23:14 PAGE 1   
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/20/2026 15:56:39 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE POWER_ON
@@ -56,17 +56,20 @@ line level    source
   44   2              set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
   45   2          }
   46   1      
-  47   1          // 缓启动后，立即更新 adjust_duty 的值：
+  47   1          // 缓启动后，立即更新 adjust_duty 的值：（ 要给下面这些变量赋值，上电后会�
+             -��据这些变量的值来调节 ）
   48   1          adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
   49   1          adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
-  50   1          flag_is_in_power_on = 0; // 表示退出了开机缓启动
-  51   1      }
+  50   1          expect_adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
+  51   1          expect_adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/20/2026 15:56:39 PAGE 2   
 
-C51 COMPILER V9.60.7.0   POWER_ON                                                          01/19/2026 17:23:14 PAGE 2   
+  52   1          flag_is_in_power_on = 0; // 表示退出了开机缓启动
+  53   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    226    ----
+   CODE SIZE        =    247    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     12    ----
    PDATA SIZE       =   ----    ----

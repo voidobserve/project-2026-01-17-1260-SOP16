@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   KNOB_DIMMING                                                      01/19/2026 17:23:13 PAGE 1   
+C51 COMPILER V9.60.7.0   KNOB_DIMMING                                                      01/20/2026 15:56:38 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE KNOB_DIMMING
@@ -62,7 +62,7 @@ line level    source
                       // else if (adc_val <= 2498) // 40% 2.97V
                       else if (adc_val <= KNOB_DIMMING_ADC_VAL_40_PERCENT) // 40% 2.79V /* 这里用5V作为参考电压
              - */
-C51 COMPILER V9.60.7.0   KNOB_DIMMING                                                      01/19/2026 17:23:13 PAGE 2   
+C51 COMPILER V9.60.7.0   KNOB_DIMMING                                                      01/20/2026 15:56:38 PAGE 2   
 
                       {
                           /*

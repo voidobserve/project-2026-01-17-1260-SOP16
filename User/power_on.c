@@ -44,8 +44,10 @@ void power_on_handle(void)
         set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
     }
 
-    // 缓启动后，立即更新 adjust_duty 的值：
+    // 缓启动后，立即更新 adjust_duty 的值：（ 要给下面这些变量赋值，上电后会根据这些变量的值来调节 ）
     adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
     adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
+    expect_adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
+    expect_adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
     flag_is_in_power_on = 0; // 表示退出了开机缓启动
 }
