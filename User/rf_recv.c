@@ -15,6 +15,11 @@ static const u8 rf_key_event_table[][RF_KEY_EFFECT_EVENT_NUMS + 1] = {
     {RF_433_KEY_VAL_R4C1, RF_433_KEY_EVENT_R4C1_CLICK, RF_433_KEY_EVENT_R4C1_LONG},
     {RF_433_KEY_VAL_R4C2, RF_433_KEY_EVENT_R4C2_CLICK, RF_433_KEY_EVENT_R4C2_LONG},
 
+    {RF_433_KEY_VAL_R5C1, RF_433_KEY_EVENT_R5C1_CLICK, RF_433_KEY_EVENT_R5C1_LONG},
+    {RF_433_KEY_VAL_R5C2, RF_433_KEY_EVENT_R5C2_CLICK, RF_433_KEY_EVENT_R5C2_LONG},
+    {RF_433_KEY_VAL_R6C1, RF_433_KEY_EVENT_R6C1_CLICK, RF_433_KEY_EVENT_R6C1_LONG},
+    {RF_433_KEY_VAL_R6C2, RF_433_KEY_EVENT_R6C2_CLICK, RF_433_KEY_EVENT_R6C2_LONG},
+
 };
 
 extern u8 rf_key_get_key_id(void);
@@ -142,56 +147,96 @@ void rf_key_handle(void)
     case RF_433_KEY_EVENT_R1C1_CLICK:
     case RF_433_KEY_EVENT_R1C1_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1; 
+        // printf("r1c1\n");
+        pwm_mode = PWM_MODE_PULSE_1;
     }
     break;
     // =====================================================
     case RF_433_KEY_EVENT_R1C2_CLICK:
     case RF_433_KEY_EVENT_R1C2_LONG:
     {
-        pwm_mode = PWM_MODE_PULSE; 
+        // printf("r1c2\n");
+        pwm_mode = PWM_MODE_PULSE_2;
     }
     break;
     // =====================================================
     case RF_433_KEY_EVENT_R2C1_CLICK:
     case RF_433_KEY_EVENT_R2C1_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2; 
+        // printf("r2c1\n");
+        pwm_mode = PWM_MODE_PULSE_3;
     }
     break;
     // =====================================================
     case RF_433_KEY_EVENT_R2C2_CLICK:
     case RF_433_KEY_EVENT_R2C2_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_BLUE; 
+        // printf("r2c2\n");
+        pwm_mode = PWM_MODE_PULSE_4;
     }
     break;
         // =====================================================
     case RF_433_KEY_EVENT_R3C1_CLICK:
     case RF_433_KEY_EVENT_R3C1_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3; 
+        // printf("r3c1\n");
+        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
     }
     break;
     // =====================================================
     case RF_433_KEY_EVENT_R3C2_CLICK:
     case RF_433_KEY_EVENT_R3C2_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_CYAN; 
+        // printf("r3c2\n");
+        pwm_mode = PWM_MODE_PULSE_5;
     }
     break;
     // =====================================================
     case RF_433_KEY_EVENT_R4C1_CLICK:
     case RF_433_KEY_EVENT_R4C1_LONG:
     {
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4; 
+        // printf("r4c1\n");
+        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
     }
-    break; 
+    break;
         // =====================================================
-    case RF_433_KEY_EVENT_R4C2_CLICK: 
+    case RF_433_KEY_EVENT_R4C2_CLICK:
     case RF_433_KEY_EVENT_R4C2_LONG:
-    { 
-        pwm_mode = PWM_MODE_COLOR_GREEN; 
+    {
+        // printf("r4c2\n");
+        pwm_mode = PWM_MODE_COLOR_BLUE;
+    }
+    break;
+        // =====================================================
+    case RF_433_KEY_EVENT_R5C1_CLICK:
+    case RF_433_KEY_EVENT_R5C1_LONG:
+    {
+        // printf("r5c1\n");
+        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
+    }
+    break;
+        // =====================================================
+    case RF_433_KEY_EVENT_R5C2_CLICK:
+    case RF_433_KEY_EVENT_R5C2_LONG:
+    {
+        // printf("r5c2\n");
+        pwm_mode = PWM_MODE_COLOR_CYAN;
+    }
+    break;
+        // =====================================================
+    case RF_433_KEY_EVENT_R6C1_CLICK:
+    case RF_433_KEY_EVENT_R6C1_LONG:
+    {
+        // printf("r6c1\n");
+        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
+    }
+    break;
+        // =====================================================
+    case RF_433_KEY_EVENT_R6C2_CLICK:
+    case RF_433_KEY_EVENT_R6C2_LONG:
+    {
+        // printf("r6c2\n");
+        pwm_mode = PWM_MODE_COLOR_GREEN;
     }
     break;
         // =====================================================
@@ -200,7 +245,7 @@ void rf_key_handle(void)
     {
         return;
     }
-        break;
+    break;
     }
 
     // 根据对应的模式，立即设置 pwm 占空比

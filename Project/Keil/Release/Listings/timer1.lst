@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   TIMER1                                                            01/19/2026 17:07:06 PAGE 1   
+C51 COMPILER V9.60.7.0   TIMER1                                                            01/29/2026 16:51:30 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIMER1
@@ -62,7 +62,7 @@ line level    source
   51   1          __EnableIRQ(TMR1_IRQn); // 使能中断
   52   1          IE_EA = 1;              // 打开总中断
   53   1      }
-C51 COMPILER V9.60.7.0   TIMER1                                                            01/19/2026 17:07:06 PAGE 2   
+C51 COMPILER V9.60.7.0   TIMER1                                                            01/29/2026 16:51:30 PAGE 2   
 
   54          
   55          /**

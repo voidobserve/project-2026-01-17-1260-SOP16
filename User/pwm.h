@@ -27,11 +27,15 @@ enum
     PWM_MODE_COLOR_TEMPERATURE_3,
     PWM_MODE_COLOR_TEMPERATURE_4,
 
-    PWM_MODE_PULSE, // 脉冲模式
-
     PWM_MODE_COLOR_BLUE,  // 蓝光
     PWM_MODE_COLOR_CYAN,  // 青光
     PWM_MODE_COLOR_GREEN, // 绿光
+
+    PWM_MODE_PULSE_1, // 脉冲模式 1
+    PWM_MODE_PULSE_2, // 脉冲模式 2
+    PWM_MODE_PULSE_3,
+    PWM_MODE_PULSE_4,
+    PWM_MODE_PULSE_5,
 };
 
 // 由温度限制的PWM占空比 （对所有PWM通道都生效）
@@ -49,7 +53,7 @@ extern volatile u16 cur_pwm_channel_1_duty;           // 当前设置的第二�
 extern volatile u16 expect_adjust_pwm_channel_1_duty; // 存放期望调节到的 pwm_channle_1 占空比
 extern volatile u16 adjust_pwm_channel_1_duty;        // pwm_channle_1 要调整到的占空比
 
-extern volatile u8 pwm_mode; 
+extern volatile u8 pwm_mode;
 
 void pwm_init(void);
 

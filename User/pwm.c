@@ -141,10 +141,11 @@ void pwm_channel_0_enable(void)
 
 void pwm_channel_0_disable(void)
 {
-    // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
-    STMR_PWMEN &= ~0x01;          // 不使能PWM0的输出
     FOUT_S16 = GPIO_FOUT_AF_FUNC; //
     P16 = 1;                      // 高电平为关灯
+
+    // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
+    STMR_PWMEN &= ~0x01; // 不使能PWM0的输出
 }
 
 void pwm_channel_1_enable(void)
@@ -161,9 +162,6 @@ void pwm_channel_1_enable(void)
 
 void pwm_channel_1_disable(void)
 {
-    // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
-    STMR_PWMEN &= ~(0x01 << 1); // 不使能PWM1的输出
-
 #if USE_MY_TEST_PIN
     FOUT_S05 = GPIO_FOUT_AF_FUNC; //;
     P05 = 1;                      // 高电平为关灯
@@ -171,6 +169,9 @@ void pwm_channel_1_disable(void)
     FOUT_S15 = GPIO_FOUT_AF_FUNC; //
     P15 = 1;                      // 高电平为关灯
 #endif
+
+    // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
+    STMR_PWMEN &= ~(0x01 << 1); // 不使能PWM1的输出
 }
 
 /**
@@ -254,21 +255,15 @@ void pwm_mode_handle(void)
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_3:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_80_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_20_PERCENT;
-    }
-    break;
-    // ===========================================================
-    case PWM_MODE_COLOR_TEMPERATURE_4:
-    {
         expect_adjust_pwm_channel_0_duty = PWM_DUTY_60_PERCENT;
         expect_adjust_pwm_channel_1_duty = PWM_DUTY_40_PERCENT;
     }
     break;
     // ===========================================================
-    case PWM_MODE_PULSE:
+    case PWM_MODE_COLOR_TEMPERATURE_4:
     {
-        // 目标pwm值不变，让定时器来控制闪烁
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_80_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_20_PERCENT;
     }
     break;
     // ===========================================================
@@ -296,7 +291,16 @@ void pwm_mode_handle(void)
     }
     break;
         // ===========================================================
-
+    case PWM_MODE_PULSE_1:
+    case PWM_MODE_PULSE_2:
+    case PWM_MODE_PULSE_3:
+    case PWM_MODE_PULSE_4:
+    case PWM_MODE_PULSE_5:
+    {
+        // 不改变占空比，由定时器调节 频闪动画
+    }
+    break;
+        // ===========================================================
     default:
     {
         return;

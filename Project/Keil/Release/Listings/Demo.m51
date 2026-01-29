@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/20/2026  16:43:33  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/29/2026  16:54:03  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 2
 
 
                     0008H     0018H                  *** GAP ***
@@ -74,16 +74,16 @@ LINK MAP OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
             * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
                     0000H     6000H                  *** GAP ***
             XDATA   6000H     0268H     UNIT         ?XD?ENGINE
-            XDATA   6268H     0038H     UNIT         ?XD?ADC
-            XDATA   62A0H     002FH     UNIT         ?XD?RF_RECV
-            XDATA   62CFH     0013H     UNIT         ?XD?PWM
-            XDATA   62E2H     0011H     UNIT         ?XD?TIMER2
-            XDATA   62F3H     000CH     UNIT         ?XD?POWER_ON
-            XDATA   62FFH     000AH     UNIT         _XDATA_GROUP_
-            XDATA   6309H     0004H     UNIT         ?XD?TIME0
-            XDATA   630DH     0004H     UNIT         ?XD?TIMER1
-            XDATA   6311H     0004H     UNIT         ?XD?KEY_DRIVER
-            XDATA   6315H     0002H     UNIT         ?XD?TIMER3
+            XDATA   6268H     003BH     UNIT         ?XD?RF_RECV
+            XDATA   62A3H     0038H     UNIT         ?XD?ADC
+            XDATA   62DBH     0013H     UNIT         ?XD?PWM
+            XDATA   62EEH     0011H     UNIT         ?XD?TIMER2
+            XDATA   62FFH     000CH     UNIT         ?XD?POWER_ON
+            XDATA   630BH     000CH     UNIT         _XDATA_GROUP_
+            XDATA   6317H     0004H     UNIT         ?XD?TIME0
+            XDATA   631BH     0004H     UNIT         ?XD?TIMER1
+            XDATA   631FH     0004H     UNIT         ?XD?KEY_DRIVER
+            XDATA   6323H     0002H     UNIT         ?XD?TIMER3
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
@@ -96,62 +96,62 @@ LINK MAP OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
             CODE    0027H     0003H     ABSOLUTE     
             CODE    002AH     0018H     UNIT         ?PR?_DELAY_MS?SYSTEM
             CODE    0042H     0003H     ABSOLUTE     
-            CODE    0045H     031CH     UNIT         ?PR?ACCORDING_PIN9_TO_ADJUST_PWM?ENGINE
-            CODE    0361H     02BAH     UNIT         ?PR?TIMR2_IRQHANDLER?TIMER2
-            CODE    061BH     0267H     UNIT         ?C?LIB_CODE
-            CODE    0882H     0199H     UNIT         ?PR?_KEY_DRIVER_SCAN?KEY_DRIVER
-            CODE    0A1BH     015BH     UNIT         ?C_INITSEG
-            CODE    0B76H     0148H     UNIT         ?PR?ADC_IRQHANDLER?ADC
-            CODE    0CBEH     00FAH     UNIT         ?PR?RF_KEY_HANDLE?RF_RECV
-            CODE    0DB8H     00D9H     UNIT         ?PR?TIMR3_IRQHANDLER?TIMER3
-            CODE    0E91H     00D4H     UNIT         ?PR?POWER_ON_HANDLE?POWER_ON
-            CODE    0F65H     00CFH     UNIT         ?PR?SYSTEM_INIT?SYSTEM
-            CODE    1034H     00CAH     UNIT         ?PR?TEMPERATURE_SCAN?ADC
-            CODE    10FEH     00B8H     UNIT         ?PR?PWM_MODE_HANDLE?PWM
-            CODE    11B6H     009DH     UNIT         ?PR?PWM_INIT?PWM
-            CODE    1253H     0097H     UNIT         ?PR?MAIN?MAIN
-            CODE    12EAH     0094H     UNIT         ?PR?TIMR0_IRQHANDLER?TIME0
-            CODE    137EH     008CH     UNIT         ?C_C51STARTUP
-            CODE    140AH     0084H     UNIT         ?PR?ENGINE
-            CODE    148EH     0072H     UNIT         ?PR?_GET_PWM_CHANNEL_X_ADJUST_DUTY?PWM
-            CODE    1500H     005FH     UNIT         ?PR?TIMER2
-            CODE    155FH     005BH     UNIT         ?PR?TIMR1_IRQHANDLER?TIMER1
-            CODE    15BAH     0042H     UNIT         ?PR?PWM
-            CODE    15FCH     0040H     UNIT         ?PR?_RF_KEY_GET_EVENT?RF_RECV
-            CODE    163CH     003FH     UNIT         ?PR?_ADC_CHANNEL_SEL?ADC
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 3
+            CODE    0045H     0331H     UNIT         ?PR?TIMR2_IRQHANDLER?TIMER2
+            CODE    0376H     031CH     UNIT         ?PR?ACCORDING_PIN9_TO_ADJUST_PWM?ENGINE
+            CODE    0692H     0267H     UNIT         ?C?LIB_CODE
+            CODE    08F9H     0199H     UNIT         ?PR?_KEY_DRIVER_SCAN?KEY_DRIVER
+            CODE    0A92H     0168H     UNIT         ?C_INITSEG
+            CODE    0BFAH     0148H     UNIT         ?PR?ADC_IRQHANDLER?ADC
+            CODE    0D42H     0132H     UNIT         ?PR?RF_KEY_HANDLE?RF_RECV
+            CODE    0E74H     00D9H     UNIT         ?PR?TIMR3_IRQHANDLER?TIMER3
+            CODE    0F4DH     00D4H     UNIT         ?PR?POWER_ON_HANDLE?POWER_ON
+            CODE    1021H     00CFH     UNIT         ?PR?SYSTEM_INIT?SYSTEM
+            CODE    10F0H     00CAH     UNIT         ?PR?TEMPERATURE_SCAN?ADC
+            CODE    11BAH     00B5H     UNIT         ?PR?PWM_MODE_HANDLE?PWM
+            CODE    126FH     009DH     UNIT         ?PR?PWM_INIT?PWM
+            CODE    130CH     0097H     UNIT         ?PR?MAIN?MAIN
+            CODE    13A3H     0094H     UNIT         ?PR?TIMR0_IRQHANDLER?TIME0
+            CODE    1437H     008CH     UNIT         ?C_C51STARTUP
+            CODE    14C3H     0084H     UNIT         ?PR?ENGINE
+            CODE    1547H     0072H     UNIT         ?PR?_GET_PWM_CHANNEL_X_ADJUST_DUTY?PWM
+            CODE    15B9H     005FH     UNIT         ?PR?TIMER2
+            CODE    1618H     005BH     UNIT         ?PR?TIMR1_IRQHANDLER?TIMER1
+            CODE    1673H     0042H     UNIT         ?PR?PWM
+            CODE    16B5H     0040H     UNIT         ?PR?_RF_KEY_GET_EVENT?RF_RECV
+            CODE    16F5H     003FH     UNIT         ?PR?_ADC_CHANNEL_SEL?ADC
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 3
 
 
-            CODE    167BH     003EH     UNIT         ?PR?FAN_SCAN?ADC
-            CODE    16B9H     003CH     UNIT         ?PR?TMR1_CONFIG?TIMER1
-            CODE    16F5H     0036H     UNIT         ?PR?ADC
-            CODE    172BH     0032H     UNIT         ?PR?SET_DUTY?ADC
-            CODE    175DH     002AH     UNIT         ?PR?RF_KEY_GET_KEY_ID?RF_RECV
-            CODE    1787H     0024H     UNIT         ?PR?FAN_CTL?FAN_CTL
-            CODE    17ABH     0023H     UNIT         ?PR?KEY_DRIVER
-            CODE    17CEH     0023H     UNIT         ?PR?POWER_ON
-            CODE    17F1H     0021H     UNIT         ?PR?TIMER3_CONFIG?TIMER3
-            CODE    1812H     0020H     UNIT         ?PR?TIMER2_CONFIG?TIMER2
-            CODE    1832H     0020H     UNIT         ?PR?RF_RECV
-            CODE    1852H     001DH     UNIT         ?PR?ADC_PIN_CONFIG?ADC
-            CODE    186FH     001BH     UNIT         ?PR?TMR0_CONFIG?TIME0
-            CODE    188AH     0018H     UNIT         ?PR?GET_VOLTAGE_FROM_PIN?ADC
-            CODE    18A2H     0012H     UNIT         ?PR?ADC_CONFIG?ADC
-            CODE    18B4H     0012H     UNIT         ?PR?FAN_CTL_CONFIG?FAN_CTL
-            CODE    18C6H     0010H     UNIT         ?PR?TMR1_DISABLE?TIMER1
-            CODE    18D6H     000EH     UNIT         ?PR?PWM_CHANNEL_1_DISABLE?PWM
-            CODE    18E4H     000DH     UNIT         ?PR?PWM_CHANNEL_0_ENABLE?PWM
-            CODE    18F1H     000DH     UNIT         ?PR?PWM_CHANNEL_1_ENABLE?PWM
-            CODE    18FEH     000DH     UNIT         ?PR?RF_RECV_INIT?RF_RECV
-            CODE    190BH     000CH     UNIT         ?PR?GET_PWM_CHANNEL_0_STATUS?PWM
-            CODE    1917H     000CH     UNIT         ?PR?GET_PWM_CHANNEL_1_STATUS?PWM
-            CODE    1923H     000CH     UNIT         ?PR?TMR1_ENABLE?TIMER1
-            CODE    192FH     000BH     UNIT         ?PR?_DELAY?SYSTEM
-            CODE    193AH     0009H     UNIT         ?PR?_SET_PWM_CHANNEL_0_DUTY?PWM
-            CODE    1943H     0009H     UNIT         ?PR?_SET_PWM_CHANNEL_1_DUTY?PWM
-            CODE    194CH     0008H     UNIT         ?PR?MAIN
-            CODE    1954H     0008H     UNIT         ?PR?TIMER1
-            CODE    195CH     0007H     UNIT         ?PR?TIMER3
+            CODE    1734H     003EH     UNIT         ?PR?FAN_SCAN?ADC
+            CODE    1772H     003CH     UNIT         ?PR?TMR1_CONFIG?TIMER1
+            CODE    17AEH     0036H     UNIT         ?PR?ADC
+            CODE    17E4H     0032H     UNIT         ?PR?SET_DUTY?ADC
+            CODE    1816H     002AH     UNIT         ?PR?RF_KEY_GET_KEY_ID?RF_RECV
+            CODE    1840H     0024H     UNIT         ?PR?FAN_CTL?FAN_CTL
+            CODE    1864H     0023H     UNIT         ?PR?KEY_DRIVER
+            CODE    1887H     0023H     UNIT         ?PR?POWER_ON
+            CODE    18AAH     0021H     UNIT         ?PR?TIMER3_CONFIG?TIMER3
+            CODE    18CBH     0020H     UNIT         ?PR?TIMER2_CONFIG?TIMER2
+            CODE    18EBH     0020H     UNIT         ?PR?RF_RECV
+            CODE    190BH     001DH     UNIT         ?PR?ADC_PIN_CONFIG?ADC
+            CODE    1928H     001BH     UNIT         ?PR?TMR0_CONFIG?TIME0
+            CODE    1943H     0018H     UNIT         ?PR?GET_VOLTAGE_FROM_PIN?ADC
+            CODE    195BH     0012H     UNIT         ?PR?ADC_CONFIG?ADC
+            CODE    196DH     0012H     UNIT         ?PR?FAN_CTL_CONFIG?FAN_CTL
+            CODE    197FH     0010H     UNIT         ?PR?TMR1_DISABLE?TIMER1
+            CODE    198FH     000EH     UNIT         ?PR?PWM_CHANNEL_1_DISABLE?PWM
+            CODE    199DH     000DH     UNIT         ?PR?PWM_CHANNEL_0_ENABLE?PWM
+            CODE    19AAH     000DH     UNIT         ?PR?PWM_CHANNEL_1_ENABLE?PWM
+            CODE    19B7H     000DH     UNIT         ?PR?RF_RECV_INIT?RF_RECV
+            CODE    19C4H     000CH     UNIT         ?PR?GET_PWM_CHANNEL_0_STATUS?PWM
+            CODE    19D0H     000CH     UNIT         ?PR?GET_PWM_CHANNEL_1_STATUS?PWM
+            CODE    19DCH     000CH     UNIT         ?PR?TMR1_ENABLE?TIMER1
+            CODE    19E8H     000BH     UNIT         ?PR?_DELAY?SYSTEM
+            CODE    19F3H     0009H     UNIT         ?PR?_SET_PWM_CHANNEL_0_DUTY?PWM
+            CODE    19FCH     0009H     UNIT         ?PR?_SET_PWM_CHANNEL_1_DUTY?PWM
+            CODE    1A05H     0008H     UNIT         ?PR?MAIN
+            CODE    1A0DH     0008H     UNIT         ?PR?TIMER1
+            CODE    1A15H     0007H     UNIT         ?PR?TIMER3
 
 
 
@@ -179,7 +179,7 @@ SEGMENT                                           XDATA_GROUP
   +--> ?PR?MAIN
   +--> ?PR?POWER_ON_HANDLE?POWER_ON
   +--> ?PR?TEMPERATURE_SCAN?ADC
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 4
 
 
   +--> ?PR?FAN_SCAN?ADC
@@ -212,7 +212,7 @@ SEGMENT                                           XDATA_GROUP
 ?PR?_SET_PWM_CHANNEL_1_DUTY?PWM                 -----    -----
   +--> ?PR?PWM
 
-?PR?TEMPERATURE_SCAN?ADC                        62FFH    0004H
+?PR?TEMPERATURE_SCAN?ADC                        630BH    0004H
   +--> ?PR?GET_VOLTAGE_FROM_PIN?ADC
   +--> ?PR?ADC
   +--> ?PR?TMR1_ENABLE?TIMER1
@@ -227,10 +227,10 @@ SEGMENT                                           XDATA_GROUP
 ?PR?SET_DUTY?ADC                                -----    -----
   +--> ?PR?ACCORDING_PIN9_TO_ADJUST_PWM?ENGINE
 
-?PR?ACCORDING_PIN9_TO_ADJUST_PWM?ENGINE         62FFH    0008H
+?PR?ACCORDING_PIN9_TO_ADJUST_PWM?ENGINE         630BH    0008H
   +--> ?PR?ENGINE
 
-?PR?_KEY_DRIVER_SCAN?KEY_DRIVER                 62FFH    0002H
+?PR?_KEY_DRIVER_SCAN?KEY_DRIVER                 630BH    0002H
   +--> ?PR?KEY_DRIVER
 
 ?PR?RF_KEY_HANDLE?RF_RECV                       -----    -----
@@ -239,14 +239,14 @@ SEGMENT                                           XDATA_GROUP
   +--> ?PR?_GET_PWM_CHANNEL_X_ADJUST_DUTY?PWM
   +--> ?PR?_SET_PWM_CHANNEL_0_DUTY?PWM
   +--> ?PR?_SET_PWM_CHANNEL_1_DUTY?PWM
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 5
 
 
 
-?PR?_RF_KEY_GET_EVENT?RF_RECV                   62FFH    0001H
+?PR?_RF_KEY_GET_EVENT?RF_RECV                   630BH    0001H
   +--> ?PR?RF_RECV
 
-?PR?_GET_PWM_CHANNEL_X_ADJUST_DUTY?PWM          62FFH    0006H
+?PR?_GET_PWM_CHANNEL_X_ADJUST_DUTY?PWM          630BH    0006H
   +--> ?PR?PWM
 
 ?C_INITSEG                                      -----    -----
@@ -257,12 +257,12 @@ SEGMENT                                           XDATA_GROUP
 
 *** NEW ROOT ***************************************************
 
-?PR?ADC_IRQHANDLER?ADC                          6307H    0002H
+?PR?ADC_IRQHANDLER?ADC                          6313H    0002H
   +--> ?PR?ADC
 
 *** NEW ROOT ***************************************************
 
-?PR?TIMR2_IRQHANDLER?TIMER2                     -----    -----
+?PR?TIMR2_IRQHANDLER?TIMER2                     6315H    0002H
   +--> ?PR?TIMER2
   +--> ?PR?_SET_PWM_CHANNEL_0_DUTY?PWM
   +--> ?PR?_SET_PWM_CHANNEL_1_DUTY?PWM
@@ -290,7 +290,7 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:137EH         SEGMENT       ?C_C51STARTUP
+  C:1437H         SEGMENT       ?C_C51STARTUP
   I:0022H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
@@ -299,11 +299,11 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 6
 
 
   N:0080H         SYMBOL        IDATALEN
-  C:1381H         SYMBOL        IDATALOOP
+  C:143AH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -312,35 +312,35 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:137EH         SYMBOL        STARTUP1
+  C:1437H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:137EH         LINE#         133
-  C:1380H         LINE#         134
-  C:1381H         LINE#         135
-  C:1382H         LINE#         136
-  C:1384H         LINE#         185
-  C:1387H         LINE#         196
+  C:1437H         LINE#         133
+  C:1439H         LINE#         134
+  C:143AH         LINE#         135
+  C:143BH         LINE#         136
+  C:143DH         LINE#         185
+  C:1440H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        SYSTEM
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00A7H         PUBLIC        FLASH_TIMEREG0
-  C:192FH         PUBLIC        _delay
+  C:19E8H         PUBLIC        _delay
   D:00ACH         PUBLIC        FLASH_TIMEREG1
-  C:0F65H         PUBLIC        system_init
+  C:1021H         PUBLIC        system_init
   C:002AH         PUBLIC        _delay_ms
   -------         PROC          _DELAY
   D:0006H         SYMBOL        cnt
-  C:192FH         LINE#         37
-  C:192FH         LINE#         38
-  C:192FH         LINE#         39
-  C:1939H         LINE#         40
-  C:1939H         LINE#         41
-  C:1939H         LINE#         42
+  C:19E8H         LINE#         37
+  C:19E8H         LINE#         38
+  C:19E8H         LINE#         39
+  C:19F2H         LINE#         40
+  C:19F2H         LINE#         41
+  C:19F2H         LINE#         42
   -------         ENDPROC       _DELAY
   -------         PROC          _DELAY_MS
   D:0002H         SYMBOL        ms
@@ -356,344 +356,348 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:0F65H         LINE#         62
-  C:0F65H         LINE#         63
-  C:0F65H         LINE#         66
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 7
+  C:1021H         LINE#         62
+  C:1021H         LINE#         63
+  C:1021H         LINE#         66
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 7
 
 
-  C:0F6CH         LINE#         67
-  C:0F79H         LINE#         68
-  C:0F7CH         LINE#         69
-  C:0F7FH         LINE#         70
-  C:0F85H         LINE#         71
-  C:0F8BH         LINE#         72
-  C:0F91H         LINE#         76
-  C:0F93H         LINE#         77
-  C:0F93H         LINE#         78
-  C:0FA0H         LINE#         79
-  C:0FA5H         LINE#         81
-  C:1033H         LINE#         82
+  C:1028H         LINE#         67
+  C:1035H         LINE#         68
+  C:1038H         LINE#         69
+  C:103BH         LINE#         70
+  C:1041H         LINE#         71
+  C:1047H         LINE#         72
+  C:104DH         LINE#         76
+  C:104FH         LINE#         77
+  C:104FH         LINE#         78
+  C:105CH         LINE#         79
+  C:1061H         LINE#         81
+  C:10EFH         LINE#         82
   -------         ENDPROC       SYSTEM_INIT
   -------         ENDMOD        SYSTEM
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:1253H         PUBLIC        main
+  C:130CH         PUBLIC        main
   B:0090H.4       PUBLIC        P14
   D:00D9H         PUBLIC        WDT_KEY
-  C:194CH         SYMBOL        Com0004
-  C:194CH         SYMBOL        L?0005
-  C:194CH         SYMBOL        L?0006
+  C:1A05H         SYMBOL        Com0004
+  C:1A05H         SYMBOL        L?0005
+  C:1A05H         SYMBOL        L?0006
   -------         PROC          COM0004
   -------         ENDPROC       COM0004
   -------         PROC          MAIN
-  C:1253H         LINE#         59
-  C:1253H         LINE#         60
-  C:1253H         LINE#         62
-  C:1256H         LINE#         64
-  C:1259H         LINE#         67
-  C:125CH         LINE#         68
-  C:1263H         LINE#         69
-  C:1266H         LINE#         100
-  C:1269H         LINE#         101
-  C:126CH         LINE#         103
-  C:126FH         LINE#         104
-  C:1272H         LINE#         105
-  C:1275H         LINE#         107
-  C:1278H         LINE#         108
-  C:127BH         LINE#         110
-  C:127EH         LINE#         111
-  C:1281H         LINE#         113
-  C:1287H         LINE#         114
-  C:128BH         LINE#         115
-  C:1290H         LINE#         116
-  C:1292H         LINE#         120
-  C:1298H         LINE#         121
-  C:129EH         LINE#         122
-  C:12A4H         LINE#         124
-  C:12AAH         LINE#         125
-  C:12ADH         LINE#         127
-  C:12ADH         LINE#         128
-  C:12ADH         LINE#         130
-  C:12B0H         LINE#         131
-  C:12B3H         LINE#         132
-  C:12B6H         LINE#         134
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 8
+  C:130CH         LINE#         59
+  C:130CH         LINE#         60
+  C:130CH         LINE#         62
+  C:130FH         LINE#         64
+  C:1312H         LINE#         67
+  C:1315H         LINE#         68
+  C:131CH         LINE#         69
+  C:131FH         LINE#         100
+  C:1322H         LINE#         101
+  C:1325H         LINE#         103
+  C:1328H         LINE#         104
+  C:132BH         LINE#         105
+  C:132EH         LINE#         107
+  C:1331H         LINE#         108
+  C:1334H         LINE#         110
+  C:1337H         LINE#         111
+  C:133AH         LINE#         113
+  C:1340H         LINE#         114
+  C:1344H         LINE#         115
+  C:1349H         LINE#         116
+  C:134BH         LINE#         120
+  C:1351H         LINE#         121
+  C:1357H         LINE#         122
+  C:135DH         LINE#         124
+  C:1363H         LINE#         125
+  C:1366H         LINE#         127
+  C:1366H         LINE#         128
+  C:1366H         LINE#         130
+  C:1369H         LINE#         131
+  C:136CH         LINE#         132
+  C:136FH         LINE#         134
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 8
 
 
-  C:12BFH         LINE#         135
-  C:12C2H         LINE#         138
-  C:12D5H         LINE#         139
-  C:12E8H         LINE#         144
+  C:1378H         LINE#         135
+  C:137BH         LINE#         138
+  C:138EH         LINE#         139
+  C:13A1H         LINE#         144
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
   -------         MODULE        PWM
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:148EH         PUBLIC        _get_pwm_channel_x_adjust_duty
-  X:62CFH         PUBLIC        expect_adjust_pwm_channel_0_duty
-  X:62D1H         PUBLIC        expect_adjust_pwm_channel_1_duty
-  C:10FEH         PUBLIC        pwm_mode_handle
+  C:1547H         PUBLIC        _get_pwm_channel_x_adjust_duty
+  X:62DBH         PUBLIC        expect_adjust_pwm_channel_0_duty
+  X:62DDH         PUBLIC        expect_adjust_pwm_channel_1_duty
+  C:11BAH         PUBLIC        pwm_mode_handle
   B:0090H.5       PUBLIC        P15
   B:0090H.6       PUBLIC        P16
-  X:62D3H         PUBLIC        adjust_pwm_channel_0_duty
-  X:62D5H         PUBLIC        adjust_pwm_channel_1_duty
-  X:62D7H         PUBLIC        limited_pwm_duty_due_to_temp
-  C:190BH         PUBLIC        get_pwm_channel_0_status
-  C:1917H         PUBLIC        get_pwm_channel_1_status
-  X:62D9H         PUBLIC        limited_pwm_duty_due_to_unstable_engine
+  X:62DFH         PUBLIC        adjust_pwm_channel_0_duty
+  X:62E1H         PUBLIC        adjust_pwm_channel_1_duty
+  X:62E3H         PUBLIC        limited_pwm_duty_due_to_temp
+  C:19C4H         PUBLIC        get_pwm_channel_0_status
+  C:19D0H         PUBLIC        get_pwm_channel_1_status
+  X:62E5H         PUBLIC        limited_pwm_duty_due_to_unstable_engine
   C:000FH         PUBLIC        pwm_channel_0_disable
-  X:62DBH         PUBLIC        pwm_mode
-  C:18D6H         PUBLIC        pwm_channel_1_disable
-  C:11B6H         PUBLIC        pwm_init
-  C:18E4H         PUBLIC        pwm_channel_0_enable
-  C:18F1H         PUBLIC        pwm_channel_1_enable
-  X:62DCH         PUBLIC        limited_pwm_duty_due_to_fan_err
-  X:62DEH         PUBLIC        cur_pwm_channel_0_duty
-  X:62E0H         PUBLIC        cur_pwm_channel_1_duty
-  C:193AH         PUBLIC        _set_pwm_channel_0_duty
-  C:1943H         PUBLIC        _set_pwm_channel_1_duty
-  C:15BAH         SYMBOL        Com0025
-  C:15BAH         SYMBOL        L?0038
-  C:15BBH         SYMBOL        L?0039
-  C:15E9H         SYMBOL        L?0040
-  C:15E9H         SYMBOL        L?0041
-  C:15F1H         SYMBOL        L?0042
-  -------         PROC          COM0025
-  -------         ENDPROC       COM0025
+  X:62E7H         PUBLIC        pwm_mode
+  C:198FH         PUBLIC        pwm_channel_1_disable
+  C:126FH         PUBLIC        pwm_init
+  C:199DH         PUBLIC        pwm_channel_0_enable
+  C:19AAH         PUBLIC        pwm_channel_1_enable
+  X:62E8H         PUBLIC        limited_pwm_duty_due_to_fan_err
+  X:62EAH         PUBLIC        cur_pwm_channel_0_duty
+  X:62ECH         PUBLIC        cur_pwm_channel_1_duty
+  C:19F3H         PUBLIC        _set_pwm_channel_0_duty
+  C:19FCH         PUBLIC        _set_pwm_channel_1_duty
+  C:1673H         SYMBOL        Com0029
+  C:1673H         SYMBOL        L?0042
+  C:1674H         SYMBOL        L?0043
+  C:16A2H         SYMBOL        L?0044
+  C:16A2H         SYMBOL        L?0045
+  C:16AAH         SYMBOL        L?0046
+  -------         PROC          COM0029
+  -------         ENDPROC       COM0029
   -------         PROC          PWM_INIT
-  C:11B6H         LINE#         24
-  C:11B6H         LINE#         25
-  C:11B6H         LINE#         26
-  C:11BCH         LINE#         28
-  C:11C1H         LINE#         29
-  C:11C6H         LINE#         30
-  C:11CAH         LINE#         31
-  C:11CEH         LINE#         32
-  C:11D0H         LINE#         33
-  C:11D6H         LINE#         35
-  C:11DCH         LINE#         36
-  C:11E2H         LINE#         37
-  C:11E8H         LINE#         38
-  C:11EEH         LINE#         39
-  C:11F4H         LINE#         41
-  C:11FAH         LINE#         42
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 9
+  C:126FH         LINE#         24
+  C:126FH         LINE#         25
+  C:126FH         LINE#         26
+  C:1275H         LINE#         28
+  C:127AH         LINE#         29
+  C:127FH         LINE#         30
+  C:1283H         LINE#         31
+  C:1287H         LINE#         32
+  C:1289H         LINE#         33
+  C:128FH         LINE#         35
+  C:1295H         LINE#         36
+  C:129BH         LINE#         37
+  C:12A1H         LINE#         38
+  C:12A7H         LINE#         39
+  C:12ADH         LINE#         41
+  C:12B3H         LINE#         42
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 9
 
 
-  C:11FEH         LINE#         43
-  C:1204H         LINE#         46
-  C:120AH         LINE#         47
-  C:120FH         LINE#         48
-  C:1214H         LINE#         49
-  C:1218H         LINE#         50
-  C:121CH         LINE#         51
-  C:121EH         LINE#         52
-  C:1224H         LINE#         54
-  C:122AH         LINE#         55
-  C:1230H         LINE#         56
-  C:1236H         LINE#         57
-  C:123CH         LINE#         58
-  C:1242H         LINE#         65
-  C:1248H         LINE#         66
-  C:124CH         LINE#         67
-  C:1252H         LINE#         69
+  C:12B7H         LINE#         43
+  C:12BDH         LINE#         46
+  C:12C3H         LINE#         47
+  C:12C8H         LINE#         48
+  C:12CDH         LINE#         49
+  C:12D1H         LINE#         50
+  C:12D5H         LINE#         51
+  C:12D7H         LINE#         52
+  C:12DDH         LINE#         54
+  C:12E3H         LINE#         55
+  C:12E9H         LINE#         56
+  C:12EFH         LINE#         57
+  C:12F5H         LINE#         58
+  C:12FBH         LINE#         65
+  C:1301H         LINE#         66
+  C:1305H         LINE#         67
+  C:130BH         LINE#         69
   -------         ENDPROC       PWM_INIT
   -------         PROC          _SET_PWM_CHANNEL_0_DUTY
   D:0004H         SYMBOL        channel_duty
-  C:193AH         LINE#         72
-  C:193AH         LINE#         73
-  C:193AH         LINE#         74
-  C:193CH         LINE#         75
-  C:193CH         LINE#         76
-  C:1942H         LINE#         77
+  C:19F3H         LINE#         72
+  C:19F3H         LINE#         73
+  C:19F3H         LINE#         74
+  C:19F5H         LINE#         75
+  C:19F5H         LINE#         76
+  C:19FBH         LINE#         77
   -------         ENDPROC       _SET_PWM_CHANNEL_0_DUTY
   -------         PROC          _SET_PWM_CHANNEL_1_DUTY
   D:0004H         SYMBOL        channel_duty
-  C:1943H         LINE#         80
-  C:1943H         LINE#         81
-  C:1943H         LINE#         82
-  C:1945H         LINE#         83
-  C:1945H         LINE#         84
-  C:194BH         LINE#         85
+  C:19FCH         LINE#         80
+  C:19FCH         LINE#         81
+  C:19FCH         LINE#         82
+  C:19FEH         LINE#         83
+  C:19FEH         LINE#         84
+  C:1A04H         LINE#         85
   -------         ENDPROC       _SET_PWM_CHANNEL_1_DUTY
   -------         PROC          GET_PWM_CHANNEL_0_STATUS
-  C:190BH         LINE#         106
-  C:190BH         LINE#         107
-  C:190BH         LINE#         108
-  C:1911H         LINE#         109
-  C:1911H         LINE#         110
-  C:1914H         LINE#         111
-  C:1914H         LINE#         113
-  C:1914H         LINE#         114
-  C:1916H         LINE#         115
-  C:1916H         LINE#         116
+  C:19C4H         LINE#         106
+  C:19C4H         LINE#         107
+  C:19C4H         LINE#         108
+  C:19CAH         LINE#         109
+  C:19CAH         LINE#         110
+  C:19CDH         LINE#         111
+  C:19CDH         LINE#         113
+  C:19CDH         LINE#         114
+  C:19CFH         LINE#         115
+  C:19CFH         LINE#         116
   -------         ENDPROC       GET_PWM_CHANNEL_0_STATUS
   -------         PROC          GET_PWM_CHANNEL_1_STATUS
-  C:1917H         LINE#         123
-  C:1917H         LINE#         124
-  C:1917H         LINE#         125
-  C:191DH         LINE#         126
-  C:191DH         LINE#         127
-  C:1920H         LINE#         128
-  C:1920H         LINE#         130
-  C:1920H         LINE#         131
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 10
+  C:19D0H         LINE#         123
+  C:19D0H         LINE#         124
+  C:19D0H         LINE#         125
+  C:19D6H         LINE#         126
+  C:19D6H         LINE#         127
+  C:19D9H         LINE#         128
+  C:19D9H         LINE#         130
+  C:19D9H         LINE#         131
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 10
 
 
-  C:1922H         LINE#         132
-  C:1922H         LINE#         133
+  C:19DBH         LINE#         132
+  C:19DBH         LINE#         133
   -------         ENDPROC       GET_PWM_CHANNEL_1_STATUS
   -------         PROC          PWM_CHANNEL_0_ENABLE
-  C:18E4H         LINE#         135
-  C:18E4H         LINE#         136
-  C:18E4H         LINE#         138
-  C:18EAH         LINE#         139
-  C:18F0H         LINE#         140
+  C:199DH         LINE#         135
+  C:199DH         LINE#         136
+  C:199DH         LINE#         138
+  C:19A3H         LINE#         139
+  C:19A9H         LINE#         140
   -------         ENDPROC       PWM_CHANNEL_0_ENABLE
   -------         PROC          PWM_CHANNEL_0_DISABLE
   C:000FH         LINE#         142
   C:000FH         LINE#         143
-  C:000FH         LINE#         145
-  C:0015H         LINE#         146
-  C:001AH         LINE#         147
-  C:001CH         LINE#         148
+  C:000FH         LINE#         144
+  C:0014H         LINE#         145
+  C:0016H         LINE#         148
+  C:001CH         LINE#         149
   -------         ENDPROC       PWM_CHANNEL_0_DISABLE
   -------         PROC          PWM_CHANNEL_1_ENABLE
-  C:18F1H         LINE#         150
-  C:18F1H         LINE#         151
-  C:18F1H         LINE#         153
-  C:18F7H         LINE#         158
-  C:18FDH         LINE#         160
+  C:19AAH         LINE#         151
+  C:19AAH         LINE#         152
+  C:19AAH         LINE#         154
+  C:19B0H         LINE#         159
+  C:19B6H         LINE#         161
   -------         ENDPROC       PWM_CHANNEL_1_ENABLE
   -------         PROC          PWM_CHANNEL_1_DISABLE
-  C:18D6H         LINE#         162
-  C:18D6H         LINE#         163
-  C:18D6H         LINE#         165
-  C:18DCH         LINE#         171
-  C:18E1H         LINE#         172
-  C:18E3H         LINE#         174
+  C:198FH         LINE#         163
+  C:198FH         LINE#         164
+  C:198FH         LINE#         169
+  C:1994H         LINE#         170
+  C:1996H         LINE#         174
+  C:199CH         LINE#         175
   -------         ENDPROC       PWM_CHANNEL_1_DISABLE
   -------         PROC          _GET_PWM_CHANNEL_X_ADJUST_DUTY
-  X:62FFH         SYMBOL        pwm_adjust_duty
+  X:630BH         SYMBOL        pwm_adjust_duty
   -------         DO            
-  X:6301H         SYMBOL        tmp_pwm_duty
-  X:6303H         SYMBOL        limited_pwm_duty_val
+  X:630DH         SYMBOL        tmp_pwm_duty
+  X:630FH         SYMBOL        limited_pwm_duty_val
   -------         ENDDO         
-  C:148EH         LINE#         187
-  C:1496H         LINE#         188
-  C:1496H         LINE#         193
-  C:149CH         LINE#         199
-  C:14AAH         LINE#         200
-  C:14AAH         LINE#         201
-  C:14B0H         LINE#         202
-  C:14B5H         LINE#         203
-  C:14B5H         LINE#         204
-  C:14BAH         LINE#         205
-  C:14BAH         LINE#         206
-  C:14BAH         LINE#         208
-  C:14C8H         LINE#         209
-  C:14C8H         LINE#         210
-  C:14CEH         LINE#         211
-  C:14D3H         LINE#         212
-  C:14D3H         LINE#         213
-  C:14D8H         LINE#         214
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 11
+  C:1547H         LINE#         188
+  C:154FH         LINE#         189
+  C:154FH         LINE#         194
+  C:1555H         LINE#         200
+  C:1563H         LINE#         201
+  C:1563H         LINE#         202
+  C:1569H         LINE#         203
+  C:156EH         LINE#         204
+  C:156EH         LINE#         205
+  C:1573H         LINE#         206
+  C:1573H         LINE#         207
+  C:1573H         LINE#         209
+  C:1581H         LINE#         210
+  C:1581H         LINE#         211
+  C:1587H         LINE#         212
+  C:158CH         LINE#         213
+  C:158CH         LINE#         214
+  C:1591H         LINE#         215
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 11
 
 
-  C:14D8H         LINE#         215
-  C:14D8H         LINE#         217
-  C:14E6H         LINE#         218
-  C:14E6H         LINE#         219
-  C:14EDH         LINE#         220
-  C:14F2H         LINE#         221
-  C:14F2H         LINE#         222
-  C:14F7H         LINE#         223
-  C:14F7H         LINE#         224
-  C:14F7H         LINE#         227
-  C:14FFH         LINE#         228
+  C:1591H         LINE#         216
+  C:1591H         LINE#         218
+  C:159FH         LINE#         219
+  C:159FH         LINE#         220
+  C:15A6H         LINE#         221
+  C:15ABH         LINE#         222
+  C:15ABH         LINE#         223
+  C:15B0H         LINE#         224
+  C:15B0H         LINE#         225
+  C:15B0H         LINE#         228
+  C:15B8H         LINE#         229
   -------         ENDPROC       _GET_PWM_CHANNEL_X_ADJUST_DUTY
   -------         PROC          PWM_MODE_HANDLE
-  C:10FEH         LINE#         237
-  C:10FEH         LINE#         238
-  C:10FEH         LINE#         239
-  C:1129H         LINE#         240
-  C:1129H         LINE#         241
-  C:1129H         LINE#         242
-  C:1129H         LINE#         243
-  C:1133H         LINE#         244
-  C:113DH         LINE#         245
-  C:113DH         LINE#         246
-  C:113EH         LINE#         248
-  C:113EH         LINE#         249
-  C:113EH         LINE#         250
-  C:1148H         LINE#         251
-  C:1152H         LINE#         252
-  C:1152H         LINE#         253
-  C:1153H         LINE#         255
-  C:1153H         LINE#         256
-  C:1153H         LINE#         257
-  C:115DH         LINE#         258
-  C:1167H         LINE#         259
-  C:1167H         LINE#         260
-  C:1168H         LINE#         262
-  C:1168H         LINE#         263
-  C:1168H         LINE#         264
-  C:1172H         LINE#         265
-  C:117CH         LINE#         266
-  C:117CH         LINE#         267
-  C:117DH         LINE#         269
-  C:117DH         LINE#         270
-  C:117DH         LINE#         272
-  C:117DH         LINE#         273
-  C:117DH         LINE#         275
-  C:117DH         LINE#         276
-  C:117DH         LINE#         278
-  C:1187H         LINE#         279
-  C:118EH         LINE#         280
-  C:118EH         LINE#         281
-  C:118FH         LINE#         283
-  C:118FH         LINE#         284
-  C:118FH         LINE#         286
-  C:1199H         LINE#         287
-  C:11A3H         LINE#         288
-  C:11A3H         LINE#         289
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 12
+  C:11BAH         LINE#         238
+  C:11BAH         LINE#         239
+  C:11BAH         LINE#         240
+  C:11E2H         LINE#         241
+  C:11E2H         LINE#         242
+  C:11E2H         LINE#         243
+  C:11E2H         LINE#         244
+  C:11ECH         LINE#         245
+  C:11F6H         LINE#         246
+  C:11F6H         LINE#         247
+  C:11F7H         LINE#         249
+  C:11F7H         LINE#         250
+  C:11F7H         LINE#         251
+  C:1201H         LINE#         252
+  C:120BH         LINE#         253
+  C:120BH         LINE#         254
+  C:120CH         LINE#         256
+  C:120CH         LINE#         257
+  C:120CH         LINE#         258
+  C:1216H         LINE#         259
+  C:1220H         LINE#         260
+  C:1220H         LINE#         261
+  C:1221H         LINE#         263
+  C:1221H         LINE#         264
+  C:1221H         LINE#         265
+  C:122BH         LINE#         266
+  C:1235H         LINE#         267
+  C:1235H         LINE#         268
+  C:1236H         LINE#         270
+  C:1236H         LINE#         271
+  C:1236H         LINE#         273
+  C:1240H         LINE#         274
+  C:1247H         LINE#         275
+  C:1247H         LINE#         276
+  C:1248H         LINE#         278
+  C:1248H         LINE#         279
+  C:1248H         LINE#         281
+  C:1252H         LINE#         282
+  C:125CH         LINE#         283
+  C:125CH         LINE#         284
+  C:125DH         LINE#         286
+  C:125DH         LINE#         287
+  C:125DH         LINE#         289
+  C:1264H         LINE#         290
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 12
 
 
-  C:11A4H         LINE#         291
-  C:11A4H         LINE#         292
-  C:11A4H         LINE#         294
-  C:11ABH         LINE#         295
-  C:11B5H         LINE#         296
-  C:11B5H         LINE#         297
-  C:11B5H         LINE#         300
-  C:11B5H         LINE#         301
-  C:11B5H         LINE#         303
-  C:11B5H         LINE#         304
-  C:11B5H         LINE#         305
-  C:11B5H         LINE#         324
+  C:126EH         LINE#         291
+  C:126EH         LINE#         292
+  C:126EH         LINE#         294
+  C:126EH         LINE#         295
+  C:126EH         LINE#         296
+  C:126EH         LINE#         297
+  C:126EH         LINE#         298
+  C:126EH         LINE#         299
+  C:126EH         LINE#         301
+  C:126EH         LINE#         302
+  C:126EH         LINE#         304
+  C:126EH         LINE#         305
+  C:126EH         LINE#         307
+  C:126EH         LINE#         308
+  C:126EH         LINE#         309
+  C:126EH         LINE#         328
   -------         ENDPROC       PWM_MODE_HANDLE
   -------         ENDMOD        PWM
 
   -------         MODULE        ADC
   C:0000H         SYMBOL        _ICE_DUMMY_
-  X:6274H         PUBLIC        adc_val_from_temp
-  C:18A2H         PUBLIC        adc_config
-  C:163CH         PUBLIC        _adc_channel_sel
-  X:6276H         PUBLIC        adc_engine_val_buff_index
-  C:1852H         PUBLIC        adc_pin_config
-  X:6277H         PUBLIC        adc_engine_val_buff
+  X:62AFH         PUBLIC        adc_val_from_temp
+  C:195BH         PUBLIC        adc_config
+  C:16F5H         PUBLIC        _adc_channel_sel
+  X:62B1H         PUBLIC        adc_engine_val_buff_index
+  C:190BH         PUBLIC        adc_pin_config
+  X:62B2H         PUBLIC        adc_engine_val_buff
   D:0099H         PUBLIC        ADC_CHS0
   D:0093H         PUBLIC        ADC_DATAH0
-  C:167BH         PUBLIC        fan_scan
-  C:1034H         PUBLIC        temperature_scan
+  C:1734H         PUBLIC        fan_scan
+  C:10F0H         PUBLIC        temperature_scan
   D:00A8H         PUBLIC        IE0
   D:00A9H         PUBLIC        IE1
-  X:6297H         PUBLIC        adc_val_from_engine
+  X:62D2H         PUBLIC        adc_val_from_engine
   D:00AAH         PUBLIC        IE2
-  X:6299H         PUBLIC        temp_status
+  X:62D4H         PUBLIC        temp_status
   D:0094H         PUBLIC        ADC_DATAL0
   D:00ABH         PUBLIC        IE3
   D:00B8H         PUBLIC        IP0
@@ -705,287 +709,287 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:00B6H         PUBLIC        IP6
   B:0020H.4       PUBLIC        flag_tim_scan_fan_is_err
   D:00B7H         PUBLIC        IP7
-  C:0B76H         PUBLIC        ADC_IRQHandler
-  C:188AH         PUBLIC        get_voltage_from_pin
-  X:629AH         PUBLIC        cur_adc_status
-  X:629BH         PUBLIC        cur_fan_status
-  X:629CH         PUBLIC        adc_val_from_knob
+  C:0BFAH         PUBLIC        ADC_IRQHandler
+  C:1943H         PUBLIC        get_voltage_from_pin
+  X:62D5H         PUBLIC        cur_adc_status
+  X:62D6H         PUBLIC        cur_fan_status
+  X:62D7H         PUBLIC        adc_val_from_knob
   B:00A8H.7       PUBLIC        IE_EA
-  C:172BH         PUBLIC        set_duty
-  X:629EH         PUBLIC        adc_val_from_fan
-  C:16F5H         SYMBOL        Com0057
-  C:16F5H         SYMBOL        L?0088
-  C:16FCH         SYMBOL        L?0089
-  C:16FEH         SYMBOL        L?0090
-  C:170AH         SYMBOL        L?0091
-  C:170EH         SYMBOL        L?0092
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 13
+  C:17E4H         PUBLIC        set_duty
+  X:62D9H         PUBLIC        adc_val_from_fan
+  C:17AEH         SYMBOL        Com0057
+  C:17AEH         SYMBOL        L?0088
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 13
 
 
-  C:1716H         SYMBOL        L?0093
-  C:1723H         SYMBOL        L?0094
-  C:1723H         SYMBOL        L?0095
+  C:17B5H         SYMBOL        L?0089
+  C:17B7H         SYMBOL        L?0090
+  C:17C3H         SYMBOL        L?0091
+  C:17C7H         SYMBOL        L?0092
+  C:17CFH         SYMBOL        L?0093
+  C:17DCH         SYMBOL        L?0094
+  C:17DCH         SYMBOL        L?0095
   -------         PROC          COM0057
   -------         ENDPROC       COM0057
   -------         PROC          ADC_PIN_CONFIG
-  C:1852H         LINE#         21
-  C:1852H         LINE#         22
-  C:1852H         LINE#         24
-  C:1858H         LINE#         27
-  C:185EH         LINE#         30
-  C:1864H         LINE#         31
-  C:1869H         LINE#         32
-  C:186EH         LINE#         33
+  C:190BH         LINE#         21
+  C:190BH         LINE#         22
+  C:190BH         LINE#         24
+  C:1911H         LINE#         27
+  C:1917H         LINE#         30
+  C:191DH         LINE#         31
+  C:1922H         LINE#         32
+  C:1927H         LINE#         33
   -------         ENDPROC       ADC_PIN_CONFIG
   -------         PROC          ADC_CONFIG
-  C:18A2H         LINE#         35
-  C:18A2H         LINE#         36
-  C:18A2H         LINE#         37
-  C:18A5H         LINE#         38
-  C:18A7H         LINE#         39
-  C:18ADH         LINE#         41
+  C:195BH         LINE#         35
+  C:195BH         LINE#         36
+  C:195BH         LINE#         37
+  C:195EH         LINE#         38
+  C:1960H         LINE#         39
+  C:1966H         LINE#         41
   -------         ENDPROC       ADC_CONFIG
   -------         PROC          _ADC_CHANNEL_SEL
   D:0007H         SYMBOL        adc_sel_pin
-  C:163CH         LINE#         44
-  C:163CH         LINE#         45
-  C:163CH         LINE#         46
-  C:1648H         LINE#         47
-  C:1648H         LINE#         48
-  C:1648H         LINE#         49
-  C:1648H         LINE#         51
-  C:164FH         LINE#         52
-  C:1652H         LINE#         54
-  C:1655H         LINE#         57
-  C:1658H         LINE#         59
-  C:1658H         LINE#         60
-  C:165AH         LINE#         62
-  C:165AH         LINE#         63
-  C:165AH         LINE#         64
-  C:1660H         LINE#         65
-  C:1660H         LINE#         67
-  C:1663H         LINE#         71
-  C:1666H         LINE#         73
-  C:1666H         LINE#         74
-  C:1668H         LINE#         76
-  C:1668H         LINE#         77
-  C:1668H         LINE#         78
-  C:166EH         LINE#         79
-  C:166EH         LINE#         81
-  C:1671H         LINE#         85
-  C:1674H         LINE#         87
-  C:1674H         LINE#         88
-  C:1674H         LINE#         90
-  C:1674H         LINE#         91
-  C:1674H         LINE#         92
-  C:1674H         LINE#         94
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 14
+  C:16F5H         LINE#         44
+  C:16F5H         LINE#         45
+  C:16F5H         LINE#         46
+  C:1701H         LINE#         47
+  C:1701H         LINE#         48
+  C:1701H         LINE#         49
+  C:1701H         LINE#         51
+  C:1708H         LINE#         52
+  C:170BH         LINE#         54
+  C:170EH         LINE#         57
+  C:1711H         LINE#         59
+  C:1711H         LINE#         60
+  C:1713H         LINE#         62
+  C:1713H         LINE#         63
+  C:1713H         LINE#         64
+  C:1719H         LINE#         65
+  C:1719H         LINE#         67
+  C:171CH         LINE#         71
+  C:171FH         LINE#         73
+  C:171FH         LINE#         74
+  C:1721H         LINE#         76
+  C:1721H         LINE#         77
+  C:1721H         LINE#         78
+  C:1727H         LINE#         79
+  C:1727H         LINE#         81
+  C:172AH         LINE#         85
+  C:172DH         LINE#         87
+  C:172DH         LINE#         88
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 14
 
 
-  C:167AH         LINE#         96
+  C:172DH         LINE#         90
+  C:172DH         LINE#         91
+  C:172DH         LINE#         92
+  C:172DH         LINE#         94
+  C:1733H         LINE#         96
   -------         ENDPROC       _ADC_CHANNEL_SEL
   -------         PROC          GET_VOLTAGE_FROM_PIN
-  C:188AH         LINE#         98
-  C:188AH         LINE#         99
-  C:188AH         LINE#         100
+  C:1943H         LINE#         98
+  C:1943H         LINE#         99
+  C:1943H         LINE#         100
   -------         ENDPROC       GET_VOLTAGE_FROM_PIN
   -------         PROC          TEMPERATURE_SCAN
   -------         DO            
-  X:62FFH         SYMBOL        voltage
+  X:630BH         SYMBOL        voltage
   -------         DO            
-  X:6268H         SYMBOL        cnt
-  X:6269H         SYMBOL        cnt
+  X:62A3H         SYMBOL        cnt
+  X:62A4H         SYMBOL        cnt
   -------         ENDDO         
   -------         DO            
-  X:6269H         SYMBOL        cnt
+  X:62A4H         SYMBOL        cnt
   -------         ENDDO         
   -------         DO            
   B:0020H.3       SYMBOL        tmr1_is_open
   -------         DO            
-  X:626AH         SYMBOL        cnt
+  X:62A5H         SYMBOL        cnt
   -------         ENDDO         
   -------         ENDDO         
   -------         ENDDO         
-  C:1034H         LINE#         104
-  C:1034H         LINE#         105
-  C:1034H         LINE#         106
-  C:103EH         LINE#         109
-  C:1049H         LINE#         110
-  C:1049H         LINE#         112
-  C:1049H         LINE#         114
-  C:1049H         LINE#         117
-  C:104FH         LINE#         118
-  C:1058H         LINE#         119
-  C:1058H         LINE#         121
-  C:1058H         LINE#         123
-  C:105AH         LINE#         124
-  C:105AH         LINE#         126
-  C:1063H         LINE#         134
-  C:1069H         LINE#         135
-  C:1069H         LINE#         138
-  C:1072H         LINE#         139
-  C:1072H         LINE#         140
-  C:1078H         LINE#         141
-  C:107AH         LINE#         143
-  C:107AH         LINE#         144
-  C:107FH         LINE#         145
-  C:107FH         LINE#         147
-  C:1089H         LINE#         148
-  C:1089H         LINE#         149
-  C:108AH         LINE#         151
-  C:108FH         LINE#         152
-  C:1090H         LINE#         154
-  C:1090H         LINE#         155
-  C:1094H         LINE#         156
-  C:1095H         LINE#         159
-  C:1095H         LINE#         160
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 15
+  C:10F0H         LINE#         104
+  C:10F0H         LINE#         105
+  C:10F0H         LINE#         106
+  C:10FAH         LINE#         109
+  C:1105H         LINE#         110
+  C:1105H         LINE#         112
+  C:1105H         LINE#         114
+  C:1105H         LINE#         117
+  C:110BH         LINE#         118
+  C:1114H         LINE#         119
+  C:1114H         LINE#         121
+  C:1114H         LINE#         123
+  C:1116H         LINE#         124
+  C:1116H         LINE#         126
+  C:111FH         LINE#         134
+  C:1125H         LINE#         135
+  C:1125H         LINE#         138
+  C:112EH         LINE#         139
+  C:112EH         LINE#         140
+  C:1134H         LINE#         141
+  C:1136H         LINE#         143
+  C:1136H         LINE#         144
+  C:113BH         LINE#         145
+  C:113BH         LINE#         147
+  C:1145H         LINE#         148
+  C:1145H         LINE#         149
+  C:1146H         LINE#         151
+  C:114BH         LINE#         152
+  C:114CH         LINE#         154
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 15
 
 
-  C:109DH         LINE#         161
-  C:109DH         LINE#         165
-  C:10A0H         LINE#         166
-  C:10A0H         LINE#         167
-  C:10A2H         LINE#         168
-  C:10ACH         LINE#         169
-  C:10AFH         LINE#         170
-  C:10AFH         LINE#         173
-  C:10C0H         LINE#         174
-  C:10C0H         LINE#         177
-  C:10C9H         LINE#         178
-  C:10C9H         LINE#         179
-  C:10CFH         LINE#         180
-  C:10D1H         LINE#         182
-  C:10D1H         LINE#         183
-  C:10D6H         LINE#         184
-  C:10D6H         LINE#         186
-  C:10DFH         LINE#         187
-  C:10DFH         LINE#         188
-  C:10E1H         LINE#         189
-  C:10E7H         LINE#         190
-  C:10EAH         LINE#         191
-  C:10F4H         LINE#         192
-  C:10F6H         LINE#         193
-  C:10F7H         LINE#         195
-  C:10F7H         LINE#         196
-  C:10FDH         LINE#         197
-  C:10FDH         LINE#         200
-  C:10FDH         LINE#         201
-  C:10FDH         LINE#         202
+  C:114CH         LINE#         155
+  C:1150H         LINE#         156
+  C:1151H         LINE#         159
+  C:1151H         LINE#         160
+  C:1159H         LINE#         161
+  C:1159H         LINE#         165
+  C:115CH         LINE#         166
+  C:115CH         LINE#         167
+  C:115EH         LINE#         168
+  C:1168H         LINE#         169
+  C:116BH         LINE#         170
+  C:116BH         LINE#         173
+  C:117CH         LINE#         174
+  C:117CH         LINE#         177
+  C:1185H         LINE#         178
+  C:1185H         LINE#         179
+  C:118BH         LINE#         180
+  C:118DH         LINE#         182
+  C:118DH         LINE#         183
+  C:1192H         LINE#         184
+  C:1192H         LINE#         186
+  C:119BH         LINE#         187
+  C:119BH         LINE#         188
+  C:119DH         LINE#         189
+  C:11A3H         LINE#         190
+  C:11A6H         LINE#         191
+  C:11B0H         LINE#         192
+  C:11B2H         LINE#         193
+  C:11B3H         LINE#         195
+  C:11B3H         LINE#         196
+  C:11B9H         LINE#         197
+  C:11B9H         LINE#         200
+  C:11B9H         LINE#         201
+  C:11B9H         LINE#         202
   -------         ENDPROC       TEMPERATURE_SCAN
   -------         PROC          SET_DUTY
-  C:172BH         LINE#         205
-  C:172BH         LINE#         206
-  C:172BH         LINE#         208
-  C:1731H         LINE#         209
-  C:1731H         LINE#         210
-  C:1734H         LINE#         211
-  C:1734H         LINE#         212
-  C:1736H         LINE#         213
-  C:1739H         LINE#         214
-  C:1739H         LINE#         215
-  C:1739H         LINE#         216
-  C:1740H         LINE#         217
-  C:1740H         LINE#         218
-  C:174AH         LINE#         219
-  C:174BH         LINE#         220
-  C:1752H         LINE#         221
-  C:1752H         LINE#         222
-  C:175CH         LINE#         223
-  C:175CH         LINE#         224
+  C:17E4H         LINE#         205
+  C:17E4H         LINE#         206
+  C:17E4H         LINE#         208
+  C:17EAH         LINE#         209
+  C:17EAH         LINE#         210
+  C:17EDH         LINE#         211
+  C:17EDH         LINE#         212
+  C:17EFH         LINE#         213
+  C:17F2H         LINE#         214
+  C:17F2H         LINE#         215
+  C:17F2H         LINE#         216
+  C:17F9H         LINE#         217
+  C:17F9H         LINE#         218
+  C:1803H         LINE#         219
+  C:1804H         LINE#         220
+  C:180BH         LINE#         221
+  C:180BH         LINE#         222
+  C:1815H         LINE#         223
+  C:1815H         LINE#         224
   -------         ENDPROC       SET_DUTY
   -------         PROC          FAN_SCAN
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 16
+
+
   -------         DO            
   D:0006H         SYMBOL        adc_val
   -------         ENDDO         
-  C:167BH         LINE#         226
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 16
-
-
-  C:167BH         LINE#         227
-  C:167BH         LINE#         228
-  C:1683H         LINE#         234
-  C:1689H         LINE#         235
-  C:1689H         LINE#         236
-  C:1692H         LINE#         237
-  C:1692H         LINE#         238
-  C:1694H         LINE#         239
-  C:1696H         LINE#         241
-  C:1696H         LINE#         243
-  C:1698H         LINE#         244
-  C:1698H         LINE#         247
-  C:16A2H         LINE#         248
-  C:16A3H         LINE#         250
-  C:16A3H         LINE#         252
-  C:16ACH         LINE#         253
-  C:16ACH         LINE#         254
-  C:16AEH         LINE#         255
-  C:16AEH         LINE#         258
-  C:16B8H         LINE#         259
-  C:16B8H         LINE#         260
+  C:1734H         LINE#         226
+  C:1734H         LINE#         227
+  C:1734H         LINE#         228
+  C:173CH         LINE#         234
+  C:1742H         LINE#         235
+  C:1742H         LINE#         236
+  C:174BH         LINE#         237
+  C:174BH         LINE#         238
+  C:174DH         LINE#         239
+  C:174FH         LINE#         241
+  C:174FH         LINE#         243
+  C:1751H         LINE#         244
+  C:1751H         LINE#         247
+  C:175BH         LINE#         248
+  C:175CH         LINE#         250
+  C:175CH         LINE#         252
+  C:1765H         LINE#         253
+  C:1765H         LINE#         254
+  C:1767H         LINE#         255
+  C:1767H         LINE#         258
+  C:1771H         LINE#         259
+  C:1771H         LINE#         260
   -------         ENDPROC       FAN_SCAN
   -------         PROC          ADC_IRQHANDLER
   -------         DO            
-  X:6307H         SYMBOL        adc_val
+  X:6313H         SYMBOL        adc_val
   -------         DO            
-  X:626BH         SYMBOL        i
-  X:626CH         SYMBOL        g_tmpbuff
-  X:6270H         SYMBOL        g_adcmax
-  X:6272H         SYMBOL        g_adcmin
+  X:62A6H         SYMBOL        i
+  X:62A7H         SYMBOL        g_tmpbuff
+  X:62ABH         SYMBOL        g_adcmax
+  X:62ADH         SYMBOL        g_adcmin
   -------         ENDDO         
   -------         ENDDO         
-  C:0B76H         LINE#         262
-  C:0B93H         LINE#         265
-  C:0B96H         LINE#         270
-  C:0B9FH         LINE#         271
-  C:0B9FH         LINE#         272
-  C:0BB9H         LINE#         273
-  C:0BBDH         LINE#         275
-  C:0BC8H         LINE#         276
-  C:0BC8H         LINE#         284
-  C:0BCDH         LINE#         285
-  C:0BCDH         LINE#         286
-  C:0BD0H         LINE#         288
-  C:0BD6H         LINE#         289
-  C:0BD6H         LINE#         290
-  C:0BE2H         LINE#         291
-  C:0BEEH         LINE#         292
-  C:0BFAH         LINE#         293
-  C:0C06H         LINE#         294
-  C:0C29H         LINE#         295
-  C:0C29H         LINE#         297
-  C:0C2EH         LINE#         298
-  C:0C34H         LINE#         299
-  C:0C34H         LINE#         301
-  C:0C39H         LINE#         302
-  C:0C39H         LINE#         303
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 17
+  C:0BFAH         LINE#         262
+  C:0C17H         LINE#         265
+  C:0C1AH         LINE#         270
+  C:0C23H         LINE#         271
+  C:0C23H         LINE#         272
+  C:0C3DH         LINE#         273
+  C:0C41H         LINE#         275
+  C:0C4CH         LINE#         276
+  C:0C4CH         LINE#         284
+  C:0C51H         LINE#         285
+  C:0C51H         LINE#         286
+  C:0C54H         LINE#         288
+  C:0C5AH         LINE#         289
+  C:0C5AH         LINE#         290
+  C:0C66H         LINE#         291
+  C:0C72H         LINE#         292
+  C:0C7EH         LINE#         293
+  C:0C8AH         LINE#         294
+  C:0CADH         LINE#         295
+  C:0CADH         LINE#         297
+  C:0CB2H         LINE#         298
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 17
 
 
-  C:0C52H         LINE#         304
-  C:0C58H         LINE#         307
-  C:0C5DH         LINE#         308
-  C:0C63H         LINE#         309
-  C:0C6BH         LINE#         310
-  C:0C75H         LINE#         312
-  C:0C75H         LINE#         313
-  C:0C77H         LINE#         314
-  C:0C7EH         LINE#         315
-  C:0C7EH         LINE#         317
-  C:0C88H         LINE#         319
-  C:0C8AH         LINE#         320
-  C:0C91H         LINE#         321
-  C:0C91H         LINE#         323
-  C:0CA0H         LINE#         325
-  C:0CA0H         LINE#         326
-  C:0CA0H         LINE#         329
-  C:0CA3H         LINE#         330
+  C:0CB8H         LINE#         299
+  C:0CB8H         LINE#         301
+  C:0CBDH         LINE#         302
+  C:0CBDH         LINE#         303
+  C:0CD6H         LINE#         304
+  C:0CDCH         LINE#         307
+  C:0CE1H         LINE#         308
+  C:0CE7H         LINE#         309
+  C:0CEFH         LINE#         310
+  C:0CF9H         LINE#         312
+  C:0CF9H         LINE#         313
+  C:0CFBH         LINE#         314
+  C:0D02H         LINE#         315
+  C:0D02H         LINE#         317
+  C:0D0CH         LINE#         319
+  C:0D0EH         LINE#         320
+  C:0D15H         LINE#         321
+  C:0D15H         LINE#         323
+  C:0D24H         LINE#         325
+  C:0D24H         LINE#         326
+  C:0D24H         LINE#         329
+  C:0D27H         LINE#         330
   -------         ENDPROC       ADC_IRQHANDLER
   -------         ENDMOD        ADC
 
   -------         MODULE        TIME0
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:12EAH         PUBLIC        TIMR0_IRQHandler
+  C:13A3H         PUBLIC        TIMR0_IRQHandler
   D:00D1H         PUBLIC        TMR_ALLCON
   D:00A8H         PUBLIC        IE0
   D:00A9H         PUBLIC        IE1
@@ -999,62 +1003,62 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:00B5H         PUBLIC        IP5
   D:00B6H         PUBLIC        IP6
   D:00B7H         PUBLIC        IP7
-  C:186FH         PUBLIC        tmr0_config
+  C:1928H         PUBLIC        tmr0_config
   B:00A8H.7       PUBLIC        IE_EA
   -------         PROC          TMR0_CONFIG
-  C:186FH         LINE#         9
-  C:186FH         LINE#         10
-  C:186FH         LINE#         11
-  C:1872H         LINE#         12
-  C:1874H         LINE#         16
-  C:1877H         LINE#         17
-  C:187CH         LINE#         18
-  C:1880H         LINE#         19
-  C:1885H         LINE#         20
-  C:1889H         LINE#         21
+  C:1928H         LINE#         9
+  C:1928H         LINE#         10
+  C:1928H         LINE#         11
+  C:192BH         LINE#         12
+  C:192DH         LINE#         16
+  C:1930H         LINE#         17
+  C:1935H         LINE#         18
+  C:1939H         LINE#         19
+  C:193EH         LINE#         20
+  C:1942H         LINE#         21
   -------         ENDPROC       TMR0_CONFIG
   -------         PROC          TIMR0_IRQHANDLER
   -------         DO            
-  X:6309H         SYMBOL        fan_normal_cnt
-  X:630BH         SYMBOL        fan_err_cnt
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 18
+
+
+  X:6317H         SYMBOL        fan_normal_cnt
+  X:6319H         SYMBOL        fan_err_cnt
   -------         ENDDO         
-  C:12EAH         LINE#         54
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 18
-
-
-  C:12F7H         LINE#         57
-  C:12FAH         LINE#         62
-  C:1300H         LINE#         63
-  C:1300H         LINE#         64
-  C:1304H         LINE#         73
-  C:1306H         LINE#         75
-  C:130FH         LINE#         76
-  C:130FH         LINE#         77
-  C:1312H         LINE#         78
-  C:1312H         LINE#         80
-  C:1312H         LINE#         84
-  C:1315H         LINE#         85
-  C:1315H         LINE#         86
-  C:1323H         LINE#         87
-  C:132AH         LINE#         89
-  C:1339H         LINE#         90
-  C:1339H         LINE#         91
-  C:133DH         LINE#         92
-  C:1342H         LINE#         93
-  C:1342H         LINE#         94
-  C:1344H         LINE#         96
-  C:1344H         LINE#         97
-  C:1352H         LINE#         98
-  C:1359H         LINE#         100
-  C:1368H         LINE#         101
-  C:1368H         LINE#         102
-  C:136CH         LINE#         103
-  C:1370H         LINE#         104
-  C:1370H         LINE#         105
-  C:1370H         LINE#         106
-  C:1370H         LINE#         107
-  C:1370H         LINE#         110
-  C:1373H         LINE#         111
+  C:13A3H         LINE#         54
+  C:13B0H         LINE#         57
+  C:13B3H         LINE#         62
+  C:13B9H         LINE#         63
+  C:13B9H         LINE#         64
+  C:13BDH         LINE#         73
+  C:13BFH         LINE#         75
+  C:13C8H         LINE#         76
+  C:13C8H         LINE#         77
+  C:13CBH         LINE#         78
+  C:13CBH         LINE#         80
+  C:13CBH         LINE#         84
+  C:13CEH         LINE#         85
+  C:13CEH         LINE#         86
+  C:13DCH         LINE#         87
+  C:13E3H         LINE#         89
+  C:13F2H         LINE#         90
+  C:13F2H         LINE#         91
+  C:13F6H         LINE#         92
+  C:13FBH         LINE#         93
+  C:13FBH         LINE#         94
+  C:13FDH         LINE#         96
+  C:13FDH         LINE#         97
+  C:140BH         LINE#         98
+  C:1412H         LINE#         100
+  C:1421H         LINE#         101
+  C:1421H         LINE#         102
+  C:1425H         LINE#         103
+  C:1429H         LINE#         104
+  C:1429H         LINE#         105
+  C:1429H         LINE#         106
+  C:1429H         LINE#         107
+  C:1429H         LINE#         110
+  C:142CH         LINE#         111
   -------         ENDPROC       TIMR0_IRQHANDLER
   -------         ENDMOD        TIME0
 
@@ -1064,10 +1068,10 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
 
   -------         MODULE        TIMER1
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:155FH         PUBLIC        TIMR1_IRQHandler
-  X:630DH         PUBLIC        tmr1_cnt
+  C:1618H         PUBLIC        TIMR1_IRQHandler
+  X:631BH         PUBLIC        tmr1_cnt
   D:00A8H         PUBLIC        IE0
-  C:18C6H         PUBLIC        tmr1_disable
+  C:197FH         PUBLIC        tmr1_disable
   D:00A9H         PUBLIC        IE1
   D:00AAH         PUBLIC        IE2
   D:00ABH         PUBLIC        IE3
@@ -1075,83 +1079,83 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:00B1H         PUBLIC        IP1
   D:00B2H         PUBLIC        IP2
   D:00B3H         PUBLIC        IP3
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 19
+
+
   D:00B4H         PUBLIC        IP4
   D:00B5H         PUBLIC        IP5
   D:00B6H         PUBLIC        IP6
   D:00B7H         PUBLIC        IP7
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 19
-
-
-  C:1923H         PUBLIC        tmr1_enable
-  C:16B9H         PUBLIC        tmr1_config
+  C:19DCH         PUBLIC        tmr1_enable
+  C:1772H         PUBLIC        tmr1_config
   B:00A8H.7       PUBLIC        IE_EA
-  C:1954H         SYMBOL        Com004E
-  C:1954H         SYMBOL        L?0079
-  C:1954H         SYMBOL        L?0080
+  C:1A0DH         SYMBOL        Com004E
+  C:1A0DH         SYMBOL        L?0079
+  C:1A0DH         SYMBOL        L?0080
   -------         PROC          COM004E
   -------         ENDPROC       COM004E
   -------         PROC          TMR1_CONFIG
-  C:16B9H         LINE#         11
-  C:16B9H         LINE#         12
-  C:16B9H         LINE#         13
-  C:16BFH         LINE#         15
-  C:16C5H         LINE#         18
-  C:16C9H         LINE#         19
-  C:16CDH         LINE#         20
-  C:16D1H         LINE#         22
-  C:16D6H         LINE#         23
-  C:16DAH         LINE#         26
-  C:16DFH         LINE#         27
-  C:16E3H         LINE#         30
-  C:16E7H         LINE#         31
-  C:16E9H         LINE#         33
-  C:16E9H         LINE#         35
-  C:16EFH         LINE#         38
-  C:16F2H         LINE#         39
-  C:16F4H         LINE#         40
+  C:1772H         LINE#         11
+  C:1772H         LINE#         12
+  C:1772H         LINE#         13
+  C:1778H         LINE#         15
+  C:177EH         LINE#         18
+  C:1782H         LINE#         19
+  C:1786H         LINE#         20
+  C:178AH         LINE#         22
+  C:178FH         LINE#         23
+  C:1793H         LINE#         26
+  C:1798H         LINE#         27
+  C:179CH         LINE#         30
+  C:17A0H         LINE#         31
+  C:17A2H         LINE#         33
+  C:17A2H         LINE#         35
+  C:17A8H         LINE#         38
+  C:17ABH         LINE#         39
+  C:17ADH         LINE#         40
   -------         ENDPROC       TMR1_CONFIG
   -------         PROC          TMR1_ENABLE
-  C:1923H         LINE#         45
-  C:1923H         LINE#         46
-  C:1923H         LINE#         48
-  C:1923H         LINE#         49
-  C:1929H         LINE#         51
-  C:192CH         LINE#         52
-  C:192EH         LINE#         53
+  C:19DCH         LINE#         45
+  C:19DCH         LINE#         46
+  C:19DCH         LINE#         48
+  C:19DCH         LINE#         49
+  C:19E2H         LINE#         51
+  C:19E5H         LINE#         52
+  C:19E7H         LINE#         53
   -------         ENDPROC       TMR1_ENABLE
   -------         PROC          TMR1_DISABLE
-  C:18C6H         LINE#         58
-  C:18C6H         LINE#         59
-  C:18C6H         LINE#         61
-  C:18C6H         LINE#         62
-  C:18CCH         LINE#         65
-  C:18D0H         LINE#         66
-  C:18D2H         LINE#         68
-  C:18D5H         LINE#         69
+  C:197FH         LINE#         58
+  C:197FH         LINE#         59
+  C:197FH         LINE#         61
+  C:197FH         LINE#         62
+  C:1985H         LINE#         65
+  C:1989H         LINE#         66
+  C:198BH         LINE#         68
+  C:198EH         LINE#         69
   -------         ENDPROC       TMR1_DISABLE
   -------         PROC          TIMR1_IRQHANDLER
-  C:155FH         LINE#         72
-  C:1576H         LINE#         75
-  C:1579H         LINE#         80
-  C:157FH         LINE#         81
-  C:157FH         LINE#         82
-  C:1583H         LINE#         86
-  C:15A2H         LINE#         87
-  C:15A2H         LINE#         90
-  C:15A5H         LINE#         91
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 20
+  C:1618H         LINE#         72
+  C:162FH         LINE#         75
+  C:1632H         LINE#         80
+  C:1638H         LINE#         81
+  C:1638H         LINE#         82
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 20
 
 
+  C:163CH         LINE#         86
+  C:165BH         LINE#         87
+  C:165BH         LINE#         90
+  C:165EH         LINE#         91
   -------         ENDPROC       TIMR1_IRQHANDLER
   -------         ENDMOD        TIMER1
 
   -------         MODULE        TIMER2
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0361H         PUBLIC        TIMR2_IRQHandler
+  C:0045H         PUBLIC        TIMR2_IRQHandler
   D:00D1H         PUBLIC        TMR_ALLCON
   B:0020H.1       PUBLIC        flag_is_pwm_add_time_comes
-  X:62EDH         SYMBOL        pwm_duty_add_cnt
-  C:1812H         PUBLIC        timer2_config
+  X:62F9H         SYMBOL        pwm_duty_add_cnt
+  C:18CBH         PUBLIC        timer2_config
   B:0080H.3       PUBLIC        P03
   D:00A8H         PUBLIC        IE0
   D:00A9H         PUBLIC        IE1
@@ -1166,236 +1170,258 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:00B5H         PUBLIC        IP5
   D:00B6H         PUBLIC        IP6
   D:00B7H         PUBLIC        IP7
-  X:62EFH         SYMBOL        pwm_duty_sub_cnt
-  X:62F1H         SYMBOL        pwm_duty_change_cnt
+  X:62FBH         SYMBOL        pwm_duty_sub_cnt
+  X:62FDH         SYMBOL        pwm_duty_change_cnt
   B:00A8H.7       PUBLIC        IE_EA
-  C:1500H         SYMBOL        Com0056
-  C:1500H         SYMBOL        L?0087
-  C:1500H         SYMBOL        L?0088
-  C:1503H         SYMBOL        L?0089
-  C:150EH         SYMBOL        L?0090
-  C:1510H         SYMBOL        L?0091
-  C:1512H         SYMBOL        L?0092
-  C:1518H         SYMBOL        L?0093
-  C:1518H         SYMBOL        L?0094
-  C:1521H         SYMBOL        L?0095
-  C:1521H         SYMBOL        L?0096
-  C:152AH         SYMBOL        L?0097
-  C:152AH         SYMBOL        L?0098
-  C:1533H         SYMBOL        L?0099
-  C:153FH         SYMBOL        L?0100
-  C:154AH         SYMBOL        L?0101
-  C:1555H         SYMBOL        L?0102
-  -------         PROC          COM0056
-  -------         ENDPROC       COM0056
+  C:15B9H         SYMBOL        Com005F
+  C:15B9H         SYMBOL        L?0096
+  C:15B9H         SYMBOL        L?0097
+  C:15BCH         SYMBOL        L?0098
+  C:15C7H         SYMBOL        L?0099
+  C:15C9H         SYMBOL        L?0100
+  C:15CBH         SYMBOL        L?0101
+  C:15D1H         SYMBOL        L?0102
+  C:15D1H         SYMBOL        L?0103
+  C:15DAH         SYMBOL        L?0104
+  C:15DAH         SYMBOL        L?0105
+  C:15E3H         SYMBOL        L?0106
+  C:15E3H         SYMBOL        L?0107
+  C:15ECH         SYMBOL        L?0108
+  C:15F8H         SYMBOL        L?0109
+  C:1603H         SYMBOL        L?0110
+  C:160EH         SYMBOL        L?0111
+  -------         PROC          COM005F
+  -------         ENDPROC       COM005F
   -------         PROC          TIMER2_CONFIG
-  C:1812H         LINE#         13
-  C:1812H         LINE#         14
-  C:1812H         LINE#         15
-  C:1815H         LINE#         16
-  C:1817H         LINE#         19
-  C:181AH         LINE#         20
-  C:181FH         LINE#         21
-  C:1825H         LINE#         22
-  C:182BH         LINE#         23
-  C:1831H         LINE#         24
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 21
+  C:18CBH         LINE#         13
+  C:18CBH         LINE#         14
+  C:18CBH         LINE#         15
+  C:18CEH         LINE#         16
+  C:18D0H         LINE#         19
+  C:18D3H         LINE#         20
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 21
 
 
+  C:18D8H         LINE#         21
+  C:18DEH         LINE#         22
+  C:18E4H         LINE#         23
+  C:18EAH         LINE#         24
   -------         ENDPROC       TIMER2_CONFIG
   -------         PROC          TIMR2_IRQHANDLER
   -------         DO            
-  X:62E2H         SYMBOL        rf_bit_cnt
-  X:62E3H         SYMBOL        __rf_data
-  X:62E7H         SYMBOL        flag_is_enable_recv
-  X:62E8H         SYMBOL        __flag_is_recved_data
-  X:62E9H         SYMBOL        low_level_cnt
-  X:62EAH         SYMBOL        high_level_cnt
-  X:62EBH         SYMBOL        cnt
-  B:0020H.0       SYMBOL        dir
+  X:62EEH         SYMBOL        rf_bit_cnt
+  X:62EFH         SYMBOL        __rf_data
+  X:62F3H         SYMBOL        flag_is_enable_recv
+  X:62F4H         SYMBOL        __flag_is_recved_data
+  X:62F5H         SYMBOL        low_level_cnt
+  X:62F6H         SYMBOL        high_level_cnt
   -------         ENDDO         
   -------         DO            
-  X:62EBH         SYMBOL        cnt
+  X:62F7H         SYMBOL        cnt
   B:0020H.0       SYMBOL        dir
+  -------         DO            
+  X:6315H         SYMBOL        dest_cnt
   -------         ENDDO         
-  C:0361H         LINE#         27
-  C:037EH         LINE#         30
-  C:0381H         LINE#         35
-  C:038BH         LINE#         36
-  C:038BH         LINE#         37
-  C:038FH         LINE#         42
-  C:039DH         LINE#         43
-  C:03ABH         LINE#         44
-  C:03B9H         LINE#         46
-  C:03C8H         LINE#         48
-  C:03C8H         LINE#         49
-  C:03CCH         LINE#         50
-  C:03CEH         LINE#         51
-  C:03CEH         LINE#         54
-  C:03DDH         LINE#         55
-  C:03DDH         LINE#         56
-  C:03E1H         LINE#         57
-  C:03E3H         LINE#         58
-  C:03E3H         LINE#         61
-  C:03E3H         LINE#         71
-  C:03E6H         LINE#         72
-  C:03E6H         LINE#         74
-  C:03ECH         LINE#         79
-  C:0400H         LINE#         80
-  C:0400H         LINE#         81
-  C:040DH         LINE#         82
-  C:040DH         LINE#         83
-  C:0413H         LINE#         84
-  C:0415H         LINE#         85
-  C:0420H         LINE#         86
-  C:0420H         LINE#         87
-  C:0420H         LINE#         89
-  C:0420H         LINE#         90
-  C:0423H         LINE#         91
-  C:0423H         LINE#         92
-  C:0426H         LINE#         94
-  C:0426H         LINE#         95
-  C:0432H         LINE#         96
-  C:0432H         LINE#         98
-  C:0438H         LINE#         99
-  C:0438H         LINE#         101
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 22
+  -------         ENDDO         
+  C:0045H         LINE#         27
+  C:0062H         LINE#         30
+  C:0065H         LINE#         35
+  C:006FH         LINE#         36
+  C:006FH         LINE#         37
+  C:0073H         LINE#         42
+  C:0081H         LINE#         43
+  C:008FH         LINE#         44
+  C:009DH         LINE#         46
+  C:00ACH         LINE#         48
+  C:00ACH         LINE#         49
+  C:00B0H         LINE#         50
+  C:00B2H         LINE#         51
+  C:00B2H         LINE#         54
+  C:00C1H         LINE#         55
+  C:00C1H         LINE#         56
+  C:00C5H         LINE#         57
+  C:00C7H         LINE#         58
+  C:00C7H         LINE#         61
+  C:00C7H         LINE#         71
+  C:00CAH         LINE#         72
+  C:00CAH         LINE#         74
+  C:00D0H         LINE#         79
+  C:00E4H         LINE#         80
+  C:00E4H         LINE#         81
+  C:00F1H         LINE#         82
+  C:00F1H         LINE#         83
+  C:00F7H         LINE#         84
+  C:00F9H         LINE#         85
+  C:0104H         LINE#         86
+  C:0104H         LINE#         87
+  C:0104H         LINE#         89
+  C:0104H         LINE#         90
+  C:0107H         LINE#         91
+  C:0107H         LINE#         92
+  C:010AH         LINE#         94
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 22
 
 
-  C:0442H         LINE#         102
-  C:0442H         LINE#         104
-  C:0447H         LINE#         105
-  C:044AH         LINE#         106
-  C:046AH         LINE#         109
-  C:046AH         LINE#         111
-  C:0470H         LINE#         112
-  C:0470H         LINE#         113
-  C:0475H         LINE#         114
-  C:0475H         LINE#         115
-  C:0475H         LINE#         116
-  C:0475H         LINE#         117
-  C:0477H         LINE#         118
-  C:0497H         LINE#         121
-  C:0497H         LINE#         123
-  C:049FH         LINE#         124
-  C:049FH         LINE#         125
-  C:04A4H         LINE#         126
-  C:04A4H         LINE#         127
-  C:04B1H         LINE#         128
-  C:04B1H         LINE#         129
-  C:04B3H         LINE#         131
-  C:04B3H         LINE#         133
-  C:04BDH         LINE#         134
-  C:04BDH         LINE#         135
-  C:04C1H         LINE#         136
-  C:04C1H         LINE#         138
-  C:04C6H         LINE#         139
-  C:04C8H         LINE#         141
-  C:04CFH         LINE#         142
-  C:04CFH         LINE#         144
-  C:04CFH         LINE#         145
-  C:04D2H         LINE#         146
-  C:04D2H         LINE#         147
-  C:04D4H         LINE#         149
-  C:04D4H         LINE#         152
-  C:04DAH         LINE#         153
-  C:04DAH         LINE#         154
-  C:04E4H         LINE#         155
-  C:04E4H         LINE#         156
-  C:04E8H         LINE#         157
-  C:04E8H         LINE#         158
-  C:04E8H         LINE#         161
-  C:04EEH         LINE#         162
-  C:04EEH         LINE#         164
-  C:04F4H         LINE#         165
-  C:04F4H         LINE#         166
-  C:04F9H         LINE#         167
-  C:04FDH         LINE#         168
-  C:04FFH         LINE#         169
-  C:0501H         LINE#         173
-  C:0501H         LINE#         175
-  C:050BH         LINE#         176
-  C:050DH         LINE#         177
-  C:050DH         LINE#         182
-  C:050DH         LINE#         183
-  C:050DH         LINE#         192
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 23
+  C:010AH         LINE#         95
+  C:0116H         LINE#         96
+  C:0116H         LINE#         98
+  C:011CH         LINE#         99
+  C:011CH         LINE#         101
+  C:0126H         LINE#         102
+  C:0126H         LINE#         104
+  C:012BH         LINE#         105
+  C:012EH         LINE#         106
+  C:014EH         LINE#         109
+  C:014EH         LINE#         111
+  C:0154H         LINE#         112
+  C:0154H         LINE#         113
+  C:0159H         LINE#         114
+  C:0159H         LINE#         115
+  C:0159H         LINE#         116
+  C:0159H         LINE#         117
+  C:015BH         LINE#         118
+  C:017BH         LINE#         121
+  C:017BH         LINE#         123
+  C:0183H         LINE#         124
+  C:0183H         LINE#         125
+  C:0188H         LINE#         126
+  C:0188H         LINE#         127
+  C:0195H         LINE#         128
+  C:0195H         LINE#         129
+  C:0197H         LINE#         131
+  C:0197H         LINE#         133
+  C:01A1H         LINE#         134
+  C:01A1H         LINE#         135
+  C:01A5H         LINE#         136
+  C:01A5H         LINE#         138
+  C:01AAH         LINE#         139
+  C:01ACH         LINE#         141
+  C:01B3H         LINE#         142
+  C:01B3H         LINE#         144
+  C:01B3H         LINE#         145
+  C:01B6H         LINE#         146
+  C:01B6H         LINE#         147
+  C:01B8H         LINE#         149
+  C:01B8H         LINE#         152
+  C:01BEH         LINE#         153
+  C:01BEH         LINE#         154
+  C:01C8H         LINE#         155
+  C:01C8H         LINE#         156
+  C:01CCH         LINE#         157
+  C:01CCH         LINE#         158
+  C:01CCH         LINE#         161
+  C:01D2H         LINE#         162
+  C:01D2H         LINE#         164
+  C:01D8H         LINE#         165
+  C:01D8H         LINE#         166
+  C:01DDH         LINE#         167
+  C:01E1H         LINE#         168
+  C:01E3H         LINE#         169
+  C:01E5H         LINE#         173
+  C:01E5H         LINE#         175
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 23
 
 
-  C:051CH         LINE#         194
-  C:051CH         LINE#         195
-  C:0520H         LINE#         197
-  C:0523H         LINE#         198
-  C:0523H         LINE#         202
-  C:052CH         LINE#         203
-  C:052CH         LINE#         204
-  C:053AH         LINE#         205
-  C:053CH         LINE#         206
-  C:0545H         LINE#         207
-  C:0545H         LINE#         208
-  C:0553H         LINE#         209
-  C:0553H         LINE#         214
-  C:055CH         LINE#         215
-  C:055CH         LINE#         216
-  C:056AH         LINE#         217
-  C:056CH         LINE#         218
-  C:0575H         LINE#         219
-  C:0575H         LINE#         220
-  C:0583H         LINE#         221
-  C:0583H         LINE#         223
-  C:0589H         LINE#         224
-  C:058FH         LINE#         248
-  C:058FH         LINE#         254
-  C:058FH         LINE#         257
-  C:058FH         LINE#         261
-  C:0597H         LINE#         262
-  C:0597H         LINE#         263
-  C:05A5H         LINE#         264
-  C:05B4H         LINE#         266
-  C:05B4H         LINE#         267
-  C:05B8H         LINE#         268
-  C:05BAH         LINE#         270
-  C:05BDH         LINE#         271
-  C:05BDH         LINE#         272
-  C:05C3H         LINE#         273
-  C:05C3H         LINE#         274
-  C:05C6H         LINE#         275
-  C:05C6H         LINE#         277
-  C:05CCH         LINE#         278
-  C:05CCH         LINE#         279
-  C:05CCH         LINE#         280
-  C:05CCH         LINE#         281
-  C:05CEH         LINE#         283
-  C:05CEH         LINE#         284
-  C:05D4H         LINE#         285
-  C:05D4H         LINE#         286
-  C:05D7H         LINE#         287
-  C:05D7H         LINE#         289
-  C:05DDH         LINE#         290
-  C:05DDH         LINE#         291
-  C:05E0H         LINE#         292
-  C:05E0H         LINE#         293
-  C:05E0H         LINE#         294
-  C:05E0H         LINE#         295
-  C:05E2H         LINE#         297
-  C:05E2H         LINE#         299
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 24
+  C:01EFH         LINE#         176
+  C:01F1H         LINE#         177
+  C:01F1H         LINE#         182
+  C:01F1H         LINE#         183
+  C:01F1H         LINE#         192
+  C:0200H         LINE#         194
+  C:0200H         LINE#         195
+  C:0204H         LINE#         197
+  C:0207H         LINE#         198
+  C:0207H         LINE#         202
+  C:0210H         LINE#         203
+  C:0210H         LINE#         204
+  C:021EH         LINE#         205
+  C:0220H         LINE#         206
+  C:0229H         LINE#         207
+  C:0229H         LINE#         208
+  C:0237H         LINE#         209
+  C:0237H         LINE#         214
+  C:0240H         LINE#         215
+  C:0240H         LINE#         216
+  C:024EH         LINE#         217
+  C:0250H         LINE#         218
+  C:0259H         LINE#         219
+  C:0259H         LINE#         220
+  C:0267H         LINE#         221
+  C:0267H         LINE#         223
+  C:026DH         LINE#         224
+  C:0273H         LINE#         248
+  C:0273H         LINE#         254
+  C:0273H         LINE#         259
+  C:0273H         LINE#         263
+  C:0288H         LINE#         265
+  C:0288H         LINE#         266
+  C:028FH         LINE#         267
+  C:0296H         LINE#         268
+  C:0296H         LINE#         270
+  C:02A0H         LINE#         271
+  C:02A2H         LINE#         272
+  C:02A9H         LINE#         273
+  C:02A9H         LINE#         275
+  C:02B3H         LINE#         276
+  C:02B5H         LINE#         277
+  C:02BCH         LINE#         278
+  C:02BCH         LINE#         280
+  C:02C6H         LINE#         281
+  C:02C8H         LINE#         282
+  C:02CFH         LINE#         283
+  C:02CFH         LINE#         285
+  C:02D9H         LINE#         286
+  C:02DBH         LINE#         287
+  C:02E2H         LINE#         288
+  C:02E2H         LINE#         290
+  C:02ECH         LINE#         291
+  C:02ECH         LINE#         293
+  C:02FAH         LINE#         294
+  C:030FH         LINE#         295
+  C:030FH         LINE#         296
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 24
 
 
-  C:05E9H         LINE#         300
-  C:05EBH         LINE#         307
-  C:05F1H         LINE#         308
-  C:05F1H         LINE#         309
-  C:05F4H         LINE#         310
-  C:05F4H         LINE#         312
-  C:05FAH         LINE#         313
-  C:05FAH         LINE#         314
-  C:05FDH         LINE#         315
-  C:05FDH         LINE#         316
-  C:05FDH         LINE#         317
-  C:05FDH         LINE#         318
-  C:05FDH         LINE#         321
-  C:0600H         LINE#         322
+  C:0313H         LINE#         297
+  C:0315H         LINE#         298
+  C:0315H         LINE#         300
+  C:0318H         LINE#         301
+  C:0318H         LINE#         302
+  C:031EH         LINE#         303
+  C:031EH         LINE#         304
+  C:0321H         LINE#         305
+  C:0321H         LINE#         307
+  C:0327H         LINE#         308
+  C:0327H         LINE#         309
+  C:0327H         LINE#         310
+  C:0327H         LINE#         311
+  C:0329H         LINE#         313
+  C:0329H         LINE#         314
+  C:032FH         LINE#         315
+  C:032FH         LINE#         316
+  C:0332H         LINE#         317
+  C:0332H         LINE#         319
+  C:0338H         LINE#         320
+  C:0338H         LINE#         321
+  C:033BH         LINE#         322
+  C:033BH         LINE#         323
+  C:033BH         LINE#         324
+  C:033DH         LINE#         326
+  C:033DH         LINE#         328
+  C:0344H         LINE#         329
+  C:0346H         LINE#         336
+  C:034CH         LINE#         337
+  C:034CH         LINE#         338
+  C:034FH         LINE#         339
+  C:034FH         LINE#         341
+  C:0355H         LINE#         342
+  C:0355H         LINE#         343
+  C:0358H         LINE#         344
+  C:0358H         LINE#         345
+  C:0358H         LINE#         346
+  C:0358H         LINE#         348
+  C:0358H         LINE#         351
+  C:035BH         LINE#         352
   -------         ENDPROC       TIMR2_IRQHANDLER
   -------         ENDMOD        TIMER2
 
@@ -1405,309 +1431,336 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
 
   -------         MODULE        RF_RECV
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:175DH         SYMBOL        rf_key_get_key_id
-  C:18FEH         PUBLIC        rf_recv_init
-  X:62A0H         PUBLIC        rf_key_para
-  C:15FCH         SYMBOL        _rf_key_get_event
-  C:0CBEH         PUBLIC        rf_key_handle
-  X:62B3H         PUBLIC        rf_data
+  C:1816H         SYMBOL        rf_key_get_key_id
+  C:19B7H         PUBLIC        rf_recv_init
+  X:6268H         PUBLIC        rf_key_para
+  C:16B5H         SYMBOL        _rf_key_get_event
+  C:0D42H         PUBLIC        rf_key_handle
+  X:627BH         PUBLIC        rf_data
   B:0021H.1       PUBLIC        flag_is_recved_rf_data
-  X:62B7H         SYMBOL        rf_key_event_table
-  C:1832H         SYMBOL        Com0025
-  C:1832H         SYMBOL        L?0038
-  C:1843H         SYMBOL        L?0039
-  -------         PROC          COM0025
-  -------         ENDPROC       COM0025
+  X:627FH         SYMBOL        rf_key_event_table
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 25
+
+
+  C:18EBH         SYMBOL        Com002D
+  C:18EBH         SYMBOL        L?0046
+  C:18FCH         SYMBOL        L?0047
+  -------         PROC          COM002D
+  -------         ENDPROC       COM002D
   -------         PROC          RF_KEY_GET_KEY_ID
   -------         DO            
   D:0003H         SYMBOL        ret
   -------         ENDDO         
-  C:175DH         LINE#         53
-  C:175DH         LINE#         54
-  C:175DH         LINE#         55
-  C:175FH         LINE#         57
-  C:1762H         LINE#         58
-  C:1762H         LINE#         59
-  C:1765H         LINE#         60
-  C:1765H         LINE#         62
-  C:1767H         LINE#         65
-  C:1779H         LINE#         66
-  C:1779H         LINE#         67
-  C:177CH         LINE#         68
-  C:177CH         LINE#         70
-  C:1786H         LINE#         74
-  C:1786H         LINE#         75
+  C:1816H         LINE#         58
+  C:1816H         LINE#         59
+  C:1816H         LINE#         60
+  C:1818H         LINE#         62
+  C:181BH         LINE#         63
+  C:181BH         LINE#         64
+  C:181EH         LINE#         65
+  C:181EH         LINE#         67
+  C:1820H         LINE#         70
+  C:1832H         LINE#         71
+  C:1832H         LINE#         72
+  C:1835H         LINE#         73
+  C:1835H         LINE#         75
+  C:183FH         LINE#         79
+  C:183FH         LINE#         80
   -------         ENDPROC       RF_KEY_GET_KEY_ID
   -------         PROC          _RF_KEY_GET_EVENT
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 25
-
-
   D:0007H         SYMBOL        key_val
   D:0005H         SYMBOL        key_event
   -------         DO            
-  X:62FFH         SYMBOL        ret_key_event
+  X:630BH         SYMBOL        ret_key_event
   D:0006H         SYMBOL        key_event_index
   D:0004H         SYMBOL        i
   -------         ENDDO         
-  C:15FCH         LINE#         84
-  C:15FCH         LINE#         85
-  C:15FCH         LINE#         86
-  C:1601H         LINE#         87
-  C:1602H         LINE#         88
-  C:1602H         LINE#         95
-  C:1606H         LINE#         96
-  C:1606H         LINE#         97
-  C:1607H         LINE#         98
-  C:1609H         LINE#         99
-  C:160DH         LINE#         100
-  C:160DH         LINE#         101
-  C:160FH         LINE#         102
-  C:1611H         LINE#         104
-  C:1611H         LINE#         105
-  C:1614H         LINE#         106
-  C:1614H         LINE#         108
-  C:1616H         LINE#         109
-  C:1616H         LINE#         111
-  C:161DH         LINE#         112
-  C:161DH         LINE#         113
-  C:162FH         LINE#         114
-  C:1631H         LINE#         115
-  C:1631H         LINE#         116
-  C:1636H         LINE#         118
-  C:163BH         LINE#         119
+  C:16B5H         LINE#         89
+  C:16B5H         LINE#         90
+  C:16B5H         LINE#         91
+  C:16BAH         LINE#         92
+  C:16BBH         LINE#         93
+  C:16BBH         LINE#         100
+  C:16BFH         LINE#         101
+  C:16BFH         LINE#         102
+  C:16C0H         LINE#         103
+  C:16C2H         LINE#         104
+  C:16C6H         LINE#         105
+  C:16C6H         LINE#         106
+  C:16C8H         LINE#         107
+  C:16CAH         LINE#         109
+  C:16CAH         LINE#         110
+  C:16CDH         LINE#         111
+  C:16CDH         LINE#         113
+  C:16CFH         LINE#         114
+  C:16CFH         LINE#         116
+  C:16D6H         LINE#         117
+  C:16D6H         LINE#         118
+  C:16E8H         LINE#         119
+  C:16EAH         LINE#         120
+  C:16EAH         LINE#         121
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 26
+
+
+  C:16EFH         LINE#         123
+  C:16F4H         LINE#         124
   -------         ENDPROC       _RF_KEY_GET_EVENT
   -------         PROC          RF_KEY_HANDLE
   -------         DO            
   D:0007H         SYMBOL        rf_key_event
   -------         ENDDO         
-  C:0CBEH         LINE#         122
-  C:0CBEH         LINE#         123
-  C:0CBEH         LINE#         124
-  C:0CBEH         LINE#         127
-  C:0CC8H         LINE#         128
-  C:0CC8H         LINE#         130
-  C:0CC8H         LINE#         133
-  C:0CD0H         LINE#         136
-  C:0CD5H         LINE#         140
-  C:0D1DH         LINE#         141
-  C:0D1DH         LINE#         142
-  C:0D1DH         LINE#         143
-  C:0D1DH         LINE#         144
-  C:0D1DH         LINE#         145
-  C:0D22H         LINE#         146
-  C:0D22H         LINE#         147
-  C:0D24H         LINE#         149
-  C:0D24H         LINE#         150
-  C:0D24H         LINE#         151
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 26
+  C:0D42H         LINE#         127
+  C:0D42H         LINE#         128
+  C:0D42H         LINE#         129
+  C:0D42H         LINE#         132
+  C:0D4CH         LINE#         133
+  C:0D4CH         LINE#         135
+  C:0D4CH         LINE#         138
+  C:0D54H         LINE#         141
+  C:0D59H         LINE#         145
+  C:0DB9H         LINE#         146
+  C:0DB9H         LINE#         147
+  C:0DB9H         LINE#         148
+  C:0DB9H         LINE#         149
+  C:0DB9H         LINE#         151
+  C:0DBFH         LINE#         152
+  C:0DBFH         LINE#         153
+  C:0DC1H         LINE#         155
+  C:0DC1H         LINE#         156
+  C:0DC1H         LINE#         157
+  C:0DC1H         LINE#         159
+  C:0DC7H         LINE#         160
+  C:0DC7H         LINE#         161
+  C:0DC9H         LINE#         163
+  C:0DC9H         LINE#         164
+  C:0DC9H         LINE#         165
+  C:0DC9H         LINE#         167
+  C:0DCFH         LINE#         168
+  C:0DCFH         LINE#         169
+  C:0DD1H         LINE#         171
+  C:0DD1H         LINE#         172
+  C:0DD1H         LINE#         173
+  C:0DD1H         LINE#         175
+  C:0DD7H         LINE#         176
+  C:0DD7H         LINE#         177
+  C:0DD9H         LINE#         179
+  C:0DD9H         LINE#         180
+  C:0DD9H         LINE#         181
+  C:0DD9H         LINE#         183
+  C:0DDEH         LINE#         184
+  C:0DDEH         LINE#         185
+  C:0DE0H         LINE#         187
+  C:0DE0H         LINE#         188
+  C:0DE0H         LINE#         189
+  C:0DE0H         LINE#         191
+  C:0DE6H         LINE#         192
+  C:0DE6H         LINE#         193
+  C:0DE8H         LINE#         195
+  C:0DE8H         LINE#         196
+  C:0DE8H         LINE#         197
+  C:0DE8H         LINE#         199
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 27
 
 
-  C:0D24H         LINE#         152
-  C:0D2AH         LINE#         153
-  C:0D2AH         LINE#         154
-  C:0D2CH         LINE#         156
-  C:0D2CH         LINE#         157
-  C:0D2CH         LINE#         158
-  C:0D2CH         LINE#         159
-  C:0D32H         LINE#         160
-  C:0D32H         LINE#         161
-  C:0D34H         LINE#         163
-  C:0D34H         LINE#         164
-  C:0D34H         LINE#         165
-  C:0D34H         LINE#         166
-  C:0D3AH         LINE#         167
-  C:0D3AH         LINE#         168
-  C:0D3CH         LINE#         170
-  C:0D3CH         LINE#         171
-  C:0D3CH         LINE#         172
-  C:0D3CH         LINE#         173
-  C:0D42H         LINE#         174
-  C:0D42H         LINE#         175
-  C:0D44H         LINE#         177
-  C:0D44H         LINE#         178
-  C:0D44H         LINE#         179
-  C:0D44H         LINE#         180
-  C:0D4AH         LINE#         181
-  C:0D4AH         LINE#         182
-  C:0D4CH         LINE#         184
-  C:0D4CH         LINE#         185
-  C:0D4CH         LINE#         186
-  C:0D4CH         LINE#         187
-  C:0D52H         LINE#         188
-  C:0D52H         LINE#         189
-  C:0D54H         LINE#         191
-  C:0D54H         LINE#         192
-  C:0D54H         LINE#         193
-  C:0D54H         LINE#         194
-  C:0D5AH         LINE#         195
-  C:0D5AH         LINE#         196
-  C:0D5AH         LINE#         199
-  C:0D5AH         LINE#         200
-  C:0D5AH         LINE#         202
-  C:0D5AH         LINE#         203
-  C:0D5AH         LINE#         204
-  C:0D5AH         LINE#         207
-  C:0D5DH         LINE#         208
-  C:0D70H         LINE#         209
-  C:0D83H         LINE#         210
-  C:0D92H         LINE#         211
-  C:0DA1H         LINE#         212
-  C:0DACH         LINE#         213
-  C:0DB7H         LINE#         216
+  C:0DEEH         LINE#         200
+  C:0DEEH         LINE#         201
+  C:0DF0H         LINE#         203
+  C:0DF0H         LINE#         204
+  C:0DF0H         LINE#         205
+  C:0DF0H         LINE#         207
+  C:0DF6H         LINE#         208
+  C:0DF6H         LINE#         209
+  C:0DF8H         LINE#         211
+  C:0DF8H         LINE#         212
+  C:0DF8H         LINE#         213
+  C:0DF8H         LINE#         215
+  C:0DFEH         LINE#         216
+  C:0DFEH         LINE#         217
+  C:0E00H         LINE#         219
+  C:0E00H         LINE#         220
+  C:0E00H         LINE#         221
+  C:0E00H         LINE#         223
+  C:0E06H         LINE#         224
+  C:0E06H         LINE#         225
+  C:0E08H         LINE#         227
+  C:0E08H         LINE#         228
+  C:0E08H         LINE#         229
+  C:0E08H         LINE#         231
+  C:0E0EH         LINE#         232
+  C:0E0EH         LINE#         233
+  C:0E10H         LINE#         235
+  C:0E10H         LINE#         236
+  C:0E10H         LINE#         237
+  C:0E10H         LINE#         239
+  C:0E16H         LINE#         240
+  C:0E16H         LINE#         241
+  C:0E16H         LINE#         244
+  C:0E16H         LINE#         245
+  C:0E16H         LINE#         247
+  C:0E16H         LINE#         248
+  C:0E16H         LINE#         249
+  C:0E16H         LINE#         252
+  C:0E19H         LINE#         253
+  C:0E2CH         LINE#         254
+  C:0E3FH         LINE#         255
+  C:0E4EH         LINE#         256
+  C:0E5DH         LINE#         257
+  C:0E68H         LINE#         258
+  C:0E73H         LINE#         261
   -------         ENDPROC       RF_KEY_HANDLE
   -------         PROC          RF_RECV_INIT
-  C:18FEH         LINE#         218
-  C:18FEH         LINE#         219
-  C:18FEH         LINE#         228
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 27
-
-
-  C:1904H         LINE#         229
-  C:190AH         LINE#         232
+  C:19B7H         LINE#         263
+  C:19B7H         LINE#         264
+  C:19B7H         LINE#         273
+  C:19BDH         LINE#         274
+  C:19C3H         LINE#         277
   -------         ENDPROC       RF_RECV_INIT
   -------         ENDMOD        RF_RECV
 
   -------         MODULE        KEY_DRIVER
   C:0000H         SYMBOL        _ICE_DUMMY_
-  X:6311H         PUBLIC        scan_para
-  C:0882H         PUBLIC        _key_driver_scan
-  X:6314H         SYMBOL        is_key_active
-  C:17ABH         SYMBOL        Com0021
-  C:17ABH         SYMBOL        L?0034
-  C:17ABH         SYMBOL        L?0035
-  C:17AEH         SYMBOL        L?0036
-  C:17B7H         SYMBOL        L?0037
-  C:17BAH         SYMBOL        L?0038
-  C:17BEH         SYMBOL        L?0039
-  C:17C4H         SYMBOL        L?0040
-  C:17C7H         SYMBOL        L?0041
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 28
+
+
+  X:631FH         PUBLIC        scan_para
+  C:08F9H         PUBLIC        _key_driver_scan
+  X:6322H         SYMBOL        is_key_active
+  C:1864H         SYMBOL        Com0021
+  C:1864H         SYMBOL        L?0034
+  C:1864H         SYMBOL        L?0035
+  C:1867H         SYMBOL        L?0036
+  C:1870H         SYMBOL        L?0037
+  C:1873H         SYMBOL        L?0038
+  C:1877H         SYMBOL        L?0039
+  C:187DH         SYMBOL        L?0040
+  C:1880H         SYMBOL        L?0041
   -------         PROC          COM0021
   -------         ENDPROC       COM0021
   -------         PROC          _KEY_DRIVER_SCAN
   D:0001H         SYMBOL        _scan_para
   -------         DO            
-  X:62FFH         SYMBOL        key_event
+  X:630BH         SYMBOL        key_event
   D:0007H         SYMBOL        cur_key_value
-  X:6300H         SYMBOL        key_value
-  C:09F0H         SYMBOL        _notify
-  C:0A10H         SYMBOL        _scan_end
+  X:630CH         SYMBOL        key_value
+  C:0A67H         SYMBOL        _notify
+  C:0A87H         SYMBOL        _scan_end
   -------         ENDDO         
-  C:0882H         LINE#         16
-  C:0882H         LINE#         18
-  C:0882H         LINE#         23
-  C:0887H         LINE#         24
-  C:0889H         LINE#         25
-  C:088DH         LINE#         29
-  C:0898H         LINE#         32
-  C:08ABH         LINE#         33
-  C:08ABH         LINE#         35
-  C:08ABH         LINE#         37
-  C:08B5H         LINE#         39
-  C:08BEH         LINE#         45
-  C:08C2H         LINE#         46
-  C:08C2H         LINE#         47
-  C:08C8H         LINE#         48
-  C:08CAH         LINE#         49
-  C:08D0H         LINE#         50
-  C:08D0H         LINE#         51
-  C:08D3H         LINE#         52
-  C:08D3H         LINE#         82
-  C:08E7H         LINE#         83
-  C:08E7H         LINE#         85
-  C:08EEH         LINE#         86
-  C:08F4H         LINE#         88
-  C:08F4H         LINE#         91
-  C:0905H         LINE#         92
-  C:0905H         LINE#         93
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 28
+  C:08F9H         LINE#         16
+  C:08F9H         LINE#         18
+  C:08F9H         LINE#         23
+  C:08FEH         LINE#         24
+  C:0900H         LINE#         25
+  C:0904H         LINE#         29
+  C:090FH         LINE#         32
+  C:0922H         LINE#         33
+  C:0922H         LINE#         35
+  C:0922H         LINE#         37
+  C:092CH         LINE#         39
+  C:0935H         LINE#         45
+  C:0939H         LINE#         46
+  C:0939H         LINE#         47
+  C:093FH         LINE#         48
+  C:0941H         LINE#         49
+  C:0947H         LINE#         50
+  C:0947H         LINE#         51
+  C:094AH         LINE#         52
+  C:094AH         LINE#         82
+  C:095EH         LINE#         83
+  C:095EH         LINE#         85
+  C:0965H         LINE#         86
+  C:096BH         LINE#         88
+  C:096BH         LINE#         91
+  C:097CH         LINE#         92
+  C:097CH         LINE#         93
+  C:0987H         LINE#         95
+  C:0987H         LINE#         98
+  C:0993H         LINE#         99
+  C:0993H         LINE#         106
+  C:0997H         LINE#         107
+  C:0997H         LINE#         108
+  C:099EH         LINE#         109
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 29
 
 
-  C:0910H         LINE#         95
-  C:0910H         LINE#         98
-  C:091CH         LINE#         99
-  C:091CH         LINE#         106
-  C:0920H         LINE#         107
-  C:0920H         LINE#         108
-  C:0927H         LINE#         109
-  C:0927H         LINE#         110
-  C:092DH         LINE#         111
-  C:0930H         LINE#         112
-  C:0933H         LINE#         114
-  C:0933H         LINE#         117
-  C:0933H         LINE#         118
-  C:093BH         LINE#         119
-  C:093BH         LINE#         120
-  C:093EH         LINE#         122
-  C:093EH         LINE#         127
-  C:0946H         LINE#         128
-  C:0952H         LINE#         129
-  C:0952H         LINE#         130
-  C:0957H         LINE#         131
-  C:095BH         LINE#         132
-  C:095EH         LINE#         134
-  C:095EH         LINE#         135
-  C:0964H         LINE#         136
-  C:0964H         LINE#         137
-  C:0964H         LINE#         139
-  C:0966H         LINE#         144
-  C:0966H         LINE#         146
-  C:0966H         LINE#         151
-  C:096AH         LINE#         152
-  C:096AH         LINE#         154
-  C:097BH         LINE#         155
-  C:097BH         LINE#         159
-  C:098CH         LINE#         160
-  C:098CH         LINE#         180
-  C:098CH         LINE#         181
-  C:0992H         LINE#         183
-  C:0992H         LINE#         184
-  C:099CH         LINE#         186
-  C:099EH         LINE#         188
-  C:099EH         LINE#         190
-  C:099EH         LINE#         191
-  C:09A9H         LINE#         192
-  C:09ACH         LINE#         194
-  C:09ACH         LINE#         195
-  C:09ACH         LINE#         197
-  C:09ACH         LINE#         198
-  C:09ACH         LINE#         200
-  C:09ACH         LINE#         201
-  C:09ACH         LINE#         203
-  C:09ACH         LINE#         205
-  C:09B7H         LINE#         206
-  C:09B7H         LINE#         207
-  C:09BFH         LINE#         208
-  C:09BFH         LINE#         212
-  C:09C5H         LINE#         213
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 29
+  C:099EH         LINE#         110
+  C:09A4H         LINE#         111
+  C:09A7H         LINE#         112
+  C:09AAH         LINE#         114
+  C:09AAH         LINE#         117
+  C:09AAH         LINE#         118
+  C:09B2H         LINE#         119
+  C:09B2H         LINE#         120
+  C:09B5H         LINE#         122
+  C:09B5H         LINE#         127
+  C:09BDH         LINE#         128
+  C:09C9H         LINE#         129
+  C:09C9H         LINE#         130
+  C:09CEH         LINE#         131
+  C:09D2H         LINE#         132
+  C:09D5H         LINE#         134
+  C:09D5H         LINE#         135
+  C:09DBH         LINE#         136
+  C:09DBH         LINE#         137
+  C:09DBH         LINE#         139
+  C:09DDH         LINE#         144
+  C:09DDH         LINE#         146
+  C:09DDH         LINE#         151
+  C:09E1H         LINE#         152
+  C:09E1H         LINE#         154
+  C:09F2H         LINE#         155
+  C:09F2H         LINE#         159
+  C:0A03H         LINE#         160
+  C:0A03H         LINE#         180
+  C:0A03H         LINE#         181
+  C:0A09H         LINE#         183
+  C:0A09H         LINE#         184
+  C:0A13H         LINE#         186
+  C:0A15H         LINE#         188
+  C:0A15H         LINE#         190
+  C:0A15H         LINE#         191
+  C:0A20H         LINE#         192
+  C:0A23H         LINE#         194
+  C:0A23H         LINE#         195
+  C:0A23H         LINE#         197
+  C:0A23H         LINE#         198
+  C:0A23H         LINE#         200
+  C:0A23H         LINE#         201
+  C:0A23H         LINE#         203
+  C:0A23H         LINE#         205
+  C:0A2EH         LINE#         206
+  C:0A2EH         LINE#         207
+  C:0A36H         LINE#         208
+  C:0A36H         LINE#         212
+  C:0A3CH         LINE#         213
+  C:0A3CH         LINE#         214
+  C:0A42H         LINE#         219
+  C:0A44H         LINE#         220
+  C:0A50H         LINE#         221
+  C:0A50H         LINE#         222
+  C:0A56H         LINE#         223
+  C:0A62H         LINE#         225
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 30
 
 
-  C:09C5H         LINE#         214
-  C:09CBH         LINE#         219
-  C:09CDH         LINE#         220
-  C:09D9H         LINE#         221
-  C:09D9H         LINE#         222
-  C:09DFH         LINE#         223
-  C:09EBH         LINE#         225
-  C:09EBH         LINE#         227
-  C:09EBH         LINE#         228
-  C:09EBH         LINE#         230
-  C:09EBH         LINE#         233
-  C:09F0H         LINE#         234
-  C:09F0H         LINE#         236
-  C:09F0H         LINE#         237
-  C:09F0H         LINE#         239
-  C:09F0H         LINE#         242
-  C:09F0H         LINE#         244
-  C:09F0H         LINE#         245
-  C:09F4H         LINE#         246
-  C:09FCH         LINE#         248
-  C:0A06H         LINE#         249
-  C:0A10H         LINE#         252
-  C:0A10H         LINE#         261
-  C:0A10H         LINE#         263
-  C:0A10H         LINE#         264
-  C:0A1AH         LINE#         267
+  C:0A62H         LINE#         227
+  C:0A62H         LINE#         228
+  C:0A62H         LINE#         230
+  C:0A62H         LINE#         233
+  C:0A67H         LINE#         234
+  C:0A67H         LINE#         236
+  C:0A67H         LINE#         237
+  C:0A67H         LINE#         239
+  C:0A67H         LINE#         242
+  C:0A67H         LINE#         244
+  C:0A67H         LINE#         245
+  C:0A6BH         LINE#         246
+  C:0A73H         LINE#         248
+  C:0A7DH         LINE#         249
+  C:0A87H         LINE#         252
+  C:0A87H         LINE#         261
+  C:0A87H         LINE#         263
+  C:0A87H         LINE#         264
+  C:0A91H         LINE#         267
   -------         ENDPROC       _KEY_DRIVER_SCAN
   -------         ENDMOD        KEY_DRIVER
 
@@ -1718,39 +1771,39 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   -------         MODULE        FAN_CTL
   C:0000H         SYMBOL        _ICE_DUMMY_
   B:0090H.2       PUBLIC        P12
-  C:18B4H         PUBLIC        fan_ctl_config
-  C:1787H         PUBLIC        fan_ctl
+  C:196DH         PUBLIC        fan_ctl_config
+  C:1840H         PUBLIC        fan_ctl
   -------         PROC          FAN_CTL_CONFIG
-  C:18B4H         LINE#         3
-  C:18B4H         LINE#         4
-  C:18B4H         LINE#         6
-  C:18BAH         LINE#         7
-  C:18BEH         LINE#         8
-  C:18C3H         LINE#         10
-  C:18C5H         LINE#         11
+  C:196DH         LINE#         3
+  C:196DH         LINE#         4
+  C:196DH         LINE#         6
+  C:1973H         LINE#         7
+  C:1977H         LINE#         8
+  C:197CH         LINE#         10
+  C:197EH         LINE#         11
   -------         ENDPROC       FAN_CTL_CONFIG
   -------         PROC          FAN_CTL
-  C:1787H         LINE#         14
-  C:1787H         LINE#         15
-  C:1787H         LINE#         18
-  C:17A5H         LINE#         19
-  C:17A5H         LINE#         20
-  C:17A7H         LINE#         21
-  C:17A8H         LINE#         25
-  C:17A8H         LINE#         27
-  C:17AAH         LINE#         28
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 30
-
-
-  C:17AAH         LINE#         29
+  C:1840H         LINE#         14
+  C:1840H         LINE#         15
+  C:1840H         LINE#         18
+  C:185EH         LINE#         19
+  C:185EH         LINE#         20
+  C:1860H         LINE#         21
+  C:1861H         LINE#         25
+  C:1861H         LINE#         27
+  C:1863H         LINE#         28
+  C:1863H         LINE#         29
   -------         ENDPROC       FAN_CTL
   -------         ENDMOD        FAN_CTL
 
   -------         MODULE        TIMER3
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0DB8H         PUBLIC        TIMR3_IRQHandler
+  C:0E74H         PUBLIC        TIMR3_IRQHandler
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 31
+
+
   D:00D1H         PUBLIC        TMR_ALLCON
-  C:17F1H         PUBLIC        timer3_config
+  C:18AAH         PUBLIC        timer3_config
   D:00A8H         PUBLIC        IE0
   D:00A9H         PUBLIC        IE1
   D:00AAH         PUBLIC        IE2
@@ -1764,83 +1817,83 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   D:00B6H         PUBLIC        IP6
   D:00B7H         PUBLIC        IP7
   B:00A8H.7       PUBLIC        IE_EA
-  C:195CH         SYMBOL        Com0040
-  C:195CH         SYMBOL        L?0065
-  C:195CH         SYMBOL        L?0066
+  C:1A15H         SYMBOL        Com0040
+  C:1A15H         SYMBOL        L?0065
+  C:1A15H         SYMBOL        L?0066
   -------         PROC          COM0040
   -------         ENDPROC       COM0040
   -------         PROC          TIMER3_CONFIG
-  C:17F1H         LINE#         13
-  C:17F1H         LINE#         14
-  C:17F1H         LINE#         15
-  C:17F4H         LINE#         16
-  C:17F6H         LINE#         19
-  C:17F9H         LINE#         20
-  C:17FFH         LINE#         21
-  C:1805H         LINE#         22
-  C:180BH         LINE#         23
-  C:1811H         LINE#         24
+  C:18AAH         LINE#         13
+  C:18AAH         LINE#         14
+  C:18AAH         LINE#         15
+  C:18ADH         LINE#         16
+  C:18AFH         LINE#         19
+  C:18B2H         LINE#         20
+  C:18B8H         LINE#         21
+  C:18BEH         LINE#         22
+  C:18C4H         LINE#         23
+  C:18CAH         LINE#         24
   -------         ENDPROC       TIMER3_CONFIG
   -------         PROC          TIMR3_IRQHANDLER
   -------         DO            
-  X:6315H         SYMBOL        cnt
-  X:6316H         SYMBOL        flag_is_time_to_sync_adc_status
+  X:6323H         SYMBOL        cnt
+  X:6324H         SYMBOL        flag_is_time_to_sync_adc_status
   -------         ENDDO         
-  C:0DB8H         LINE#         26
-  C:0DD5H         LINE#         29
-  C:0DD5H         LINE#         32
-  C:0DDCH         LINE#         33
-  C:0DDCH         LINE#         36
-  C:0DDFH         LINE#         38
-  C:0DDFH         LINE#         40
-  C:0DE6H         LINE#         43
-  C:0DE6H         LINE#         46
-  C:0DECH         LINE#         47
-  C:0DF6H         LINE#         48
-  C:0DF6H         LINE#         49
-  C:0DF8H         LINE#         50
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 31
+  C:0E74H         LINE#         26
+  C:0E91H         LINE#         29
+  C:0E91H         LINE#         32
+  C:0E98H         LINE#         33
+  C:0E98H         LINE#         36
+  C:0E9BH         LINE#         38
+  C:0E9BH         LINE#         40
+  C:0EA2H         LINE#         43
+  C:0EA2H         LINE#         46
+  C:0EA8H         LINE#         47
+  C:0EB2H         LINE#         48
+  C:0EB2H         LINE#         49
+  C:0EB4H         LINE#         50
+  C:0EB8H         LINE#         51
+  C:0EB8H         LINE#         53
+  C:0EC1H         LINE#         54
+  C:0EC1H         LINE#         55
+  C:0EC3H         LINE#         56
+  C:0EC5H         LINE#         57
+  C:0EC8H         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 32
 
 
-  C:0DFCH         LINE#         51
-  C:0DFCH         LINE#         53
-  C:0E05H         LINE#         54
-  C:0E05H         LINE#         55
-  C:0E07H         LINE#         56
-  C:0E09H         LINE#         57
-  C:0E0CH         LINE#         58
-  C:0E0CH         LINE#         59
-  C:0E0CH         LINE#         63
-  C:0E16H         LINE#         65
-  C:0E16H         LINE#         67
-  C:0E1BH         LINE#         68
-  C:0E21H         LINE#         69
-  C:0E23H         LINE#         70
-  C:0E2AH         LINE#         71
-  C:0E2AH         LINE#         72
-  C:0E2DH         LINE#         73
-  C:0E30H         LINE#         74
-  C:0E32H         LINE#         75
-  C:0E39H         LINE#         76
-  C:0E39H         LINE#         78
-  C:0E3EH         LINE#         79
-  C:0E44H         LINE#         80
-  C:0E46H         LINE#         81
-  C:0E4DH         LINE#         82
-  C:0E4DH         LINE#         83
-  C:0E50H         LINE#         84
-  C:0E53H         LINE#         85
-  C:0E55H         LINE#         86
-  C:0E5CH         LINE#         87
-  C:0E5CH         LINE#         89
-  C:0E61H         LINE#         90
-  C:0E67H         LINE#         91
-  C:0E69H         LINE#         92
-  C:0E70H         LINE#         93
-  C:0E70H         LINE#         94
-  C:0E73H         LINE#         95
-  C:0E76H         LINE#         96
-  C:0E76H         LINE#         99
+  C:0EC8H         LINE#         59
+  C:0EC8H         LINE#         63
+  C:0ED2H         LINE#         65
+  C:0ED2H         LINE#         67
+  C:0ED7H         LINE#         68
+  C:0EDDH         LINE#         69
+  C:0EDFH         LINE#         70
+  C:0EE6H         LINE#         71
+  C:0EE6H         LINE#         72
+  C:0EE9H         LINE#         73
+  C:0EECH         LINE#         74
+  C:0EEEH         LINE#         75
+  C:0EF5H         LINE#         76
+  C:0EF5H         LINE#         78
+  C:0EFAH         LINE#         79
+  C:0F00H         LINE#         80
+  C:0F02H         LINE#         81
+  C:0F09H         LINE#         82
+  C:0F09H         LINE#         83
+  C:0F0CH         LINE#         84
+  C:0F0FH         LINE#         85
+  C:0F11H         LINE#         86
+  C:0F18H         LINE#         87
+  C:0F18H         LINE#         89
+  C:0F1DH         LINE#         90
+  C:0F23H         LINE#         91
+  C:0F25H         LINE#         92
+  C:0F2CH         LINE#         93
+  C:0F2CH         LINE#         94
+  C:0F2FH         LINE#         95
+  C:0F32H         LINE#         96
+  C:0F32H         LINE#         99
   -------         ENDPROC       TIMR3_IRQHANDLER
   -------         ENDMOD        TIMER3
 
@@ -1854,32 +1907,32 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   X:6265H         PUBLIC        t_adc_max
   X:6267H         PUBLIC        over_drive_status
   B:0020H.6       PUBLIC        flag_is_time_to_check_engine
-  C:0045H         PUBLIC        according_pin9_to_adjust_pwm
-  C:140AH         SYMBOL        Com003B
-  C:140AH         SYMBOL        L?0060
-  C:140CH         SYMBOL        L?0061
-  C:140FH         SYMBOL        L?0062
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 32
+  C:0376H         PUBLIC        according_pin9_to_adjust_pwm
+  C:14C3H         SYMBOL        Com003B
+  C:14C3H         SYMBOL        L?0060
+  C:14C5H         SYMBOL        L?0061
+  C:14C8H         SYMBOL        L?0062
+  C:14CAH         SYMBOL        L?0063
+  C:14D9H         SYMBOL        L?0064
+  C:14DEH         SYMBOL        L?0065
+  C:14E0H         SYMBOL        L?0066
+  C:14EBH         SYMBOL        L?0067
+  C:14ECH         SYMBOL        L?0068
+  C:14F9H         SYMBOL        L?0069
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 33
 
 
-  C:1411H         SYMBOL        L?0063
-  C:1420H         SYMBOL        L?0064
-  C:1425H         SYMBOL        L?0065
-  C:1427H         SYMBOL        L?0066
-  C:1432H         SYMBOL        L?0067
-  C:1433H         SYMBOL        L?0068
-  C:1440H         SYMBOL        L?0069
-  C:1445H         SYMBOL        L?0070
-  C:144CH         SYMBOL        L?0071
-  C:144CH         SYMBOL        L?0072
-  C:1456H         SYMBOL        L?0073
-  C:1466H         SYMBOL        L?0074
-  C:1466H         SYMBOL        L?0075
-  C:1467H         SYMBOL        L?0076
-  C:146EH         SYMBOL        L?0077
-  C:147BH         SYMBOL        L?0078
-  C:147BH         SYMBOL        L?0079
-  C:1482H         SYMBOL        L?0080
+  C:14FEH         SYMBOL        L?0070
+  C:1505H         SYMBOL        L?0071
+  C:1505H         SYMBOL        L?0072
+  C:150FH         SYMBOL        L?0073
+  C:151FH         SYMBOL        L?0074
+  C:151FH         SYMBOL        L?0075
+  C:1520H         SYMBOL        L?0076
+  C:1527H         SYMBOL        L?0077
+  C:1534H         SYMBOL        L?0078
+  C:1534H         SYMBOL        L?0079
+  C:153BH         SYMBOL        L?0080
   -------         PROC          COM003B
   -------         ENDPROC       COM003B
   -------         PROC          ACCORDING_PIN9_TO_ADJUST_PWM
@@ -1888,302 +1941,302 @@ SYMBOL TABLE OF MODULE:  .\Release\Objects\Demo (?C_STARTUP)
   X:6001H         SYMBOL        flag_is_sub_power
   X:6002H         SYMBOL        flag_is_sub_power2
   B:0020H.5       SYMBOL        flag_is_add_power
-  X:62FFH         SYMBOL        adc_pin_9_avg
-  X:6303H         SYMBOL        adc_val
+  X:630BH         SYMBOL        adc_pin_9_avg
+  X:630FH         SYMBOL        adc_val
   -------         DO            
-  X:6305H         SYMBOL        i
-  X:6305H         SYMBOL        temp
-  X:6305H         SYMBOL        i
-  X:6305H         SYMBOL        i
-  -------         ENDDO         
-  -------         DO            
-  X:6305H         SYMBOL        temp
-  X:6305H         SYMBOL        i
-  X:6305H         SYMBOL        i
+  X:6311H         SYMBOL        i
+  X:6311H         SYMBOL        temp
+  X:6311H         SYMBOL        i
+  X:6311H         SYMBOL        i
   -------         ENDDO         
   -------         DO            
-  X:6305H         SYMBOL        i
-  X:6305H         SYMBOL        i
+  X:6311H         SYMBOL        temp
+  X:6311H         SYMBOL        i
+  X:6311H         SYMBOL        i
   -------         ENDDO         
   -------         DO            
-  X:6305H         SYMBOL        i
+  X:6311H         SYMBOL        i
+  X:6311H         SYMBOL        i
+  -------         ENDDO         
+  -------         DO            
+  X:6311H         SYMBOL        i
   -------         ENDDO         
   -------         ENDDO         
-  C:0045H         LINE#         34
-  C:0045H         LINE#         35
-  C:0045H         LINE#         41
-  C:004FH         LINE#         42
-  C:005EH         LINE#         44
-  C:006AH         LINE#         45
-  C:006AH         LINE#         46
-  C:006DH         LINE#         47
-  C:0077H         LINE#         48
-  C:0077H         LINE#         49
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 33
+  C:0376H         LINE#         34
+  C:0376H         LINE#         35
+  C:0376H         LINE#         41
+  C:0380H         LINE#         42
+  C:038FH         LINE#         44
+  C:039BH         LINE#         45
+  C:039BH         LINE#         46
+  C:039EH         LINE#         47
+  C:03A8H         LINE#         48
+  C:03A8H         LINE#         49
+  C:03B8H         LINE#         50
+  C:03C2H         LINE#         52
+  C:03CFH         LINE#         53
+  C:03CFH         LINE#         54
+  C:03DAH         LINE#         55
+  C:03E4H         LINE#         56
+  C:03E4H         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 34
 
 
-  C:0087H         LINE#         50
-  C:0091H         LINE#         52
-  C:009EH         LINE#         53
-  C:009EH         LINE#         54
-  C:00A9H         LINE#         55
-  C:00B3H         LINE#         56
-  C:00B3H         LINE#         58
-  C:00B3H         LINE#         59
-  C:00C2H         LINE#         60
-  C:00D6H         LINE#         61
-  C:00E6H         LINE#         62
-  C:00EEH         LINE#         63
-  C:00F4H         LINE#         64
-  C:00FAH         LINE#         65
-  C:00FAH         LINE#         66
-  C:00FCH         LINE#         67
-  C:00FCH         LINE#         68
-  C:00FCH         LINE#         70
-  C:00FCH         LINE#         71
-  C:00FFH         LINE#         72
-  C:00FFH         LINE#         73
-  C:00FFH         LINE#         74
-  C:0122H         LINE#         75
-  C:0136H         LINE#         78
-  C:014FH         LINE#         79
-  C:014FH         LINE#         82
-  C:0177H         LINE#         83
-  C:0185H         LINE#         84
-  C:0194H         LINE#         85
-  C:0194H         LINE#         86
-  C:0198H         LINE#         87
-  C:0198H         LINE#         89
-  C:0198H         LINE#         90
-  C:019BH         LINE#         91
-  C:01A1H         LINE#         92
-  C:01AAH         LINE#         93
-  C:01B7H         LINE#         94
-  C:01B7H         LINE#         95
-  C:01CEH         LINE#         96
-  C:01CEH         LINE#         97
-  C:01DDH         LINE#         98
-  C:01DDH         LINE#         99
-  C:01F7H         LINE#         100
-  C:01F7H         LINE#         101
-  C:0206H         LINE#         102
-  C:0206H         LINE#         103
-  C:0224H         LINE#         104
-  C:0224H         LINE#         105
-  C:022AH         LINE#         106
-  C:022CH         LINE#         108
-  C:022CH         LINE#         109
-  C:0232H         LINE#         110
-  C:0235H         LINE#         111
-  C:0235H         LINE#         112
-  C:0240H         LINE#         126
-  C:0240H         LINE#         129
-  C:0254H         LINE#         130
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 34
+  C:03E4H         LINE#         59
+  C:03F3H         LINE#         60
+  C:0407H         LINE#         61
+  C:0417H         LINE#         62
+  C:041FH         LINE#         63
+  C:0425H         LINE#         64
+  C:042BH         LINE#         65
+  C:042BH         LINE#         66
+  C:042DH         LINE#         67
+  C:042DH         LINE#         68
+  C:042DH         LINE#         70
+  C:042DH         LINE#         71
+  C:0430H         LINE#         72
+  C:0430H         LINE#         73
+  C:0430H         LINE#         74
+  C:0453H         LINE#         75
+  C:0467H         LINE#         78
+  C:0480H         LINE#         79
+  C:0480H         LINE#         82
+  C:04A8H         LINE#         83
+  C:04B6H         LINE#         84
+  C:04C5H         LINE#         85
+  C:04C5H         LINE#         86
+  C:04C9H         LINE#         87
+  C:04C9H         LINE#         89
+  C:04C9H         LINE#         90
+  C:04CCH         LINE#         91
+  C:04D2H         LINE#         92
+  C:04DBH         LINE#         93
+  C:04E8H         LINE#         94
+  C:04E8H         LINE#         95
+  C:04FFH         LINE#         96
+  C:04FFH         LINE#         97
+  C:050EH         LINE#         98
+  C:050EH         LINE#         99
+  C:0528H         LINE#         100
+  C:0528H         LINE#         101
+  C:0537H         LINE#         102
+  C:0537H         LINE#         103
+  C:0555H         LINE#         104
+  C:0555H         LINE#         105
+  C:055BH         LINE#         106
+  C:055DH         LINE#         108
+  C:055DH         LINE#         109
+  C:0563H         LINE#         110
+  C:0566H         LINE#         111
+  C:0566H         LINE#         112
+  C:0571H         LINE#         126
+  C:0571H         LINE#         129
+  C:0585H         LINE#         130
+  C:0585H         LINE#         132
+  C:058AH         LINE#         133
+  C:058CH         LINE#         134
+  C:058EH         LINE#         136
+  C:0595H         LINE#         137
+  C:0595H         LINE#         138
+  C:0598H         LINE#         139
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 35
 
 
-  C:0254H         LINE#         132
-  C:0259H         LINE#         133
-  C:025BH         LINE#         134
-  C:025DH         LINE#         136
-  C:0264H         LINE#         137
-  C:0264H         LINE#         138
-  C:0267H         LINE#         139
-  C:026CH         LINE#         140
-  C:026CH         LINE#         141
-  C:0278H         LINE#         142
-  C:0278H         LINE#         144
-  C:0281H         LINE#         145
-  C:0281H         LINE#         146
-  C:0281H         LINE#         147
-  C:0281H         LINE#         148
-  C:0284H         LINE#         149
-  C:028DH         LINE#         150
-  C:028DH         LINE#         152
-  C:0293H         LINE#         153
-  C:0293H         LINE#         154
-  C:0295H         LINE#         155
-  C:02A7H         LINE#         156
-  C:02A7H         LINE#         157
-  C:02B3H         LINE#         158
-  C:02B3H         LINE#         159
-  C:02B3H         LINE#         160
-  C:02B3H         LINE#         161
-  C:02B4H         LINE#         163
-  C:02D5H         LINE#         164
-  C:02D5H         LINE#         166
-  C:02DBH         LINE#         167
-  C:02DBH         LINE#         168
-  C:02DDH         LINE#         170
-  C:02E6H         LINE#         171
-  C:02E6H         LINE#         172
-  C:02E9H         LINE#         173
-  C:02E9H         LINE#         175
-  C:02EEH         LINE#         176
-  C:02F0H         LINE#         178
-  C:02F5H         LINE#         179
-  C:02F5H         LINE#         180
-  C:02F5H         LINE#         183
-  C:02F7H         LINE#         184
-  C:02FDH         LINE#         185
-  C:02FDH         LINE#         186
-  C:0309H         LINE#         187
-  C:030AH         LINE#         189
-  C:030AH         LINE#         190
-  C:0314H         LINE#         191
-  C:0314H         LINE#         192
-  C:0314H         LINE#         193
-  C:0315H         LINE#         194
-  C:0329H         LINE#         195
-  C:0329H         LINE#         197
-  C:032CH         LINE#         198
-  C:032CH         LINE#         199
-  C:032EH         LINE#         201
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 35
+  C:059DH         LINE#         140
+  C:059DH         LINE#         141
+  C:05A9H         LINE#         142
+  C:05A9H         LINE#         144
+  C:05B2H         LINE#         145
+  C:05B2H         LINE#         146
+  C:05B2H         LINE#         147
+  C:05B2H         LINE#         148
+  C:05B5H         LINE#         149
+  C:05BEH         LINE#         150
+  C:05BEH         LINE#         152
+  C:05C4H         LINE#         153
+  C:05C4H         LINE#         154
+  C:05C6H         LINE#         155
+  C:05D8H         LINE#         156
+  C:05D8H         LINE#         157
+  C:05E4H         LINE#         158
+  C:05E4H         LINE#         159
+  C:05E4H         LINE#         160
+  C:05E4H         LINE#         161
+  C:05E5H         LINE#         163
+  C:0606H         LINE#         164
+  C:0606H         LINE#         166
+  C:060CH         LINE#         167
+  C:060CH         LINE#         168
+  C:060EH         LINE#         170
+  C:0617H         LINE#         171
+  C:0617H         LINE#         172
+  C:061AH         LINE#         173
+  C:061AH         LINE#         175
+  C:061FH         LINE#         176
+  C:0621H         LINE#         178
+  C:0626H         LINE#         179
+  C:0626H         LINE#         180
+  C:0626H         LINE#         183
+  C:0628H         LINE#         184
+  C:062EH         LINE#         185
+  C:062EH         LINE#         186
+  C:063AH         LINE#         187
+  C:063BH         LINE#         189
+  C:063BH         LINE#         190
+  C:0645H         LINE#         191
+  C:0645H         LINE#         192
+  C:0645H         LINE#         193
+  C:0646H         LINE#         194
+  C:065AH         LINE#         195
+  C:065AH         LINE#         197
+  C:065DH         LINE#         198
+  C:065DH         LINE#         199
+  C:065FH         LINE#         201
+  C:0665H         LINE#         202
+  C:066AH         LINE#         203
+  C:066CH         LINE#         205
+  C:067BH         LINE#         206
+  C:067BH         LINE#         207
+  C:0687H         LINE#         208
+  C:0688H         LINE#         210
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 36
 
 
-  C:0334H         LINE#         202
-  C:0339H         LINE#         203
-  C:033BH         LINE#         205
-  C:034AH         LINE#         206
-  C:034AH         LINE#         207
-  C:0356H         LINE#         208
-  C:0357H         LINE#         210
-  C:0357H         LINE#         211
-  C:0360H         LINE#         212
-  C:0360H         LINE#         213
-  C:0360H         LINE#         214
-  C:0360H         LINE#         215
+  C:0688H         LINE#         211
+  C:0691H         LINE#         212
+  C:0691H         LINE#         213
+  C:0691H         LINE#         214
+  C:0691H         LINE#         215
   -------         ENDPROC       ACCORDING_PIN9_TO_ADJUST_PWM
   -------         ENDMOD        ENGINE
 
   -------         MODULE        POWER_ON
   C:0000H         SYMBOL        _ICE_DUMMY_
-  X:62F3H         PUBLIC        power_on_step
-  X:62F7H         PUBLIC        step
-  C:0E91H         PUBLIC        power_on_handle
-  X:62FBH         PUBLIC        mi
+  X:62FFH         PUBLIC        power_on_step
+  X:6303H         PUBLIC        step
+  C:0F4DH         PUBLIC        power_on_handle
+  X:6307H         PUBLIC        mi
   B:0020H.7       PUBLIC        flag_is_in_power_on
   B:0021H.0       PUBLIC        flag_time_comes_during_power_on
-  C:17CEH         SYMBOL        Com0008
-  C:17CEH         SYMBOL        L?0009
-  C:17DCH         SYMBOL        L?0010
-  C:17E9H         SYMBOL        L?0011
-  C:17E9H         SYMBOL        L?0012
+  C:1887H         SYMBOL        Com0008
+  C:1887H         SYMBOL        L?0009
+  C:1895H         SYMBOL        L?0010
+  C:18A2H         SYMBOL        L?0011
+  C:18A2H         SYMBOL        L?0012
   -------         PROC          COM0008
   -------         ENDPROC       COM0008
   -------         PROC          POWER_ON_HANDLE
-  C:0E91H         LINE#         13
-  C:0E91H         LINE#         14
-  C:0E91H         LINE#         15
-  C:0E98H         LINE#         16
-  C:0E9EH         LINE#         17
-  C:0EA0H         LINE#         19
-  C:0EA0H         LINE#         20
-  C:0EA0H         LINE#         25
-  C:0EC0H         LINE#         26
-  C:0EC0H         LINE#         28
-  C:0EC0H         LINE#         29
-  C:0EC0H         LINE#         31
-  C:0EC3H         LINE#         32
-  C:0EC3H         LINE#         33
-  C:0EC5H         LINE#         34
-  C:0EDBH         LINE#         35
-  C:0EF6H         LINE#         36
-  C:0EF6H         LINE#         37
-  C:0F0EH         LINE#         38
-  C:0F1CH         LINE#         39
-  C:0F27H         LINE#         40
-  C:0F27H         LINE#         41
-  C:0F27H         LINE#         43
-  C:0F32H         LINE#         44
-  C:0F3DH         LINE#         45
-  C:0F40H         LINE#         48
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 36
-
-
-  C:0F46H         LINE#         49
-  C:0F51H         LINE#         50
-  C:0F57H         LINE#         51
-  C:0F62H         LINE#         52
-  C:0F64H         LINE#         53
+  C:0F4DH         LINE#         13
+  C:0F4DH         LINE#         14
+  C:0F4DH         LINE#         15
+  C:0F54H         LINE#         16
+  C:0F5AH         LINE#         17
+  C:0F5CH         LINE#         19
+  C:0F5CH         LINE#         20
+  C:0F5CH         LINE#         25
+  C:0F7CH         LINE#         26
+  C:0F7CH         LINE#         28
+  C:0F7CH         LINE#         29
+  C:0F7CH         LINE#         31
+  C:0F7FH         LINE#         32
+  C:0F7FH         LINE#         33
+  C:0F81H         LINE#         34
+  C:0F97H         LINE#         35
+  C:0FB2H         LINE#         36
+  C:0FB2H         LINE#         37
+  C:0FCAH         LINE#         38
+  C:0FD8H         LINE#         39
+  C:0FE3H         LINE#         40
+  C:0FE3H         LINE#         41
+  C:0FE3H         LINE#         43
+  C:0FEEH         LINE#         44
+  C:0FF9H         LINE#         45
+  C:0FFCH         LINE#         48
+  C:1002H         LINE#         49
+  C:100DH         LINE#         50
+  C:1013H         LINE#         51
+  C:101EH         LINE#         52
+  C:1020H         LINE#         53
   -------         ENDPROC       POWER_ON_HANDLE
   -------         ENDMOD        POWER_ON
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 37
+
+
 
   -------         MODULE        ?C?CLDPTR
-  C:061BH         PUBLIC        ?C?CLDPTR
+  C:0692H         PUBLIC        ?C?CLDPTR
   -------         ENDMOD        ?C?CLDPTR
 
   -------         MODULE        ?C?CLDOPTR
-  C:0634H         PUBLIC        ?C?CLDOPTR
+  C:06ABH         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
 
   -------         MODULE        ?C?CILDOPTR
-  C:0661H         PUBLIC        ?C?CILDOPTR
+  C:06D8H         PUBLIC        ?C?CILDOPTR
   -------         ENDMOD        ?C?CILDOPTR
 
   -------         MODULE        ?C?CSTOPTR
-  C:0694H         PUBLIC        ?C?CSTOPTR
+  C:070BH         PUBLIC        ?C?CSTOPTR
   -------         ENDMOD        ?C?CSTOPTR
 
   -------         MODULE        ?C?ULDIV
-  C:06F2H         PUBLIC        ?C?ULDIV
+  C:0769H         PUBLIC        ?C?ULDIV
   -------         ENDMOD        ?C?ULDIV
 
   -------         MODULE        ?C?ULCMP
-  C:0784H         PUBLIC        ?C?ULCMP
+  C:07FBH         PUBLIC        ?C?ULCMP
   -------         ENDMOD        ?C?ULCMP
 
   -------         MODULE        ?C?ULSHR
-  C:0795H         PUBLIC        ?C?ULSHR
+  C:080CH         PUBLIC        ?C?ULSHR
   -------         ENDMOD        ?C?ULSHR
 
   -------         MODULE        ?C?LSHL
-  C:07A8H         PUBLIC        ?C?LSHL
+  C:081FH         PUBLIC        ?C?LSHL
   -------         ENDMOD        ?C?LSHL
 
   -------         MODULE        ?C?LSTXDATA
-  C:07BBH         PUBLIC        ?C?LSTXDATA
+  C:0832H         PUBLIC        ?C?LSTXDATA
   -------         ENDMOD        ?C?LSTXDATA
 
   -------         MODULE        ?C?LSTKXDATA
-  C:07C7H         PUBLIC        ?C?LSTKXDATA
+  C:083EH         PUBLIC        ?C?LSTKXDATA
   -------         ENDMOD        ?C?LSTKXDATA
 
   -------         MODULE        ?C?PLDOPTR
-  C:07F8H         PUBLIC        ?C?PLDOPTR
+  C:086FH         PUBLIC        ?C?PLDOPTR
   -------         ENDMOD        ?C?PLDOPTR
 
   -------         MODULE        ?C?ICALL
-  C:0828H         PUBLIC        ?C?ICALL
-  C:082CH         PUBLIC        ?C?ICALL2
+  C:089FH         PUBLIC        ?C?ICALL
+  C:08A3H         PUBLIC        ?C?ICALL2
   -------         ENDMOD        ?C?ICALL
 
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2026  16:43:33  PAGE 37
-
-
   -------         MODULE        ?C?LIMUL
-  C:082EH         PUBLIC        ?C?LIMUL
+  C:08A5H         PUBLIC        ?C?LIMUL
   -------         ENDMOD        ?C?LIMUL
 
   -------         MODULE        ?C?PLDIDATA
-  C:085BH         PUBLIC        ?C?PLDIDATA
+  C:08D2H         PUBLIC        ?C?PLDIDATA
   -------         ENDMOD        ?C?PLDIDATA
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2026  16:54:03  PAGE 38
+
+
 
   -------         MODULE        ?C?PLDXDATA
-  C:0864H         PUBLIC        ?C?PLDXDATA
+  C:08DBH         PUBLIC        ?C?PLDXDATA
   -------         ENDMOD        ?C?PLDXDATA
 
   -------         MODULE        ?C?PLDPDATA
-  C:086DH         PUBLIC        ?C?PLDPDATA
+  C:08E4H         PUBLIC        ?C?PLDPDATA
   -------         ENDMOD        ?C?PLDPDATA
 
   -------         MODULE        ?C?PLDCODE
-  C:0876H         PUBLIC        ?C?PLDCODE
+  C:08EDH         PUBLIC        ?C?PLDCODE
   -------         ENDMOD        ?C?PLDCODE
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?FAN_CTL?FAN_CTL
 
-Program Size: data=10.2 xdata=791 code=6498
+Program Size: data=10.2 xdata=805 code=6683
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

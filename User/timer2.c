@@ -254,42 +254,71 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
         }
 #endif // 调节PWM占空比
 
+// USER_TO_DO 在测试时屏蔽
+#if 1
         {
             static volatile u16 cnt = 0; // 控制闪烁灯的时间间隔
             static volatile bit dir = 0; // 控制闪烁灯的闪烁方向
 
-            if (pwm_mode == PWM_MODE_PULSE)
+            if (pwm_mode >= PWM_MODE_PULSE_1 &&
+                pwm_mode <= PWM_MODE_PULSE_5)
             {
+                u16 dest_cnt = 0;
+                if (pwm_mode == PWM_MODE_PULSE_1)
+                {
+                    // PWM_MODE_PULSE_1 1Hz,500ms亮，500ms灭
+                    dest_cnt = 5000;
+                }
+                else if (pwm_mode == PWM_MODE_PULSE_2)
+                {
+                    // PWM_MODE_PULSE_2 3Hz,166.6ms亮（单片机只能取整），166.6ms灭
+                    dest_cnt = 1666;
+                }
+                else if (pwm_mode == PWM_MODE_PULSE_3)
+                {
+                    // PWM_MODE_PULSE_3 5Hz,100ms亮，100ms灭
+                    dest_cnt = 1000;
+                }
+                else if (pwm_mode == PWM_MODE_PULSE_4)
+                {
+                    // PWM_MODE_PULSE_4 10Hz,50ms亮，50ms灭
+                    dest_cnt = 500;
+                }
+                else if (pwm_mode == PWM_MODE_PULSE_5)
+                {
+                    // PWM_MODE_PULSE_5 15Hz,33.3ms亮（单片机只能取整），33.3ms灭
+                    dest_cnt = 333;
+                }  
+
                 cnt++;
-                if (cnt >= 625) // 每62.5ms亮，62.5ms灭
-                // if (cnt >= 1250)
+                if (cnt >= dest_cnt)
                 {
                     cnt = 0;
                     dir = !dir;
+                }
 
-                    if (dir == 0)
+                if (dir == 0)
+                {
+                    if (!get_pwm_channel_0_status())
                     {
-                        if (!get_pwm_channel_0_status())
-                        {
-                            pwm_channel_0_enable();
-                        }
-
-                        if (!get_pwm_channel_1_status())
-                        {
-                            pwm_channel_1_enable();
-                        }
+                        pwm_channel_0_enable();
                     }
-                    else
-                    {
-                        if (get_pwm_channel_0_status())
-                        {
-                            pwm_channel_0_disable();
-                        }
 
-                        if (get_pwm_channel_1_status())
-                        {
-                            pwm_channel_1_disable();
-                        }
+                    if (!get_pwm_channel_1_status())
+                    {
+                        pwm_channel_1_enable();
+                    }
+                }
+                else
+                {
+                    if (get_pwm_channel_0_status())
+                    {
+                        pwm_channel_0_disable();
+                    }
+
+                    if (get_pwm_channel_1_status())
+                    {
+                        pwm_channel_1_disable();
                     }
                 }
             }
@@ -315,6 +344,7 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                 }
             }
         }
+#endif
     }
 
     // 退出中断设置IP，不可删除

@@ -36,14 +36,32 @@
 // 定义433遥控器按键的键值
 enum
 {
+    // RF_433_KEY_VAL_R1C1 = 0x03, // 第一行第一列
+    // RF_433_KEY_VAL_R1C2 = 0x0F,
+    // RF_433_KEY_VAL_R2C1 = 0x0C, // 第二行第一列
+    // RF_433_KEY_VAL_R2C2 = 0x3F,
+    // RF_433_KEY_VAL_R3C1 = 0x30,
+    // RF_433_KEY_VAL_R3C2 = 0x3C,
+    // RF_433_KEY_VAL_R4C1 = 0xC0,
+    // RF_433_KEY_VAL_R4C2 = 0xF0,
+
     RF_433_KEY_VAL_R1C1 = 0x03, // 第一行第一列
-    RF_433_KEY_VAL_R1C2 = 0x0F,
-    RF_433_KEY_VAL_R2C1 = 0x0C, // 第二行第一列
-    RF_433_KEY_VAL_R2C2 = 0x3F,
-    RF_433_KEY_VAL_R3C1 = 0x30,
+    RF_433_KEY_VAL_R1C2 = 0x0C,
+
+    RF_433_KEY_VAL_R2C1 = 0x0F, // 第二行第一列
+    RF_433_KEY_VAL_R2C2 = 0x30,
+
+    RF_433_KEY_VAL_R3C1 = 0x33,
     RF_433_KEY_VAL_R3C2 = 0x3C,
-    RF_433_KEY_VAL_R4C1 = 0xC0,
-    RF_433_KEY_VAL_R4C2 = 0xF0,
+
+    RF_433_KEY_VAL_R4C1 = 0x3F,
+    RF_433_KEY_VAL_R4C2 = 0xC0,
+
+    RF_433_KEY_VAL_R5C1 = 0xC3,
+    RF_433_KEY_VAL_R5C2 = 0xCC,
+
+    RF_433_KEY_VAL_R6C1 = 0xCF,
+    RF_433_KEY_VAL_R6C2 = 0xF0,
 };
 
 // 定义433遥控器按键的事件
@@ -74,6 +92,18 @@ enum
 
     RF_433_KEY_EVENT_R4C2_CLICK,
     RF_433_KEY_EVENT_R4C2_LONG,
+
+    RF_433_KEY_EVENT_R5C1_CLICK,
+    RF_433_KEY_EVENT_R5C1_LONG,
+
+    RF_433_KEY_EVENT_R5C2_CLICK,
+    RF_433_KEY_EVENT_R5C2_LONG,
+
+    RF_433_KEY_EVENT_R6C1_CLICK,
+    RF_433_KEY_EVENT_R6C1_LONG,
+
+    RF_433_KEY_EVENT_R6C2_CLICK,
+    RF_433_KEY_EVENT_R6C2_LONG,
 };
 
 extern volatile bit flag_is_recved_rf_data; // 是否接收到了rf信号

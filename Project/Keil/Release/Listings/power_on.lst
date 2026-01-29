@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   POWER_ON                                                          01/20/2026 15:56:39 PAGE 1   
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/29/2026 16:51:31 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE POWER_ON
@@ -21,9 +21,9 @@ line level    source
   10          static volatile u32 power_on_step = 0;
   11          volatile bit flag_time_comes_during_power_on = 0; // 标志位，开机缓启动期间，调节时间到�
              -�（由定时器置位）
-  12            
+  12          
   13          void power_on_handle(void)
-  14          { 
+  14          {
   15   1          cur_pwm_channel_0_duty = 0;
   16   1          cur_pwm_channel_1_duty = 0;
   17   1          flag_is_in_power_on = 1; // 表示到了开机缓启动
@@ -62,7 +62,7 @@ line level    source
   49   1          adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
   50   1          expect_adjust_pwm_channel_0_duty = cur_pwm_channel_0_duty;
   51   1          expect_adjust_pwm_channel_1_duty = cur_pwm_channel_1_duty;
-C51 COMPILER V9.60.7.0   POWER_ON                                                          01/20/2026 15:56:39 PAGE 2   
+C51 COMPILER V9.60.7.0   POWER_ON                                                          01/29/2026 16:51:31 PAGE 2   
 
   52   1          flag_is_in_power_on = 0; // 表示退出了开机缓启动
   53   1      }
