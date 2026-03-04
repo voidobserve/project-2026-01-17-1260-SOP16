@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   RF_RECV                                                           01/29/2026 16:51:31 PAGE 1   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           03/04/2026 17:27:54 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE RF_RECV
@@ -62,7 +62,7 @@ line level    source
   47          
   48              NO_KEY,         // .latest_key_val
   49              KEY_EVENT_NONE, // .latest_key_event
-C51 COMPILER V9.60.7.0   RF_RECV                                                           01/29/2026 16:51:31 PAGE 2   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           03/04/2026 17:27:54 PAGE 2   
 
   50          }; // volatile struct key_driver_para rf_key_para
   51          
@@ -126,7 +126,7 @@ line level    source
  108   1          else
  109   1          {
  110   2              return RF_433_KEY_EVENT_NONE;
-C51 COMPILER V9.60.7.0   RF_RECV                                                           01/29/2026 16:51:31 PAGE 3   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           03/04/2026 17:27:54 PAGE 3   
 
  111   2          }
  112   1      
@@ -190,7 +190,7 @@ line level    source
  169   2          break;
  170   2          // =====================================================
  171   2          case RF_433_KEY_EVENT_R2C2_CLICK:
-C51 COMPILER V9.60.7.0   RF_RECV                                                           01/29/2026 16:51:31 PAGE 4   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           03/04/2026 17:27:54 PAGE 4   
 
  172   2          case RF_433_KEY_EVENT_R2C2_LONG:
  173   2          {
@@ -254,7 +254,7 @@ line level    source
  231   3              pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
  232   3          }
  233   2          break;
-C51 COMPILER V9.60.7.0   RF_RECV                                                           01/29/2026 16:51:31 PAGE 5   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           03/04/2026 17:27:54 PAGE 5   
 
  234   2              // =====================================================
  235   2          case RF_433_KEY_EVENT_R6C2_CLICK:

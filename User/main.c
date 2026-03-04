@@ -59,7 +59,7 @@ void my_debug_config(void)
 void main(void)
 {
     // 看门狗默认打开, 复位时间2s
-    WDT_KEY = WDT_KEY_VAL(0xDD); //  关闭看门狗 (如需配置看门狗请查看“WDT\WDT_Reset”示例)
+    WDT_KEY = WDT_KEY_VAL(0xDD); // 关闭看门狗 (如需配置看门狗请查看“WDT\WDT_Reset”示例)
 
     system_init();
 

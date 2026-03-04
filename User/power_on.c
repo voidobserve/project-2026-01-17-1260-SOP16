@@ -3,8 +3,8 @@
 #include "pwm.h"
 #include <math.h>
 
-float step = 70;
-float mi; // 幂
+float step = 70; // USER_TO_DO 待删除
+float mi; // 幂 // USER_TO_DO 待删除
 
 volatile bit flag_is_in_power_on = 0; // 是否处于开机缓启动
 static volatile u32 power_on_step = 0;

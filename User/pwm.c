@@ -278,8 +278,8 @@ void pwm_mode_handle(void)
     case PWM_MODE_COLOR_CYAN:
     {
         // 获取最终的目标占空比
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_50_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_50_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_55_PERCENT;
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_55_PERCENT;
     }
     break;
     // ===========================================================

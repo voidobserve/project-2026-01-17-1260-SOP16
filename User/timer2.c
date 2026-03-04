@@ -276,8 +276,8 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                 }
                 else if (pwm_mode == PWM_MODE_PULSE_3)
                 {
-                    // PWM_MODE_PULSE_3 5Hz,100ms亮，100ms灭
-                    dest_cnt = 1000;
+                    // PWM_MODE_PULSE_3 6Hz,83.3ms亮，83.3ms灭
+                    dest_cnt = 833;
                 }
                 else if (pwm_mode == PWM_MODE_PULSE_4)
                 {
@@ -288,7 +288,7 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                 {
                     // PWM_MODE_PULSE_5 15Hz,33.3ms亮（单片机只能取整），33.3ms灭
                     dest_cnt = 333;
-                }  
+                }
 
                 cnt++;
                 if (cnt >= dest_cnt)
