@@ -10,7 +10,8 @@
  *
  * @return * void
  */
-#define DEST_POWER_ON_DUTY_VAL ((u16)PWM_DUTY_55_PERCENT)
+// #define DEST_POWER_ON_DUTY_VAL ((u16)PWM_DUTY_55_PERCENT)
+#define DEST_POWER_ON_DUTY_VAL ((u16)PWM_DUTY_54_PERCENT)
 // 开机缓启动的时间，单位：ms
 #define POWER_ON_TIMES ((u16)8000)
 /*

@@ -1,61 +1,59 @@
-[03-04 17:33:06]Log start
-[03-04 17:33:06]Serial init start!
-[03-04 17:33:06]Serial close ok!
-[03-04 17:33:06]Serial init start!
-[03-04 17:33:06]Download driver ok!
-[03-04 17:33:06]uart_txm8c1200_set_driver:0x0
-[03-04 17:33:06]user uart set driver ok!
-[03-04 17:33:06]TXLink ready ok!
-[03-04 17:33:06]TXLink init ok!
-[03-04 17:33:06]Serial close ok!
-[03-04 17:33:06]load_debug_init_api chip id:1260
-[03-04 17:33:06]sys_info_init! 
-[03-04 17:33:06]AG_Init: 0x30a
-[03-04 17:33:06]AG_Init: 0x30b
-[03-04 17:33:06]AG_Init: 0x30f
-[03-04 17:33:06]AG_Init: 0x310
-[03-04 17:33:06]AG_Init: 0x311
-[03-04 17:33:06]AG_Init: 0x312
-[03-04 17:33:06]AG_Init: 0x100
-[03-04 17:33:06]InitMem: 0x0
-[03-04 17:33:06]Serial init start!
-[03-04 17:33:06]chip_init_api
-[03-04 17:33:06]TXLink chip init ok!
-[03-04 17:33:06]AG_Init: 0x201
-[03-04 17:33:06]AG_Init: 0x202
-[03-04 17:33:06]AG_Init: 0x203
-[03-04 17:33:06]AG_Init: 0x204
-[03-04 17:33:06]AG_Init: 0x205
-[03-04 17:33:06]AG_Init: 0x206
-[03-04 17:33:06]AG_Init: 0x207
-[03-04 17:33:06]AG_Init: 0x313
-[03-04 17:33:06]Serial init start!
-[03-04 17:33:06]uart_txm8c1200_check_dev_id:
-[03-04 17:33:06]uart_txm8c1200_check_crc_bin check failed 2:
-[03-04 17:33:06]uart_txm8c1200_check_dev_id ok:
-[03-04 17:33:06]EraseFlash: 0x0
-[03-04 17:33:07]TXLink chip erase ok!
-[03-04 17:33:07]AG_Init: 0x314
-[03-04 17:33:07]FlashLoad: 0x0
-[03-04 17:33:07]InitProgress: Loading...
-[03-04 17:33:07]WriteToFlash: 0xff000000
-[03-04 17:33:07]WriteToFlash: 0xff00001e
-[03-04 17:33:07]WriteToFlash: 0xff00081e
-[03-04 17:33:08]WriteToFlash: 0xff00101e
-[03-04 17:33:08]WriteToFlash: 0xff00181e
-[03-04 17:33:08]InitProgress: Verifying...
-[03-04 17:33:08]VerifyFlash nAdr: 0xff000000
-[03-04 17:33:08]VerifyFlash nAdr: 0xff00001e
-[03-04 17:33:08]VerifyFlash nAdr: 0xff00081e
-[03-04 17:33:08]VerifyFlash nAdr: 0xff00101e
-[03-04 17:33:09]VerifyFlash nAdr: 0xff00181e
-[03-04 17:33:09]chip_reset_api
-[03-04 17:33:09]Serial close ok!
-[03-04 17:33:09]AG_Init: 0x40c
-[03-04 17:33:09]CloseAllDlg: 0x0
-[03-04 17:33:09]StopTarget: 0x0
-[03-04 17:33:09]FreeCache: 0x0
-[03-04 17:33:09]StopTarget: 0x0
-[03-04 17:33:09]FreeCache: 0x0
-[03-04 18:53:10]DllUv3Cap:0x2
-[03-04 18:53:10]DllUv3Cap:0x64
+[03-17 17:43:56]Log start
+[03-17 17:43:56]Serial init start!
+[03-17 17:43:56]Serial close ok!
+[03-17 17:43:56]Serial init start!
+[03-17 17:43:56]Download driver ok!
+[03-17 17:43:56]uart_txm8c1200_set_driver:0x0
+[03-17 17:43:56]user uart set driver ok!
+[03-17 17:43:56]TXLink ready ok!
+[03-17 17:43:57]TXLink init ok!
+[03-17 17:43:57]Serial close ok!
+[03-17 17:43:57]load_debug_init_api chip id:1260
+[03-17 17:43:57]sys_info_init! 
+[03-17 17:43:57]AG_Init: 0x30a
+[03-17 17:43:57]AG_Init: 0x30b
+[03-17 17:43:57]AG_Init: 0x30f
+[03-17 17:43:57]AG_Init: 0x310
+[03-17 17:43:57]AG_Init: 0x311
+[03-17 17:43:57]AG_Init: 0x312
+[03-17 17:43:57]AG_Init: 0x100
+[03-17 17:43:57]InitMem: 0x0
+[03-17 17:43:57]Serial init start!
+[03-17 17:43:57]chip_init_api
+[03-17 17:43:57]TXLink chip init ok!
+[03-17 17:43:57]AG_Init: 0x201
+[03-17 17:43:57]AG_Init: 0x202
+[03-17 17:43:57]AG_Init: 0x203
+[03-17 17:43:57]AG_Init: 0x204
+[03-17 17:43:57]AG_Init: 0x205
+[03-17 17:43:57]AG_Init: 0x206
+[03-17 17:43:57]AG_Init: 0x207
+[03-17 17:43:57]AG_Init: 0x313
+[03-17 17:43:57]Serial init start!
+[03-17 17:43:57]uart_txm8c1200_check_dev_id:
+[03-17 17:43:57]uart_txm8c1200_check_crc_bin check failed 2:
+[03-17 17:43:57]uart_txm8c1200_check_dev_id ok:
+[03-17 17:43:57]EraseFlash: 0x0
+[03-17 17:43:57]TXLink chip erase ok!
+[03-17 17:43:57]AG_Init: 0x314
+[03-17 17:43:57]FlashLoad: 0x0
+[03-17 17:43:57]InitProgress: Loading...
+[03-17 17:43:57]WriteToFlash: 0xff000000
+[03-17 17:43:57]WriteToFlash: 0xff00001e
+[03-17 17:43:57]WriteToFlash: 0xff00081e
+[03-17 17:43:58]WriteToFlash: 0xff00101e
+[03-17 17:43:58]WriteToFlash: 0xff00181e
+[03-17 17:43:59]InitProgress: Verifying...
+[03-17 17:43:59]VerifyFlash nAdr: 0xff000000
+[03-17 17:43:59]VerifyFlash nAdr: 0xff00001e
+[03-17 17:43:59]VerifyFlash nAdr: 0xff00081e
+[03-17 17:43:59]VerifyFlash nAdr: 0xff00101e
+[03-17 17:43:59]VerifyFlash nAdr: 0xff00181e
+[03-17 17:43:59]chip_reset_api
+[03-17 17:43:59]Serial close ok!
+[03-17 17:43:59]AG_Init: 0x40c
+[03-17 17:43:59]CloseAllDlg: 0x0
+[03-17 17:43:59]StopTarget: 0x0
+[03-17 17:43:59]FreeCache: 0x0
+[03-17 17:43:59]StopTarget: 0x0
+[03-17 17:43:59]FreeCache: 0x0
