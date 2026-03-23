@@ -241,26 +241,20 @@ void pwm_mode_handle(void)
     {
     case PWM_MODE_COLOR_TEMPERATURE_1:
     {
-        // expect_adjust_pwm_channel_0_duty = PWM_DUTY_20_PERCENT;
-        // expect_adjust_pwm_channel_1_duty = PWM_DUTY_80_PERCENT;
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_25_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_82_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(11);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(97);
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_2:
     {
-        // expect_adjust_pwm_channel_0_duty = PWM_DUTY_40_PERCENT;
-        // expect_adjust_pwm_channel_1_duty = PWM_DUTY_60_PERCENT;
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_42_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_65_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(28);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(84);
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_3:
     {
-        // expect_adjust_pwm_channel_0_duty = PWM_DUTY_60_PERCENT;
-        // expect_adjust_pwm_channel_1_duty = PWM_DUTY_40_PERCENT;
         expect_adjust_pwm_channel_0_duty = PWM_DUTY_65_PERCENT;
         expect_adjust_pwm_channel_1_duty = PWM_DUTY_45_PERCENT;
     }
@@ -268,8 +262,6 @@ void pwm_mode_handle(void)
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_4:
     {
-        // expect_adjust_pwm_channel_0_duty = PWM_DUTY_80_PERCENT;
-        // expect_adjust_pwm_channel_1_duty = PWM_DUTY_20_PERCENT;
         expect_adjust_pwm_channel_0_duty = PWM_DUTY_82_PERCENT;
         expect_adjust_pwm_channel_1_duty = PWM_DUTY_25_PERCENT;
     }
@@ -286,10 +278,8 @@ void pwm_mode_handle(void)
     case PWM_MODE_COLOR_CYAN:
     {
         // 获取最终的目标占空比
-        // expect_adjust_pwm_channel_0_duty = PWM_DUTY_55_PERCENT;
-        // expect_adjust_pwm_channel_1_duty = PWM_DUTY_55_PERCENT;
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_54_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_54_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(42);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(65);
     }
     break;
     // ===========================================================
