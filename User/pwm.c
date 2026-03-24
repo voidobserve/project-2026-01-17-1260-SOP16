@@ -242,14 +242,14 @@ void pwm_mode_handle(void)
     case PWM_MODE_COLOR_TEMPERATURE_1:
     {
         expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(11);
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(97);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(94);
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_2:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(28);
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(84);
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(26);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(83);
     }
     break;
     // ===========================================================
