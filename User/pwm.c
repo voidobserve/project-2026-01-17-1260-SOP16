@@ -297,7 +297,9 @@ void pwm_mode_handle(void)
     case PWM_MODE_PULSE_4:
     case PWM_MODE_PULSE_5:
     {
-        // 不改变占空比，由定时器调节 频闪动画
+        // 只要是脉冲模式，都把占空比改成 50%
+        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(50);
+        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(50);
     }
     break;
         // ===========================================================

@@ -24,6 +24,7 @@ enum
     PWM_DUTY_20_PERCENT = (u16)((u32)MAX_PWM_DUTY * 20 / 100),
     PWM_DUTY_0_PERCENT = (u16)((u32)MAX_PWM_DUTY * 0 / 100),
 };
+// 传参 x 为百分比，范围：0 ~ 100
 #define PWM_DUTY_X_PERCENT(x) ((u16)((u32)MAX_PWM_DUTY * x / 100))
 
 // 定义 pwm 模式
