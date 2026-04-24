@@ -269,11 +269,11 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
                     // // PWM_MODE_PULSE_1 1Hz,500ms亮，500ms灭
                     // dest_cnt = 5000;
 
-                    // PWM_MODE_PULSE_1 0.5Hz,1000ms亮，1000ms灭
-                    dest_cnt = 10000;
+                    // // PWM_MODE_PULSE_1 0.5Hz,1000ms亮，1000ms灭
+                    // dest_cnt = 10000;
 
-                    // // PWM_MODE_PULSE_1 0.33Hz,1500ms亮，1500ms灭
-                    // dest_cnt = 15000;
+                    // PWM_MODE_PULSE_1 0.33Hz,1500ms亮，1500ms灭
+                    dest_cnt = 15000;
                 }
                 else if (pwm_mode == PWM_MODE_PULSE_2)
                 {
