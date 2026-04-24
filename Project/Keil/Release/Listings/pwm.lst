@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 1   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE PWM
@@ -62,7 +62,7 @@ line level    source
   45   1          // P15 15脚 作为第2路PWM输出
   46   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1);                         // 清空计数值
   47   1          STMR1_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 2   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 2   
 
   48   1          STMR1_PRH = STMR_PRD_VAL_H((STMR1_PEROID_VAL >> 8) & 0xFF); // 周期值
   49   1          STMR1_PRL = STMR_PRD_VAL_L((STMR1_PEROID_VAL >> 0) & 0xFF);
@@ -126,7 +126,7 @@ line level    source
  105           */
  106          u8 get_pwm_channel_0_status(void)
  107          {
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 3   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 3   
 
  108   1          if (STMR_PWMEN & 0x01) // 如果pwm0使能
  109   1          {
@@ -190,7 +190,7 @@ line level    source
                   P05 = 1;                      // 高电平为关灯
               #else
  169   1          FOUT_S15 = GPIO_FOUT_AF_FUNC; //
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 4   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 4   
 
  170   1          P15 = 1;                      // 高电平为关灯
  171   1      #endif
@@ -254,7 +254,7 @@ line level    source
  225   2          }
  226   1      #endif
  227   1      
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 5   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 5   
 
  228   1          return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
  229   1      }
@@ -318,7 +318,7 @@ line level    source
  287   2          {
  288   3              // 获取最终的目标占空比
  289   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_0_PERCENT;
-C51 COMPILER V9.60.7.0   PWM                                                               04/16/2026 09:36:59 PAGE 6   
+C51 COMPILER V9.60.7.0   PWM                                                               04/24/2026 16:53:26 PAGE 6   
 
  290   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_100_PERCENT;
  291   3          }
@@ -330,41 +330,38 @@ line level    source
  297   2          case PWM_MODE_PULSE_4:
  298   2          case PWM_MODE_PULSE_5:
  299   2          {
- 300   3              // 只要是脉冲模式，都把占空比改成 50%
- 301   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(50);
- 302   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(50);
- 303   3          }
- 304   2          break;
- 305   2              // ===========================================================
- 306   2          default:
- 307   2          {
- 308   3              return;
- 309   3          }
- 310   2          break;
- 311   2          }
- 312   1      
- 313   1          // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
- 314   1          //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)
- 315   1          // {
- 316   1          //     P14 = 0; // 测试时使用
- 317   1          // }
- 318   1      
- 319   1          // {
- 320   1          //     static u16 cnt = 0;
- 321   1          //     cnt++;
- 322   1          //     if (cnt >= 10000)
- 323   1          //     {
- 324   1          //         cnt = 0;
- 325   1          //         printf("pwm_mode = %bu\n", pwm_mode);
- 326   1          //         printf("expect_adjust_pwm_channel_0_duty = %u\n", expect_adjust_pwm_channel_0_duty);
- 327   1          //         printf("expect_adjust_pwm_channel_1_duty = %u\n", expect_adjust_pwm_channel_1_duty);
- 328   1          //     }
- 329   1          // }
- 330   1      }
+ 300   3          }
+ 301   2          break;
+ 302   2              // ===========================================================
+ 303   2          default:
+ 304   2          {
+ 305   3              return;
+ 306   3          }
+ 307   2          break;
+ 308   2          }
+ 309   1      
+ 310   1          // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
+ 311   1          //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)
+ 312   1          // {
+ 313   1          //     P14 = 0; // 测试时使用
+ 314   1          // }
+ 315   1      
+ 316   1          // {
+ 317   1          //     static u16 cnt = 0;
+ 318   1          //     cnt++;
+ 319   1          //     if (cnt >= 10000)
+ 320   1          //     {
+ 321   1          //         cnt = 0;
+ 322   1          //         printf("pwm_mode = %bu\n", pwm_mode);
+ 323   1          //         printf("expect_adjust_pwm_channel_0_duty = %u\n", expect_adjust_pwm_channel_0_duty);
+ 324   1          //         printf("expect_adjust_pwm_channel_1_duty = %u\n", expect_adjust_pwm_channel_1_duty);
+ 325   1          //     }
+ 326   1          // }
+ 327   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    650    ----
+   CODE SIZE        =    614    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     19       6
    PDATA SIZE       =   ----    ----
