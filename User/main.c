@@ -124,6 +124,15 @@ void main(void)
     pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
     power_on_handle();
 
+    // 只在测试时使用：
+    // pwm_mode = PWM_MODE_PULSE_1;
+    // adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
+    // adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
+    // cur_pwm_channel_0_duty = adjust_pwm_channel_0_duty;
+    // cur_pwm_channel_1_duty = adjust_pwm_channel_1_duty;
+    // set_pwm_channel_0_duty(cur_pwm_channel_0_duty);
+    // set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
+
     while (1)
     {
 #if 1

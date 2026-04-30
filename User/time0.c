@@ -76,6 +76,7 @@ void TIMR0_IRQHandler(void) interrupt TMR0_IRQn
         {
             rf_key_para.cur_scan_times++; // 用于433遥控器按键扫描
         }
+       
 
         { // 风扇状态检测，累计一段时间后更新状态
             static u16 fan_normal_cnt = 0;

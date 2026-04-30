@@ -20,9 +20,9 @@ void key_driver_scan(void *_scan_para)
     // volatile struct key_driver_para xdata *scan_para = (struct key_driver_para xdata *)0x642D; // 系统会一直复位
 
 #if 1
-    u8 key_event = KEY_EVENT_NONE; // 存放待发送的按键事件
-    u8 cur_key_value = NO_KEY;     // 存放待发送的按键键值
-    u8 key_value = NO_KEY;
+    volatile u8 key_event = KEY_EVENT_NONE; // 存放待发送的按键事件
+    volatile u8 cur_key_value = NO_KEY;     // 存放待发送的按键键值
+    volatile u8 key_value = NO_KEY;
 
     // u8 key_scan_status = KEY_SCAN_STATUS_NONE; // 状态机，负责控制该函数内的跳转操作 /* 控制跳转还有问题，还不能使用 */
 
@@ -94,6 +94,9 @@ void key_driver_scan(void *_scan_para)
         return;
     }
 
+    // if (scan_para->press_cnt != 0)
+    // printf("scan_para->press_cnt == %u\n", (u16)scan_para->press_cnt);
+
     //===== 按键消抖结束, 开始判断按键类型(单击, 双击, 长按, 多击, HOLD, (长按/HOLD)抬起)
     if (cur_key_value != scan_para->last_key)
     {
@@ -125,10 +128,27 @@ void key_driver_scan(void *_scan_para)
                 cur_key = valid_key, last_key = NO_KEY -> 按键被按下
             */
             scan_para->press_cnt = 1; // 用于判断long和hold事件的计数器重新开始计时;
+
             if (cur_key_value != scan_para->notify_value)
             { // 第一次单击/连击时按下的是不同按键, 单击次数重新开始计数
                 scan_para->click_cnt = 1;
                 scan_para->notify_value = cur_key_value;
+
+                // key_event = KEY_EVENT_PRESS;
+                // key_value = scan_para->notify_value;
+                // printf("key event press\n");
+                // goto _notify;
+
+                // if (scan_para->press_cnt == 1)
+                // {
+                key_event = KEY_EVENT_PRESS;
+                key_value = scan_para->notify_value;
+                // printf("key event press\n");
+                scan_para->press_cnt++;
+                key_value = cur_key_value;
+                // scan_para->last_key = cur_key_value;
+                goto _notify;
+                // }
             }
             else
             {

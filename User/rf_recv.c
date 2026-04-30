@@ -5,6 +5,7 @@ volatile u32 rf_data = 0;                // 存放接收到的rf数据
 
 // 按键键值与按键事件关系表
 static const u8 rf_key_event_table[][RF_KEY_EFFECT_EVENT_NUMS + 1] = {
+#if 0
     {RF_433_KEY_VAL_R1C1, RF_433_KEY_EVENT_R1C1_CLICK, RF_433_KEY_EVENT_R1C1_LONG},
     {RF_433_KEY_VAL_R1C2, RF_433_KEY_EVENT_R1C2_CLICK, RF_433_KEY_EVENT_R1C2_LONG},
     {RF_433_KEY_VAL_R2C1, RF_433_KEY_EVENT_R2C1_CLICK, RF_433_KEY_EVENT_R2C1_LONG},
@@ -19,6 +20,22 @@ static const u8 rf_key_event_table[][RF_KEY_EFFECT_EVENT_NUMS + 1] = {
     {RF_433_KEY_VAL_R5C2, RF_433_KEY_EVENT_R5C2_CLICK, RF_433_KEY_EVENT_R5C2_LONG},
     {RF_433_KEY_VAL_R6C1, RF_433_KEY_EVENT_R6C1_CLICK, RF_433_KEY_EVENT_R6C1_LONG},
     {RF_433_KEY_VAL_R6C2, RF_433_KEY_EVENT_R6C2_CLICK, RF_433_KEY_EVENT_R6C2_LONG},
+#endif
+
+    {RF_433_KEY_VAL_R1C1, RF_433_KEY_EVENT_R1C1_PRESS},
+    {RF_433_KEY_VAL_R1C2, RF_433_KEY_EVENT_R1C2_PRESS},
+    {RF_433_KEY_VAL_R2C1, RF_433_KEY_EVENT_R2C1_PRESS},
+    {RF_433_KEY_VAL_R2C2, RF_433_KEY_EVENT_R2C2_PRESS},
+
+    {RF_433_KEY_VAL_R3C1, RF_433_KEY_EVENT_R3C1_PRESS},
+    {RF_433_KEY_VAL_R3C2, RF_433_KEY_EVENT_R3C2_PRESS},
+    {RF_433_KEY_VAL_R4C1, RF_433_KEY_EVENT_R4C1_PRESS},
+    {RF_433_KEY_VAL_R4C2, RF_433_KEY_EVENT_R4C2_PRESS},
+
+    {RF_433_KEY_VAL_R5C1, RF_433_KEY_EVENT_R5C1_PRESS},
+    {RF_433_KEY_VAL_R5C2, RF_433_KEY_EVENT_R5C2_PRESS},
+    {RF_433_KEY_VAL_R6C1, RF_433_KEY_EVENT_R6C1_PRESS},
+    {RF_433_KEY_VAL_R6C2, RF_433_KEY_EVENT_R6C2_PRESS},
 
 };
 
@@ -57,26 +74,76 @@ volatile struct key_driver_para rf_key_para = {
  */
 static u8 rf_key_get_key_id(void)
 {
-    u8 ret = NO_KEY;
+    static volatile u8 last_key = NO_KEY;
+    static volatile u8 cur_key = NO_KEY;
+    static volatile u16 timeout_cnt = 0;
 
-    if (0 == flag_is_recved_rf_data)
+    // if (0 == flag_is_recved_rf_data &&
+    //     timeout_cnt == 0)
+    // {
+    //     return cur_key;
+    // }
+
+    if (flag_is_recved_rf_data)
     {
-        return NO_KEY;
+        flag_is_recved_rf_data = 0;
+        // timeout_cnt = (u32)35 * 10 / RF_KEY_SCAN_CIRCLE_TIMES; // 假设一帧433数据占35ms
+        timeout_cnt = (u32)64 * 4 / RF_KEY_SCAN_CIRCLE_TIMES; // 实际测试一帧数据，包括帧间隔，有64ms
+        // timeout_cnt = (u32)64 * 6 / RF_KEY_SCAN_CIRCLE_TIMES; // 实际测试一帧数据，包括帧间隔，有64ms
+        // timeout_cnt = (u32)64 * 10 / RF_KEY_SCAN_CIRCLE_TIMES; // 实际测试一帧数据，包括帧间隔，有64ms
+
+        if (((u8)(rf_data >> 16) != RF_KEY_ADDR_BYTE_1 ||
+             (u8)(rf_data >> 8) != RF_KEY_ADDR_BYTE_2))
+        {
+            if (last_key == NO_KEY)
+            {
+                // 接收到了数据，但是地址不匹配，之前也没有接收到数据
+                cur_key = NO_KEY;
+                timeout_cnt = 0; // 取消超时计数
+                // printf("rf addr err\n");
+            }
+            else
+            {
+                // 接收到了数据，但是地址不匹配，但是之前有接收到正确的数据
+                cur_key = last_key;
+                // printf("rf addr err , last_key valid\n");
+            }
+        }
+        else
+        {
+            /*
+                如果当前接收到的地址正确
+            */
+            cur_key = (u8)(rf_data & 0xFF); // 获取低8位作为键值
+            last_key = cur_key;
+            // printf("rf_data 0x %lx\n", rf_data);
+        }
+    }
+    else
+    {
+        // 没有收到新数据
+
+        if (timeout_cnt > 0)
+        {
+            timeout_cnt--;
+            cur_key = last_key;
+            // printf("timeout_cnt == %u\n", timeout_cnt);
+        }
+        else
+        {
+            // 超时之后
+            cur_key = NO_KEY;
+            last_key = NO_KEY;
+            // printf("timeout\n");
+        }
     }
 
-    flag_is_recved_rf_data = 0;
+    // if (cur_key != NO_KEY)
+    // {
+    // printf("cur_key == %u\n", (u16)cur_key);
+    // }
 
-    if ((u8)(rf_data >> 16) != RF_KEY_ADDR_BYTE_1 ||
-        (u8)(rf_data >> 8) != RF_KEY_ADDR_BYTE_2)
-    {
-        return NO_KEY;
-    }
-
-    ret = (u8)(rf_data & 0xFF); // 获取低8位作为键值
-    // printf("rf_data 0x %lx\n", rf_data);
-
-    // rf_data = 0;    // 接收完成后，清除接收到的数据
-    return (u8)ret; // 直接获取键值
+    return (u8)cur_key; // 直接获取键值
 }
 
 /**
@@ -97,6 +164,7 @@ static u8 rf_key_get_event(const u8 key_val, const u8 key_event)
     //     printf("key_val %bu, key_event %bu\n", key_val, key_event);
     // }
 
+#if 0
     if (key_event == KEY_EVENT_CLICK)
     {
         key_event_index = 1;
@@ -104,6 +172,11 @@ static u8 rf_key_get_event(const u8 key_val, const u8 key_event)
     else if (key_event == KEY_EVENT_LONG)
     {
         key_event_index = 2;
+    }
+#endif
+    if (key_event == KEY_EVENT_PRESS)
+    {
+        key_event_index = 1;
     }
     else
     {
@@ -144,101 +217,113 @@ void rf_key_handle(void)
 
     switch (rf_key_event)
     {
-    case RF_433_KEY_EVENT_R1C1_CLICK:
-    case RF_433_KEY_EVENT_R1C1_LONG:
-    {
-        // printf("r1c1\n");
-        pwm_mode = PWM_MODE_PULSE_1;
-    }
-    break;
+    case RF_433_KEY_EVENT_R1C1_PRESS:
+        // case RF_433_KEY_EVENT_R1C1_CLICK:
+        // case RF_433_KEY_EVENT_R1C1_LONG:
+        {
+            // printf("r1c1\n");
+            pwm_mode = PWM_MODE_PULSE_1;
+        }
+        break;
     // =====================================================
-    case RF_433_KEY_EVENT_R1C2_CLICK:
-    case RF_433_KEY_EVENT_R1C2_LONG:
-    {
-        // printf("r1c2\n");
-        pwm_mode = PWM_MODE_PULSE_2;
-    }
-    break;
+    case RF_433_KEY_EVENT_R1C2_PRESS:
+        // case RF_433_KEY_EVENT_R1C2_CLICK:
+        // case RF_433_KEY_EVENT_R1C2_LONG:
+        {
+            // printf("r1c2\n");
+            pwm_mode = PWM_MODE_PULSE_2;
+        }
+        break;
     // =====================================================
-    case RF_433_KEY_EVENT_R2C1_CLICK:
-    case RF_433_KEY_EVENT_R2C1_LONG:
-    {
-        // printf("r2c1\n");
-        pwm_mode = PWM_MODE_PULSE_3;
-    }
-    break;
+    case RF_433_KEY_EVENT_R2C1_PRESS:
+        // case RF_433_KEY_EVENT_R2C1_CLICK:
+        // case RF_433_KEY_EVENT_R2C1_LONG:
+        {
+            // printf("r2c1\n");
+            pwm_mode = PWM_MODE_PULSE_3;
+        }
+        break;
     // =====================================================
-    case RF_433_KEY_EVENT_R2C2_CLICK:
-    case RF_433_KEY_EVENT_R2C2_LONG:
-    {
-        // printf("r2c2\n");
-        pwm_mode = PWM_MODE_PULSE_4;
-    }
-    break;
+    case RF_433_KEY_EVENT_R2C2_PRESS:
+        // case RF_433_KEY_EVENT_R2C2_CLICK:
+        // case RF_433_KEY_EVENT_R2C2_LONG:
+        {
+            // printf("r2c2\n");
+            pwm_mode = PWM_MODE_PULSE_4;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R3C1_CLICK:
-    case RF_433_KEY_EVENT_R3C1_LONG:
-    {
-        // printf("r3c1\n");
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
-    }
-    break;
+    case RF_433_KEY_EVENT_R3C1_PRESS:
+        // case RF_433_KEY_EVENT_R3C1_CLICK:
+        // case RF_433_KEY_EVENT_R3C1_LONG:
+        {
+            // printf("r3c1\n");
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
+        }
+        break;
     // =====================================================
-    case RF_433_KEY_EVENT_R3C2_CLICK:
-    case RF_433_KEY_EVENT_R3C2_LONG:
-    {
-        // printf("r3c2\n");
-        pwm_mode = PWM_MODE_PULSE_5;
-    }
-    break;
+    case RF_433_KEY_EVENT_R3C2_PRESS:
+        // case RF_433_KEY_EVENT_R3C2_CLICK:
+        // case RF_433_KEY_EVENT_R3C2_LONG:
+        {
+            // printf("r3c2\n");
+            pwm_mode = PWM_MODE_PULSE_5;
+        }
+        break;
     // =====================================================
-    case RF_433_KEY_EVENT_R4C1_CLICK:
-    case RF_433_KEY_EVENT_R4C1_LONG:
-    {
-        // printf("r4c1\n");
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
-    }
-    break;
+    case RF_433_KEY_EVENT_R4C1_PRESS:
+        // case RF_433_KEY_EVENT_R4C1_CLICK:
+        // case RF_433_KEY_EVENT_R4C1_LONG:
+        {
+            // printf("r4c1\n");
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R4C2_CLICK:
-    case RF_433_KEY_EVENT_R4C2_LONG:
-    {
-        // printf("r4c2\n");
-        pwm_mode = PWM_MODE_COLOR_BLUE;
-    }
-    break;
+    case RF_433_KEY_EVENT_R4C2_PRESS:
+        // case RF_433_KEY_EVENT_R4C2_CLICK:
+        // case RF_433_KEY_EVENT_R4C2_LONG:
+        {
+            // printf("r4c2\n");
+            pwm_mode = PWM_MODE_COLOR_BLUE;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R5C1_CLICK:
-    case RF_433_KEY_EVENT_R5C1_LONG:
-    {
-        // printf("r5c1\n");
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
-    }
-    break;
+    case RF_433_KEY_EVENT_R5C1_PRESS:
+        // case RF_433_KEY_EVENT_R5C1_CLICK:
+        // case RF_433_KEY_EVENT_R5C1_LONG:
+        {
+            // printf("r5c1\n");
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R5C2_CLICK:
-    case RF_433_KEY_EVENT_R5C2_LONG:
-    {
-        // printf("r5c2\n");
-        pwm_mode = PWM_MODE_COLOR_CYAN;
-    }
-    break;
+    case RF_433_KEY_EVENT_R5C2_PRESS:
+        // case RF_433_KEY_EVENT_R5C2_CLICK:
+        // case RF_433_KEY_EVENT_R5C2_LONG:
+        {
+            // printf("r5c2\n");
+            pwm_mode = PWM_MODE_COLOR_CYAN;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R6C1_CLICK:
-    case RF_433_KEY_EVENT_R6C1_LONG:
-    {
-        // printf("r6c1\n");
-        pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
-    }
-    break;
+    case RF_433_KEY_EVENT_R6C1_PRESS:
+        // case RF_433_KEY_EVENT_R6C1_CLICK:
+        // case RF_433_KEY_EVENT_R6C1_LONG:
+        {
+            // printf("r6c1\n");
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
+        }
+        break;
         // =====================================================
-    case RF_433_KEY_EVENT_R6C2_CLICK:
-    case RF_433_KEY_EVENT_R6C2_LONG:
-    {
-        // printf("r6c2\n");
-        pwm_mode = PWM_MODE_COLOR_GREEN;
-    }
-    break;
+    case RF_433_KEY_EVENT_R6C2_PRESS:
+        // case RF_433_KEY_EVENT_R6C2_CLICK:
+        // case RF_433_KEY_EVENT_R6C2_LONG:
+        {
+            // printf("r6c2\n");
+            pwm_mode = PWM_MODE_COLOR_GREEN;
+        }
+        break;
         // =====================================================
 
     default:

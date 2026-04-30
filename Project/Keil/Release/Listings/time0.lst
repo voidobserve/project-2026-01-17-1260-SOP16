@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   TIME0                                                             04/16/2026 09:37:00 PAGE 1   
+C51 COMPILER V9.60.7.0   TIME0                                                             04/30/2026 16:39:59 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIME0
@@ -62,7 +62,7 @@ line level    source
   47          //     TMR0_CNTH = 0;
   48          
   49          //     __DisableIRQ(TMR0_IRQn); // 关闭中断（不使能中断）
-C51 COMPILER V9.60.7.0   TIME0                                                             04/16/2026 09:37:00 PAGE 2   
+C51 COMPILER V9.60.7.0   TIME0                                                             04/30/2026 16:39:59 PAGE 2   
 
   50          // }
   51          
@@ -95,45 +95,46 @@ line level    source
   76   2              {
   77   3                  rf_key_para.cur_scan_times++; // 用于433遥控器按键扫描
   78   3              }
-  79   2      
-  80   2              { // 风扇状态检测，累计一段时间后更新状态
-  81   3                  static u16 fan_normal_cnt = 0;
-  82   3                  static u16 fan_err_cnt = 0;
-  83   3      
-  84   3                  if (flag_tim_scan_fan_is_err) // 如果检测到了风扇异常
-  85   3                  {
-  86   4                      fan_err_cnt++;
-  87   4                      fan_normal_cnt = 0;
-  88   4      
-  89   4                      if (fan_err_cnt >= FAN_SCAN_TIMES_WHEN_ERR)
-  90   4                      {
-  91   5                          fan_err_cnt = 0;
-  92   5                          cur_fan_status = FAN_STATUS_ERROR;
-  93   5                      }
-  94   4                  }
-  95   3                  else
-  96   3                  {
-  97   4                      fan_normal_cnt++;
-  98   4                      fan_err_cnt = 0;
-  99   4      
- 100   4                      if (fan_normal_cnt >= FAN_SCAN_TIMES_WHEN_NORMAL)
- 101   4                      {
- 102   5                          fan_normal_cnt = 0;
- 103   5                          cur_fan_status = FAN_STATUS_NORMAL;
- 104   5                      }
- 105   4                  }
- 106   3              } // 风扇状态检测，累计一段时间后更新状态      
- 107   2          }
- 108   1      
- 109   1          // 退出中断设置IP，不可删除
-C51 COMPILER V9.60.7.0   TIME0                                                             04/16/2026 09:37:00 PAGE 3   
+  79   2             
+  80   2      
+  81   2              { // 风扇状态检测，累计一段时间后更新状态
+  82   3                  static u16 fan_normal_cnt = 0;
+  83   3                  static u16 fan_err_cnt = 0;
+  84   3      
+  85   3                  if (flag_tim_scan_fan_is_err) // 如果检测到了风扇异常
+  86   3                  {
+  87   4                      fan_err_cnt++;
+  88   4                      fan_normal_cnt = 0;
+  89   4      
+  90   4                      if (fan_err_cnt >= FAN_SCAN_TIMES_WHEN_ERR)
+  91   4                      {
+  92   5                          fan_err_cnt = 0;
+  93   5                          cur_fan_status = FAN_STATUS_ERROR;
+  94   5                      }
+  95   4                  }
+  96   3                  else
+  97   3                  {
+  98   4                      fan_normal_cnt++;
+  99   4                      fan_err_cnt = 0;
+ 100   4      
+ 101   4                      if (fan_normal_cnt >= FAN_SCAN_TIMES_WHEN_NORMAL)
+ 102   4                      {
+ 103   5                          fan_normal_cnt = 0;
+ 104   5                          cur_fan_status = FAN_STATUS_NORMAL;
+ 105   5                      }
+ 106   4                  }
+ 107   3              } // 风扇状态检测，累计一段时间后更新状态      
+ 108   2          }
+ 109   1      
+C51 COMPILER V9.60.7.0   TIME0                                                             04/30/2026 16:39:59 PAGE 3   
 
- 110   1          __IRQnIPnPop(TMR0_IRQn);
- 111   1      }
+ 110   1          // 退出中断设置IP，不可删除
+ 111   1          __IRQnIPnPop(TMR0_IRQn);
+ 112   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    175    ----
+   CODE SIZE        =    169    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      4    ----
    PDATA SIZE       =   ----    ----

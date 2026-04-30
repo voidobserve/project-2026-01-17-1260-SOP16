@@ -297,6 +297,9 @@ void pwm_mode_handle(void)
     case PWM_MODE_PULSE_4:
     case PWM_MODE_PULSE_5:
     {
+        // 刚进入脉冲模式，给这些控制变量都清零
+        pwm_mode_pulse_cnt = 0;
+        pwm_mode_pulse_dir = 0;
     }
     break;
         // ===========================================================
