@@ -1,7 +1,7 @@
 #include "timer2.h"
 #include "power_on.h"
-// #define TIMER2_PEROID_VAL (SYSCLK / 128 / 10000 - 1) // 周期值=系统时钟/分频/频率 - 1
-#define TIMER2_PEROID_VAL ((u32)24 * 100 * 10000 / 1 / 10000 - 1) // 周期值 = 时钟 /分频/频率 - 1
+#define TIMER2_PEROID_VAL (SYSCLK / 128 / 10000 - 1) // 周期值=系统时钟/分频/频率 - 1
+// #define TIMER2_PEROID_VAL ((u32)24 * 100 * 10000 / 1 / 10000 - 1) // 周期值 = 时钟 /分频/频率 - 1
 // #define TIMER2_PEROID_VAL ((u32)2400) //
 // #define TIMER2_PEROID_VAL ((u32)2400 - 1) //
 // #define TIMER2_PEROID_VAL ((u32)2400 + 1) //
@@ -14,6 +14,7 @@ volatile bit flag_is_pwm_sub_time_comes = 0; // 标志位，pwm占空比递减�
 
 static volatile u16 pwm_duty_change_cnt = 0; // 用于控制pwm变化的时间计数（用在旋钮调节的PWM占空比中）
 
+// 每次进入脉冲动画前，需要给这两个变量清零，让动画重新开始跑：
 volatile u16 pwm_mode_pulse_cnt = 0;
 volatile bit pwm_mode_pulse_dir = 0;
 

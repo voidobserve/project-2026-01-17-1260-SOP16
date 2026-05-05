@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 1   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE RF_RECV
@@ -62,7 +62,7 @@ line level    source
   50              0,                   // .filter_value
   51              0,                   // .filter_cnt
   52              RF_KEY_FILTER_TIMES, // .filter_time 按键消抖次数，与扫描频率有关（rf按键不消抖）
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 2   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 2   
 
   53          
   54              RF_LONG_PRESS_TIME_THRESHOLD_MS / RF_KEY_SCAN_CIRCLE_TIMES,                                     // .lo
@@ -126,7 +126,7 @@ line level    source
  106   3                  {
  107   4                      // 接收到了数据，但是地址不匹配，但是之前有接收到正确的数据
  108   4                      cur_key = last_key;
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 3   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 3   
 
  109   4                      // printf("rf addr err , last_key valid\n");
  110   4                  }
@@ -190,7 +190,7 @@ line level    source
  167   1      #if 0
                   if (key_event == KEY_EVENT_CLICK)
                   {
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 4   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 4   
 
                       key_event_index = 1;
                   }
@@ -254,7 +254,7 @@ line level    source
  228   2          // =====================================================
  229   2          case RF_433_KEY_EVENT_R1C2_PRESS:
  230   2              // case RF_433_KEY_EVENT_R1C2_CLICK:
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 5   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 5   
 
  231   2              // case RF_433_KEY_EVENT_R1C2_LONG:
  232   2              {
@@ -318,7 +318,7 @@ line level    source
  290   2              break;
  291   2              // =====================================================
  292   2          case RF_433_KEY_EVENT_R5C1_PRESS:
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 6   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 6   
 
  293   2              // case RF_433_KEY_EVENT_R5C1_CLICK:
  294   2              // case RF_433_KEY_EVENT_R5C1_LONG:
@@ -382,7 +382,7 @@ line level    source
               
                   P0_PU |= GPIO_P01_PULL_UP(0x01);      // 上拉
                   P0_MD0 &= ~(GPIO_P01_MODE_SEL(0x03)); // 输入模式
-C51 COMPILER V9.60.7.0   RF_RECV                                                           04/30/2026 16:39:59 PAGE 7   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           05/05/2026 08:37:36 PAGE 7   
 
               
               #else // 实际用到的、非测试时使用的rf信号检测引脚：
