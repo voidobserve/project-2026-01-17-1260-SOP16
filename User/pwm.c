@@ -18,6 +18,7 @@ volatile u16 adjust_pwm_channel_1_duty = MAX_PWM_DUTY;        // pwm_channle_1 �
 
 // 记录pwm的模式
 volatile u8 pwm_mode = 0;
+volatile u8 pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5; // pwm的亮度等级
 
 #define STMR0_PEROID_VAL (SYSCLK / 8000 - 1)
 #define STMR1_PEROID_VAL (SYSCLK / 8000 - 1)
@@ -241,67 +242,56 @@ void pwm_mode_handle(void)
     {
     case PWM_MODE_COLOR_TEMPERATURE_1:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(11);
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(94);
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_1;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_1;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_2:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(26);
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(83);
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_2;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_2;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_3:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_65_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_45_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_3;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_3;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_TEMPERATURE_4:
     {
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_82_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_25_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_BLUE:
     {
         // 获取最终的目标占空比
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_100_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_0_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_BLUE;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_BLUE;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_CYAN:
     {
         // 获取最终的目标占空比
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(42);
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(65);
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_CYAN;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_CYAN;
     }
     break;
     // ===========================================================
     case PWM_MODE_COLOR_GREEN:
     {
         // 获取最终的目标占空比
-        expect_adjust_pwm_channel_0_duty = PWM_DUTY_0_PERCENT;
-        expect_adjust_pwm_channel_1_duty = PWM_DUTY_100_PERCENT;
+        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_GREEN;
+        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_GREEN;
     }
     break;
-        // ===========================================================
-    case PWM_MODE_PULSE_1:
-    case PWM_MODE_PULSE_2:
-    case PWM_MODE_PULSE_3:
-    case PWM_MODE_PULSE_4:
-    case PWM_MODE_PULSE_5:
-    {
-        // 刚进入脉冲模式，给这些控制变量都清零
-        pwm_mode_pulse_cnt = 0;
-        pwm_mode_pulse_dir = 0;
-    }
-    break;
+
         // ===========================================================
     default:
     {
@@ -310,21 +300,31 @@ void pwm_mode_handle(void)
     break;
     }
 
-    // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
-    //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)
-    // {
-    //     P14 = 0; // 测试时使用
-    // }
+    switch (pwm_brightness_lev)
+    {
+    case PWM_MODE_BRIGHTNESS_LEV_1:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 10 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 10 / 100;
+        break;
 
-    // {
-    //     static u16 cnt = 0;
-    //     cnt++;
-    //     if (cnt >= 10000)
-    //     {
-    //         cnt = 0;
-    //         printf("pwm_mode = %bu\n", pwm_mode);
-    //         printf("expect_adjust_pwm_channel_0_duty = %u\n", expect_adjust_pwm_channel_0_duty);
-    //         printf("expect_adjust_pwm_channel_1_duty = %u\n", expect_adjust_pwm_channel_1_duty);
-    //     }
-    // }
+    case PWM_MODE_BRIGHTNESS_LEV_2:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 25 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 25 / 100;
+        break;
+
+    case PWM_MODE_BRIGHTNESS_LEV_3:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 50 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 50 / 100;
+        break;
+
+    case PWM_MODE_BRIGHTNESS_LEV_4:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 75 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 75 / 100;
+        break;
+
+    case PWM_MODE_BRIGHTNESS_LEV_5:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 100 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 100 / 100;
+        break;
+    }
 }

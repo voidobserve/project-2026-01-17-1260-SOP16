@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 1   
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIMER2
@@ -62,7 +62,7 @@ line level    source
   46   1          // 周期中断
   47   1          if (TMR2_CONH & TMR_PRD_PND(0x1)) // 约100us触发一次中断
   48   1          {
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 2   
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 2   
 
   49   2              TMR2_CONH |= TMR_PRD_PND(0x1); // 清除pending
   50   2      
@@ -126,7 +126,7 @@ line level    source
  105   5                          if (low_level_cnt >= 30)
  106   5                          {
  107   6                              if (high_level_cnt >= 6 && high_level_cnt < 20)
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 3   
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 3   
 
  108   6                              {
  109   7                                  __rf_data |= 0x01;
@@ -190,7 +190,7 @@ line level    source
  167   5                          {
  168   6                              // 如果接收成了24位的数据
  169   6                              __flag_is_recved_data = 1; // 接收完成标志位置一
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 4   
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 4   
 
  170   6                          }
  171   5      
@@ -254,7 +254,7 @@ line level    source
  225   5                          cur_pwm_channel_1_duty--;
  226   5                      }
  227   4      
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 5   
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 5   
 
  228   4                      set_pwm_channel_0_duty(cur_pwm_channel_0_duty);
  229   4                      set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
@@ -292,118 +292,117 @@ line level    source
  259   3              }
  260   2      #endif // 调节PWM占空比
  261   2      
- 262   2      // USER_TO_DO 在测试时屏蔽
- 263   2      #if 1
- 264   2              {
- 265   3                  // static volatile u16 cnt = 0; // 控制闪烁灯的时间间隔
- 266   3                  // static volatile bit dir = 0; // 控制闪烁灯的闪烁方向
- 267   3      
- 268   3                  if (pwm_mode >= PWM_MODE_PULSE_1 &&
- 269   3                      pwm_mode <= PWM_MODE_PULSE_5)
- 270   3                  {
- 271   4                      volatile u16 dest_cnt = 0;
- 272   4                      if (pwm_mode == PWM_MODE_PULSE_1)
- 273   4                      {
- 274   5                          // PWM_MODE_PULSE_1 1Hz,500ms亮，500ms灭
- 275   5                          dest_cnt = 5000;
- 276   5      
- 277   5                          // // PWM_MODE_PULSE_1 0.5Hz,1000ms亮，1000ms灭
- 278   5                          // dest_cnt = 10000;
- 279   5      
- 280   5                          // // PWM_MODE_PULSE_1 0.33Hz,1500ms亮，1500ms灭
- 281   5                          // dest_cnt = 15000;
- 282   5                      }
- 283   4                      else if (pwm_mode == PWM_MODE_PULSE_2)
- 284   4                      {
- 285   5                          // PWM_MODE_PULSE_2 3Hz,166.6ms亮（单片机只能取整），166.6ms灭
- 286   5                          dest_cnt = 1666;
- 287   5                      }
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 6   
+ 262   2      #if 0
+                      {
+                          // static volatile u16 cnt = 0; // 控制闪烁灯的时间间隔
+                          // static volatile bit dir = 0; // 控制闪烁灯的闪烁方向
+              
+                          if (pwm_mode >= PWM_MODE_PULSE_1 &&
+                              pwm_mode <= PWM_MODE_PULSE_5)
+                          {
+                              volatile u16 dest_cnt = 0;
+                              if (pwm_mode == PWM_MODE_PULSE_1)
+                              {
+                                  // PWM_MODE_PULSE_1 1Hz,500ms亮，500ms灭
+                                  dest_cnt = 5000;
+              
+                                  // // PWM_MODE_PULSE_1 0.5Hz,1000ms亮，1000ms灭
+                                  // dest_cnt = 10000;
+              
+                                  // // PWM_MODE_PULSE_1 0.33Hz,1500ms亮，1500ms灭
+                                  // dest_cnt = 15000;
+                              }
+                              else if (pwm_mode == PWM_MODE_PULSE_2)
+                              {
+                                  // PWM_MODE_PULSE_2 3Hz,166.6ms亮（单片机只能取整），166.6ms灭
+                                  dest_cnt = 1666;
+                              }
+                              else if (pwm_mode == PWM_MODE_PULSE_3)
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 6   
 
- 288   4                      else if (pwm_mode == PWM_MODE_PULSE_3)
- 289   4                      {
- 290   5                          // PWM_MODE_PULSE_3 6Hz,83.3ms亮，83.3ms灭
- 291   5                          dest_cnt = 833;
- 292   5                      }
- 293   4                      else if (pwm_mode == PWM_MODE_PULSE_4)
- 294   4                      {
- 295   5                          // PWM_MODE_PULSE_4 10Hz,50ms亮，50ms灭
- 296   5                          dest_cnt = 500;
- 297   5                      }
- 298   4                      else if (pwm_mode == PWM_MODE_PULSE_5)
- 299   4                      {
- 300   5                          // PWM_MODE_PULSE_5 15Hz,33.3ms亮（单片机只能取整），33.3ms灭
- 301   5                          dest_cnt = 333;
- 302   5                      }
- 303   4      
- 304   4                      pwm_mode_pulse_cnt++;
- 305   4                      if (pwm_mode_pulse_cnt >= dest_cnt)
- 306   4                      {
- 307   5                          pwm_mode_pulse_cnt = 0;
- 308   5                          pwm_mode_pulse_dir = !pwm_mode_pulse_dir;
- 309   5                      }
- 310   4      
- 311   4                      if (pwm_mode_pulse_dir == 0)
- 312   4                      {
- 313   5                          if (!get_pwm_channel_0_status())
- 314   5                          {
- 315   6                              pwm_channel_0_enable();
- 316   6                          }
- 317   5      
- 318   5                          if (!get_pwm_channel_1_status())
- 319   5                          {
- 320   6                              pwm_channel_1_enable();
- 321   6                          }
- 322   5                      }
- 323   4                      else
- 324   4                      {
- 325   5                          if (get_pwm_channel_0_status())
- 326   5                          {
- 327   6                              pwm_channel_0_disable();
- 328   6                          }
- 329   5      
- 330   5                          if (get_pwm_channel_1_status())
- 331   5                          {
- 332   6                              pwm_channel_1_disable();
- 333   6                          }
- 334   5                      }
- 335   4                  }
- 336   3                  else
- 337   3                  {
- 338   4                      // 如果不在脉冲模式
- 339   4                      pwm_mode_pulse_cnt = 0;
- 340   4                      pwm_mode_pulse_dir = 0;
- 341   4      
- 342   4                      /*
- 343   4                          目前只有脉冲模式（pwm_mode == PWM_MODE_PULSE）下
- 344   4                          会把pwm关闭，如果退出了脉冲模式，要重新打开pwm
- 345   4                      */
- 346   4      
- 347   4                      if (!get_pwm_channel_0_status())
- 348   4                      {
- 349   5                          pwm_channel_0_enable();
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/05/2026 08:37:36 PAGE 7   
+                              {
+                                  // PWM_MODE_PULSE_3 6Hz,83.3ms亮，83.3ms灭
+                                  dest_cnt = 833;
+                              }
+                              else if (pwm_mode == PWM_MODE_PULSE_4)
+                              {
+                                  // PWM_MODE_PULSE_4 10Hz,50ms亮，50ms灭
+                                  dest_cnt = 500;
+                              }
+                              else if (pwm_mode == PWM_MODE_PULSE_5)
+                              {
+                                  // PWM_MODE_PULSE_5 15Hz,33.3ms亮（单片机只能取整），33.3ms灭
+                                  dest_cnt = 333;
+                              }
+              
+                              pwm_mode_pulse_cnt++;
+                              if (pwm_mode_pulse_cnt >= dest_cnt)
+                              {
+                                  pwm_mode_pulse_cnt = 0;
+                                  pwm_mode_pulse_dir = !pwm_mode_pulse_dir;
+                              }
+              
+                              if (pwm_mode_pulse_dir == 0)
+                              {
+                                  if (!get_pwm_channel_0_status())
+                                  {
+                                      pwm_channel_0_enable();
+                                  }
+              
+                                  if (!get_pwm_channel_1_status())
+                                  {
+                                      pwm_channel_1_enable();
+                                  }
+                              }
+                              else
+                              {
+                                  if (get_pwm_channel_0_status())
+                                  {
+                                      pwm_channel_0_disable();
+                                  }
+              
+                                  if (get_pwm_channel_1_status())
+                                  {
+                                      pwm_channel_1_disable();
+                                  }
+                              }
+                          }
+                          else
+                          {
+                              // 如果不在脉冲模式
+                              pwm_mode_pulse_cnt = 0;
+                              pwm_mode_pulse_dir = 0;
+              
+                              /*
+                                  目前只有脉冲模式（pwm_mode == PWM_MODE_PULSE）下
+                                  会把pwm关闭，如果退出了脉冲模式，要重新打开pwm
+                              */
+              
+                              if (!get_pwm_channel_0_status())
+                              {
+                                  pwm_channel_0_enable();
+                              }
+C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 7   
 
- 350   5                      }
- 351   4      
- 352   4                      if (!get_pwm_channel_1_status())
- 353   4                      {
- 354   5                          pwm_channel_1_enable();
- 355   5                      }
- 356   4                  }
- 357   3              }
- 358   2      #endif
- 359   2          }
- 360   1      
- 361   1          // 退出中断设置IP，不可删除
- 362   1          __IRQnIPnPop(TMR2_IRQn);
- 363   1      }
+              
+                              if (!get_pwm_channel_1_status())
+                              {
+                                  pwm_channel_1_enable();
+                              }
+                          }
+                      }
+              #endif
+ 358   2          }
+ 359   1      
+ 360   1          // 退出中断设置IP，不可删除
+ 361   1          __IRQnIPnPop(TMR2_IRQn);
+ 362   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    861    ----
+   CODE SIZE        =    631    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     15       2
+   XDATA SIZE       =     15    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

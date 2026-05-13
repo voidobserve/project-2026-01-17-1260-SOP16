@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 1   
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE PWM
@@ -35,338 +35,338 @@ line level    source
   18          
   19          // 记录pwm的模式
   20          volatile u8 pwm_mode = 0;
-  21          
-  22          #define STMR0_PEROID_VAL (SYSCLK / 8000 - 1)
-  23          #define STMR1_PEROID_VAL (SYSCLK / 8000 - 1)
-  24          void pwm_init(void)
-  25          {
-  26   1          STMR_CNTCLR |= STMR_0_CNT_CLR(0x1); // 清空计数值
-  27   1      
-  28   1          STMR0_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
-  29   1          STMR0_PRH = STMR_PRD_VAL_H((STMR0_PEROID_VAL >> 8) & 0xFF); // 周期值
-  30   1          STMR0_PRL = STMR_PRD_VAL_L((STMR0_PEROID_VAL >> 0) & 0xFF);
-  31   1          STMR0_CMPAH = STMR_CMPA_VAL_H(((0) >> 8) & 0xFF); // 比较值
-  32   1          STMR0_CMPAL = STMR_CMPA_VAL_L(((0) >> 0) & 0xFF); // 比较值
-  33   1          STMR_PWMVALA |= STMR_0_PWMVALA(0x1);
-  34   1      
-  35   1          STMR_CNTMD |= STMR_0_CNT_MODE(0x1); // 连续计数模式
-  36   1          STMR_LOADEN |= STMR_0_LOAD_EN(0x1); // 自动装载使能
-  37   1          STMR_CNTCLR |= STMR_0_CNT_CLR(0x1); //
-  38   1          STMR_CNTEN |= STMR_0_CNT_EN(0x1);   // 使能
-  39   1          STMR_PWMEN |= STMR_0_PWM_EN(0x1);   // PWM输出使能
-  40   1      
-  41   1          P1_MD1 &= ~GPIO_P16_MODE_SEL(0x03); // P16 14脚
-  42   1          P1_MD1 |= GPIO_P16_MODE_SEL(0x01);
-  43   1          FOUT_S16 = GPIO_FOUT_STMR0_PWMOUT; // stmr0_pwmout
-  44   1      
-  45   1          // P15 15脚 作为第2路PWM输出
-  46   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1);                         // 清空计数值
-  47   1          STMR1_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 2   
+  21          volatile u8 pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5; // pwm的亮度等级
+  22          
+  23          #define STMR0_PEROID_VAL (SYSCLK / 8000 - 1)
+  24          #define STMR1_PEROID_VAL (SYSCLK / 8000 - 1)
+  25          void pwm_init(void)
+  26          {
+  27   1          STMR_CNTCLR |= STMR_0_CNT_CLR(0x1); // 清空计数值
+  28   1      
+  29   1          STMR0_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
+  30   1          STMR0_PRH = STMR_PRD_VAL_H((STMR0_PEROID_VAL >> 8) & 0xFF); // 周期值
+  31   1          STMR0_PRL = STMR_PRD_VAL_L((STMR0_PEROID_VAL >> 0) & 0xFF);
+  32   1          STMR0_CMPAH = STMR_CMPA_VAL_H(((0) >> 8) & 0xFF); // 比较值
+  33   1          STMR0_CMPAL = STMR_CMPA_VAL_L(((0) >> 0) & 0xFF); // 比较值
+  34   1          STMR_PWMVALA |= STMR_0_PWMVALA(0x1);
+  35   1      
+  36   1          STMR_CNTMD |= STMR_0_CNT_MODE(0x1); // 连续计数模式
+  37   1          STMR_LOADEN |= STMR_0_LOAD_EN(0x1); // 自动装载使能
+  38   1          STMR_CNTCLR |= STMR_0_CNT_CLR(0x1); //
+  39   1          STMR_CNTEN |= STMR_0_CNT_EN(0x1);   // 使能
+  40   1          STMR_PWMEN |= STMR_0_PWM_EN(0x1);   // PWM输出使能
+  41   1      
+  42   1          P1_MD1 &= ~GPIO_P16_MODE_SEL(0x03); // P16 14脚
+  43   1          P1_MD1 |= GPIO_P16_MODE_SEL(0x01);
+  44   1          FOUT_S16 = GPIO_FOUT_STMR0_PWMOUT; // stmr0_pwmout
+  45   1      
+  46   1          // P15 15脚 作为第2路PWM输出
+  47   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1);                         // 清空计数值
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 2   
 
-  48   1          STMR1_PRH = STMR_PRD_VAL_H((STMR1_PEROID_VAL >> 8) & 0xFF); // 周期值
-  49   1          STMR1_PRL = STMR_PRD_VAL_L((STMR1_PEROID_VAL >> 0) & 0xFF);
-  50   1          STMR1_CMPAH = STMR_CMPA_VAL_H(((0) >> 8) & 0xFF); // 比较值 (清空比较值)
-  51   1          STMR1_CMPAL = STMR_CMPA_VAL_L(((0) >> 0) & 0xFF); // 比较值
-  52   1          STMR_PWMVALA |= STMR_1_PWMVALA(0x1);              // STMR1 PWM输出值 ( 0x1:计数CNT大于等于比
+  48   1          STMR1_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
+  49   1          STMR1_PRH = STMR_PRD_VAL_H((STMR1_PEROID_VAL >> 8) & 0xFF); // 周期值
+  50   1          STMR1_PRL = STMR_PRD_VAL_L((STMR1_PEROID_VAL >> 0) & 0xFF);
+  51   1          STMR1_CMPAH = STMR_CMPA_VAL_H(((0) >> 8) & 0xFF); // 比较值 (清空比较值)
+  52   1          STMR1_CMPAL = STMR_CMPA_VAL_L(((0) >> 0) & 0xFF); // 比较值
+  53   1          STMR_PWMVALA |= STMR_1_PWMVALA(0x1);              // STMR1 PWM输出值 ( 0x1:计数CNT大于等于比
              -较值A,PWM输出1,小于输出0 )
-  53   1      
-  54   1          STMR_CNTMD |= STMR_1_CNT_MODE(0x1); // 连续计数模式
-  55   1          STMR_LOADEN |= STMR_1_LOAD_EN(0x1); // 自动装载使能
-  56   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1); //
-  57   1          STMR_CNTEN |= STMR_1_CNT_EN(0x1);   // 使能
-  58   1          STMR_PWMEN |= STMR_1_PWM_EN(0x1);   // PWM输出使能
-  59   1      
-  60   1      #if USE_MY_TEST_PIN
+  54   1      
+  55   1          STMR_CNTMD |= STMR_1_CNT_MODE(0x1); // 连续计数模式
+  56   1          STMR_LOADEN |= STMR_1_LOAD_EN(0x1); // 自动装载使能
+  57   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1); //
+  58   1          STMR_CNTEN |= STMR_1_CNT_EN(0x1);   // 使能
+  59   1          STMR_PWMEN |= STMR_1_PWM_EN(0x1);   // PWM输出使能
+  60   1      
+  61   1      #if USE_MY_TEST_PIN
                   P0_MD1 &= ~GPIO_P05_MODE_SEL(0x03); // 用开发板上的 p05
                   P0_MD1 |= GPIO_P05_MODE_SEL(0x01);  // 输出模式
                   FOUT_S05 = GPIO_FOUT_STMR1_PWMOUT;  // 选择stmr1_pwmout
               #else
-  65   1          P1_MD1 &= ~GPIO_P15_MODE_SEL(0x03); // P15 15脚
-  66   1          P1_MD1 |= GPIO_P15_MODE_SEL(0x01);  // 输出模式
-  67   1          FOUT_S15 = GPIO_FOUT_STMR1_PWMOUT;  // 选择stmr1_pwmout
-  68   1      #endif //  #if USE_MY_TEST_PIN
-  69   1      }
-  70          
-  71          // 设置通道0的占空比
-  72          void set_pwm_channel_0_duty(u16 channel_duty)
-  73          {
-  74   1          STMR0_CMPAH = STMR_CMPA_VAL_H(((channel_duty) >> 8) & 0xFF); // 比较值
-  75   1          STMR0_CMPAL = STMR_CMPA_VAL_L(((channel_duty) >> 0) & 0xFF); // 比较值
-  76   1          STMR_LOADEN |= STMR_0_LOAD_EN(0x1);                          // 自动装载使能
-  77   1      }
-  78          
-  79          // 设置通道1的占空比
-  80          void set_pwm_channel_1_duty(u16 channel_duty)
-  81          {
-  82   1          STMR1_CMPAH = STMR_CMPA_VAL_H(((channel_duty) >> 8) & 0xFF); // 比较值
-  83   1          STMR1_CMPAL = STMR_CMPA_VAL_L(((channel_duty) >> 0) & 0xFF); // 比较值
-  84   1          STMR_LOADEN |= STMR_1_LOAD_EN(0x1);                          // 自动装载使能
-  85   1      }
-  86          
-  87          // 根据9脚的电压来设定16脚的电平（过压保护）
-  88          // void according_pin9_to_adjust_pin16(void)
-  89          // {
-  90          //     // 当9脚电压高于 3.6 V时，16脚输出1KHz 高电平,用于控制Q2的导通（用于关机�
+  66   1          P1_MD1 &= ~GPIO_P15_MODE_SEL(0x03); // P15 15脚
+  67   1          P1_MD1 |= GPIO_P15_MODE_SEL(0x01);  // 输出模式
+  68   1          FOUT_S15 = GPIO_FOUT_STMR1_PWMOUT;  // 选择stmr1_pwmout
+  69   1      #endif //  #if USE_MY_TEST_PIN
+  70   1      }
+  71          
+  72          // 设置通道0的占空比
+  73          void set_pwm_channel_0_duty(u16 channel_duty)
+  74          {
+  75   1          STMR0_CMPAH = STMR_CMPA_VAL_H(((channel_duty) >> 8) & 0xFF); // 比较值
+  76   1          STMR0_CMPAL = STMR_CMPA_VAL_L(((channel_duty) >> 0) & 0xFF); // 比较值
+  77   1          STMR_LOADEN |= STMR_0_LOAD_EN(0x1);                          // 自动装载使能
+  78   1      }
+  79          
+  80          // 设置通道1的占空比
+  81          void set_pwm_channel_1_duty(u16 channel_duty)
+  82          {
+  83   1          STMR1_CMPAH = STMR_CMPA_VAL_H(((channel_duty) >> 8) & 0xFF); // 比较值
+  84   1          STMR1_CMPAL = STMR_CMPA_VAL_L(((channel_duty) >> 0) & 0xFF); // 比较值
+  85   1          STMR_LOADEN |= STMR_1_LOAD_EN(0x1);                          // 自动装载使能
+  86   1      }
+  87          
+  88          // 根据9脚的电压来设定16脚的电平（过压保护）
+  89          // void according_pin9_to_adjust_pin16(void)
+  90          // {
+  91          //     // 当9脚电压高于 3.6 V时，16脚输出1KHz 高电平,用于控制Q2的导通（用于关机�
              -��。
-  91          //     // if (adc_val_pin_9 >= 3511)
-  92          //     // {
-  93          //     //     P14 = 1;
-  94          //     // }
-  95          //     // else if (adc_val_pin_9 <= 3511 - 40)
-  96          //     {
-  97          //         P14 = 0;
-  98          //     }
-  99          // }
- 100          
- 101          /**
- 102           * @brief 获取第一路PWM的运行状态
- 103           *
- 104           * @return u8 0--pwm关闭，1--pwm开启
- 105           */
- 106          u8 get_pwm_channel_0_status(void)
- 107          {
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 3   
+  92          //     // if (adc_val_pin_9 >= 3511)
+  93          //     // {
+  94          //     //     P14 = 1;
+  95          //     // }
+  96          //     // else if (adc_val_pin_9 <= 3511 - 40)
+  97          //     {
+  98          //         P14 = 0;
+  99          //     }
+ 100          // }
+ 101          
+ 102          /**
+ 103           * @brief 获取第一路PWM的运行状态
+ 104           *
+ 105           * @return u8 0--pwm关闭，1--pwm开启
+ 106           */
+ 107          u8 get_pwm_channel_0_status(void)
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 3   
 
- 108   1          if (STMR_PWMEN & 0x01) // 如果pwm0使能
- 109   1          {
- 110   2              return 1;
- 111   2          }
- 112   1          else // 如果pwm0未使能
- 113   1          {
- 114   2              return 0;
- 115   2          }
- 116   1      }
- 117          
- 118          /**
- 119           * @brief 获取第二路PWM的运行状态
- 120           *
- 121           * @return u8 0--pwm关闭，1--pwm开启
- 122           */
- 123          u8 get_pwm_channel_1_status(void)
- 124          {
- 125   1          if (STMR_PWMEN & (0x01 << 1)) // 如果pwm1使能
- 126   1          {
- 127   2              return 1;
- 128   2          }
- 129   1          else // 如果 pwm 未使能
- 130   1          {
- 131   2              return 0;
- 132   2          }
- 133   1      }
- 134          
- 135          void pwm_channel_0_enable(void)
- 136          {
- 137   1          // 要先使能PWM输出，在配置IO，否则在逻辑分析仪上看会有个缺口
- 138   1          STMR_PWMEN |= 0x01;                // 使能PWM0的输出
- 139   1          FOUT_S16 = GPIO_FOUT_STMR0_PWMOUT; // stmr0_pwmout
- 140   1      }
- 141          
- 142          void pwm_channel_0_disable(void)
- 143          {
- 144   1          FOUT_S16 = GPIO_FOUT_AF_FUNC; //
- 145   1          P16 = 1;                      // 高电平为关灯
- 146   1      
- 147   1          // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
- 148   1          STMR_PWMEN &= ~0x01; // 不使能PWM0的输出
- 149   1      }
- 150          
- 151          void pwm_channel_1_enable(void)
- 152          {
- 153   1          // 要先使能PWM输出，在配置IO，否则在逻辑分析仪上看会有个缺口
- 154   1          STMR_PWMEN |= 0x01 << 1; // 使能PWM1的输出
- 155   1      
- 156   1      #if USE_MY_TEST_PIN
+ 108          {
+ 109   1          if (STMR_PWMEN & 0x01) // 如果pwm0使能
+ 110   1          {
+ 111   2              return 1;
+ 112   2          }
+ 113   1          else // 如果pwm0未使能
+ 114   1          {
+ 115   2              return 0;
+ 116   2          }
+ 117   1      }
+ 118          
+ 119          /**
+ 120           * @brief 获取第二路PWM的运行状态
+ 121           *
+ 122           * @return u8 0--pwm关闭，1--pwm开启
+ 123           */
+ 124          u8 get_pwm_channel_1_status(void)
+ 125          {
+ 126   1          if (STMR_PWMEN & (0x01 << 1)) // 如果pwm1使能
+ 127   1          {
+ 128   2              return 1;
+ 129   2          }
+ 130   1          else // 如果 pwm 未使能
+ 131   1          {
+ 132   2              return 0;
+ 133   2          }
+ 134   1      }
+ 135          
+ 136          void pwm_channel_0_enable(void)
+ 137          {
+ 138   1          // 要先使能PWM输出，在配置IO，否则在逻辑分析仪上看会有个缺口
+ 139   1          STMR_PWMEN |= 0x01;                // 使能PWM0的输出
+ 140   1          FOUT_S16 = GPIO_FOUT_STMR0_PWMOUT; // stmr0_pwmout
+ 141   1      }
+ 142          
+ 143          void pwm_channel_0_disable(void)
+ 144          {
+ 145   1          FOUT_S16 = GPIO_FOUT_AF_FUNC; //
+ 146   1          P16 = 1;                      // 高电平为关灯
+ 147   1      
+ 148   1          // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
+ 149   1          STMR_PWMEN &= ~0x01; // 不使能PWM0的输出
+ 150   1      }
+ 151          
+ 152          void pwm_channel_1_enable(void)
+ 153          {
+ 154   1          // 要先使能PWM输出，在配置IO，否则在逻辑分析仪上看会有个缺口
+ 155   1          STMR_PWMEN |= 0x01 << 1; // 使能PWM1的输出
+ 156   1      
+ 157   1      #if USE_MY_TEST_PIN
                   FOUT_S05 = GPIO_FOUT_STMR1_PWMOUT; // stmr1_pwmout
               #else
- 159   1          FOUT_S15 = GPIO_FOUT_STMR1_PWMOUT; // stmr1_pwmout
- 160   1      #endif
- 161   1      }
- 162          
- 163          void pwm_channel_1_disable(void)
- 164          {
- 165   1      #if USE_MY_TEST_PIN
+ 160   1          FOUT_S15 = GPIO_FOUT_STMR1_PWMOUT; // stmr1_pwmout
+ 161   1      #endif
+ 162   1      }
+ 163          
+ 164          void pwm_channel_1_disable(void)
+ 165          {
+ 166   1      #if USE_MY_TEST_PIN
                   FOUT_S05 = GPIO_FOUT_AF_FUNC; //;
                   P05 = 1;                      // 高电平为关灯
               #else
- 169   1          FOUT_S15 = GPIO_FOUT_AF_FUNC; //
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 4   
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 4   
 
- 170   1          P15 = 1;                      // 高电平为关灯
- 171   1      #endif
- 172   1      
- 173   1          // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
- 174   1          STMR_PWMEN &= ~(0x01 << 1); // 不使能PWM1的输出
- 175   1      }
- 176          
- 177          /**
- 178           * @brief 根据传参，加上线控调光的限制、温度过热限制、风扇工作异常限制，
- 179           *          计算最终的目标占空比（对所有pwm通道都有效）
- 180           *
- 181           * @attention 如果反复调用 adjust_pwm_channel_x_duty = get_pwm_channel_x_adjust_duty(adjust_pwm_chan
+ 170   1          FOUT_S15 = GPIO_FOUT_AF_FUNC; //
+ 171   1          P15 = 1;                      // 高电平为关灯
+ 172   1      #endif
+ 173   1      
+ 174   1          // 直接输出0%的占空比，可能会有些跳动，需要将对应的引脚配置回输出模式
+ 175   1          STMR_PWMEN &= ~(0x01 << 1); // 不使能PWM1的输出
+ 176   1      }
+ 177          
+ 178          /**
+ 179           * @brief 根据传参，加上线控调光的限制、温度过热限制、风扇工作异常限制，
+ 180           *          计算最终的目标占空比（对所有pwm通道都有效）
+ 181           *
+ 182           * @attention 如果反复调用 adjust_pwm_channel_x_duty = get_pwm_channel_x_adjust_duty(adjust_pwm_chan
              -nel_x_duty);
- 182           *              会导致 adjust_pwm_channel_x_duty 越来越小
- 183           *
- 184           * @param pwm_adjust_duty 传入的目标占空比（非最终的目标占空比） expect_adjust_pwm_chan
+ 183           *              会导致 adjust_pwm_channel_x_duty 越来越小
+ 184           *
+ 185           * @param pwm_adjust_duty 传入的目标占空比（非最终的目标占空比） expect_adjust_pwm_chan
              -nel_x_duty
- 185           *
- 186           * @return u16 最终的目标占空比
- 187           */
- 188          u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
- 189          {
- 190   1          // u16 tmp_pwm_duty = pwm_adjust_duty;
- 191   1      
- 192   1      #if 1
- 193   1          // 存放函数的返回值 -- 最终的目标占空比
- 194   1          u16 tmp_pwm_duty = pwm_adjust_duty;
- 195   1          u16 limited_pwm_duty_val; // 由后续的计算来赋值
- 196   1      
- 197   1          // 温度、发动机异常功率不稳定、风扇异常，都是强制限定占空比
- 198   1      
- 199   1          // 判断占空比会不会 大于 温度过热之后限制的占空比
- 200   1          if (limited_pwm_duty_due_to_temp != MAX_PWM_DUTY)
- 201   1          {
- 202   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_temp / MAX_PWM_DUTY);
- 203   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
- 204   2              {
- 205   3                  tmp_pwm_duty = limited_pwm_duty_val;
- 206   3              }
- 207   2          }
- 208   1      
- 209   1          if (limited_pwm_duty_due_to_unstable_engine != MAX_PWM_DUTY)
- 210   1          {
- 211   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_unstable_engine / MAX_
+ 186           *
+ 187           * @return u16 最终的目标占空比
+ 188           */
+ 189          u16 get_pwm_channel_x_adjust_duty(const u16 pwm_adjust_duty)
+ 190          {
+ 191   1          // u16 tmp_pwm_duty = pwm_adjust_duty;
+ 192   1      
+ 193   1      #if 1
+ 194   1          // 存放函数的返回值 -- 最终的目标占空比
+ 195   1          u16 tmp_pwm_duty = pwm_adjust_duty;
+ 196   1          u16 limited_pwm_duty_val; // 由后续的计算来赋值
+ 197   1      
+ 198   1          // 温度、发动机异常功率不稳定、风扇异常，都是强制限定占空比
+ 199   1      
+ 200   1          // 判断占空比会不会 大于 温度过热之后限制的占空比
+ 201   1          if (limited_pwm_duty_due_to_temp != MAX_PWM_DUTY)
+ 202   1          {
+ 203   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_temp / MAX_PWM_DUTY);
+ 204   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
+ 205   2              {
+ 206   3                  tmp_pwm_duty = limited_pwm_duty_val;
+ 207   3              }
+ 208   2          }
+ 209   1      
+ 210   1          if (limited_pwm_duty_due_to_unstable_engine != MAX_PWM_DUTY)
+ 211   1          {
+ 212   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_unstable_engine / MAX_
              -PWM_DUTY);
- 212   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
- 213   2              {
- 214   3                  tmp_pwm_duty = limited_pwm_duty_val;
- 215   3              }
- 216   2          }
- 217   1      
- 218   1          if (limited_pwm_duty_due_to_fan_err != MAX_PWM_DUTY)
- 219   1          {
- 220   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_fan_err / MAX_PWM_DUTY
+ 213   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
+ 214   2              {
+ 215   3                  tmp_pwm_duty = limited_pwm_duty_val;
+ 216   3              }
+ 217   2          }
+ 218   1      
+ 219   1          if (limited_pwm_duty_due_to_fan_err != MAX_PWM_DUTY)
+ 220   1          {
+ 221   2              limited_pwm_duty_val = (u16)((u32)pwm_adjust_duty * limited_pwm_duty_due_to_fan_err / MAX_PWM_DUTY
              -);
- 221   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
- 222   2              {
- 223   3                  tmp_pwm_duty = limited_pwm_duty_val;
- 224   3              }
- 225   2          }
- 226   1      #endif
- 227   1      
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 5   
+ 222   2              if (tmp_pwm_duty >= limited_pwm_duty_val)
+ 223   2              {
+ 224   3                  tmp_pwm_duty = limited_pwm_duty_val;
+ 225   3              }
+ 226   2          }
+ 227   1      #endif
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 5   
 
- 228   1          return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
- 229   1      }
- 230          
- 231          // 更新 pwm_channel_0 待调整的占空比
- 232          // void update_pwm_channel_0_adjust_duty(void)
- 233          // {
- 234          //     adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
- 235          // }
- 236          
- 237          // 根据 PWM 模式，执行对应的功能
- 238          void pwm_mode_handle(void)
- 239          {
- 240   1          switch (pwm_mode)
- 241   1          {
- 242   2          case PWM_MODE_COLOR_TEMPERATURE_1:
- 243   2          {
- 244   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(11);
- 245   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(94);
- 246   3          }
- 247   2          break;
- 248   2          // ===========================================================
- 249   2          case PWM_MODE_COLOR_TEMPERATURE_2:
- 250   2          {
- 251   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(26);
- 252   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(83);
- 253   3          }
- 254   2          break;
- 255   2          // ===========================================================
- 256   2          case PWM_MODE_COLOR_TEMPERATURE_3:
- 257   2          {
- 258   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_65_PERCENT;
- 259   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_45_PERCENT;
- 260   3          }
- 261   2          break;
- 262   2          // ===========================================================
- 263   2          case PWM_MODE_COLOR_TEMPERATURE_4:
- 264   2          {
- 265   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_82_PERCENT;
- 266   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_25_PERCENT;
- 267   3          }
- 268   2          break;
- 269   2          // ===========================================================
- 270   2          case PWM_MODE_COLOR_BLUE:
- 271   2          {
- 272   3              // 获取最终的目标占空比
- 273   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_100_PERCENT;
- 274   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_0_PERCENT;
- 275   3          }
- 276   2          break;
- 277   2          // ===========================================================
- 278   2          case PWM_MODE_COLOR_CYAN:
- 279   2          {
- 280   3              // 获取最终的目标占空比
- 281   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_X_PERCENT(42);
- 282   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_X_PERCENT(65);
- 283   3          }
- 284   2          break;
- 285   2          // ===========================================================
- 286   2          case PWM_MODE_COLOR_GREEN:
- 287   2          {
- 288   3              // 获取最终的目标占空比
- 289   3              expect_adjust_pwm_channel_0_duty = PWM_DUTY_0_PERCENT;
-C51 COMPILER V9.60.7.0   PWM                                                               05/05/2026 08:37:35 PAGE 6   
+ 228   1      
+ 229   1          return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
+ 230   1      }
+ 231          
+ 232          // 更新 pwm_channel_0 待调整的占空比
+ 233          // void update_pwm_channel_0_adjust_duty(void)
+ 234          // {
+ 235          //     adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
+ 236          // }
+ 237          
+ 238          // 根据 PWM 模式，执行对应的功能
+ 239          void pwm_mode_handle(void)
+ 240          {
+ 241   1          switch (pwm_mode)
+ 242   1          {
+ 243   2          case PWM_MODE_COLOR_TEMPERATURE_1:
+ 244   2          {
+ 245   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_1;
+ 246   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_1;
+ 247   3          }
+ 248   2          break;
+ 249   2          // ===========================================================
+ 250   2          case PWM_MODE_COLOR_TEMPERATURE_2:
+ 251   2          {
+ 252   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_2;
+ 253   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_2;
+ 254   3          }
+ 255   2          break;
+ 256   2          // ===========================================================
+ 257   2          case PWM_MODE_COLOR_TEMPERATURE_3:
+ 258   2          {
+ 259   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_3;
+ 260   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_3;
+ 261   3          }
+ 262   2          break;
+ 263   2          // ===========================================================
+ 264   2          case PWM_MODE_COLOR_TEMPERATURE_4:
+ 265   2          {
+ 266   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
+ 267   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
+ 268   3          }
+ 269   2          break;
+ 270   2          // ===========================================================
+ 271   2          case PWM_MODE_COLOR_BLUE:
+ 272   2          {
+ 273   3              // 获取最终的目标占空比
+ 274   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_BLUE;
+ 275   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_BLUE;
+ 276   3          }
+ 277   2          break;
+ 278   2          // ===========================================================
+ 279   2          case PWM_MODE_COLOR_CYAN:
+ 280   2          {
+ 281   3              // 获取最终的目标占空比
+ 282   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_CYAN;
+ 283   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_CYAN;
+ 284   3          }
+ 285   2          break;
+ 286   2          // ===========================================================
+ 287   2          case PWM_MODE_COLOR_GREEN:
+ 288   2          {
+ 289   3              // 获取最终的目标占空比
+C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 6   
 
- 290   3              expect_adjust_pwm_channel_1_duty = PWM_DUTY_100_PERCENT;
- 291   3          }
- 292   2          break;
- 293   2              // ===========================================================
- 294   2          case PWM_MODE_PULSE_1:
- 295   2          case PWM_MODE_PULSE_2:
- 296   2          case PWM_MODE_PULSE_3:
- 297   2          case PWM_MODE_PULSE_4:
- 298   2          case PWM_MODE_PULSE_5:
- 299   2          {
- 300   3              // 刚进入脉冲模式，给这些控制变量都清零
- 301   3              pwm_mode_pulse_cnt = 0;
- 302   3              pwm_mode_pulse_dir = 0;
- 303   3          }
- 304   2          break;
- 305   2              // ===========================================================
- 306   2          default:
- 307   2          {
- 308   3              return;
- 309   3          }
- 310   2          break;
- 311   2          }
- 312   1      
- 313   1          // if (expect_adjust_pwm_channel_0_duty == cur_pwm_channel_0_duty &&
- 314   1          //     expect_adjust_pwm_channel_1_duty == cur_pwm_channel_1_duty)
- 315   1          // {
- 316   1          //     P14 = 0; // 测试时使用
- 317   1          // }
- 318   1      
- 319   1          // {
- 320   1          //     static u16 cnt = 0;
- 321   1          //     cnt++;
- 322   1          //     if (cnt >= 10000)
- 323   1          //     {
- 324   1          //         cnt = 0;
- 325   1          //         printf("pwm_mode = %bu\n", pwm_mode);
- 326   1          //         printf("expect_adjust_pwm_channel_0_duty = %u\n", expect_adjust_pwm_channel_0_duty);
- 327   1          //         printf("expect_adjust_pwm_channel_1_duty = %u\n", expect_adjust_pwm_channel_1_duty);
- 328   1          //     }
- 329   1          // }
+ 290   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_GREEN;
+ 291   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_GREEN;
+ 292   3          }
+ 293   2          break;
+ 294   2      
+ 295   2              // ===========================================================
+ 296   2          default:
+ 297   2          {
+ 298   3              return;
+ 299   3          }
+ 300   2          break;
+ 301   2          }
+ 302   1      
+ 303   1          switch (pwm_brightness_lev)
+ 304   1          {
+ 305   2          case PWM_MODE_BRIGHTNESS_LEV_1:
+ 306   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 10 / 100;
+ 307   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 10 / 100;
+ 308   2              break;
+ 309   2      
+ 310   2          case PWM_MODE_BRIGHTNESS_LEV_2:
+ 311   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 25 / 100;
+ 312   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 25 / 100;
+ 313   2              break;
+ 314   2      
+ 315   2          case PWM_MODE_BRIGHTNESS_LEV_3:
+ 316   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 50 / 100;
+ 317   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 50 / 100;
+ 318   2              break;
+ 319   2      
+ 320   2          case PWM_MODE_BRIGHTNESS_LEV_4:
+ 321   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 75 / 100;
+ 322   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 75 / 100;
+ 323   2              break;
+ 324   2      
+ 325   2          case PWM_MODE_BRIGHTNESS_LEV_5:
+ 326   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 100 / 100;
+ 327   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 100 / 100;
+ 328   2              break;
+ 329   2          }
  330   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    639    ----
+   CODE SIZE        =    765    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     19       6
+   XDATA SIZE       =     20       6
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

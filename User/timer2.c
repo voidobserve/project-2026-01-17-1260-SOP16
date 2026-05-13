@@ -259,8 +259,7 @@ void TIMR2_IRQHandler(void) interrupt TMR2_IRQn
         }
 #endif // 调节PWM占空比
 
-// USER_TO_DO 在测试时屏蔽
-#if 1
+#if 0
         {
             // static volatile u16 cnt = 0; // 控制闪烁灯的时间间隔
             // static volatile bit dir = 0; // 控制闪烁灯的闪烁方向

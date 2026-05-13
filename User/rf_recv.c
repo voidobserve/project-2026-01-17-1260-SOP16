@@ -222,7 +222,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R1C1_LONG:
         {
             // printf("r1c1\n");
-            pwm_mode = PWM_MODE_PULSE_1;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_1;
         }
         break;
     // =====================================================
@@ -231,7 +231,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R1C2_LONG:
         {
             // printf("r1c2\n");
-            pwm_mode = PWM_MODE_PULSE_2;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_2;
         }
         break;
     // =====================================================
@@ -240,7 +240,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R2C1_LONG:
         {
             // printf("r2c1\n");
-            pwm_mode = PWM_MODE_PULSE_3;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_3;
         }
         break;
     // =====================================================
@@ -249,7 +249,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R2C2_LONG:
         {
             // printf("r2c2\n");
-            pwm_mode = PWM_MODE_PULSE_4;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_4;
         }
         break;
         // =====================================================
@@ -267,7 +267,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R3C2_LONG:
         {
             // printf("r3c2\n");
-            pwm_mode = PWM_MODE_PULSE_5;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5;
         }
         break;
     // =====================================================

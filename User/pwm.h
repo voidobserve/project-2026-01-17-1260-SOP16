@@ -27,6 +27,31 @@ enum
 // 传参 x 为百分比，范围：0 ~ 100
 #define PWM_DUTY_X_PERCENT(x) ((u16)((u32)MAX_PWM_DUTY * x / 100))
 
+enum
+{
+    //
+    PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_1 = PWM_DUTY_X_PERCENT(11),
+    PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_1 = PWM_DUTY_X_PERCENT(94),
+
+    PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_2 = PWM_DUTY_X_PERCENT(26),
+    PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_2 = PWM_DUTY_X_PERCENT(83),
+
+    PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_3 = PWM_DUTY_X_PERCENT(65),
+    PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_3 = PWM_DUTY_X_PERCENT(45),
+
+    PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_4 =  PWM_DUTY_X_PERCENT(82),
+    PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_4 =  PWM_DUTY_X_PERCENT(25),
+
+    PWM_0_DUTY_VAL_IN_COLOR_BLUE = PWM_DUTY_X_PERCENT(100),
+    PWM_1_DUTY_VAL_IN_COLOR_BLUE = PWM_DUTY_X_PERCENT(0),
+
+    PWM_0_DUTY_VAL_IN_COLOR_CYAN = PWM_DUTY_X_PERCENT(42),
+    PWM_1_DUTY_VAL_IN_COLOR_CYAN = PWM_DUTY_X_PERCENT(65),
+
+    PWM_0_DUTY_VAL_IN_COLOR_GREEN = PWM_DUTY_X_PERCENT(0),
+    PWM_1_DUTY_VAL_IN_COLOR_GREEN = PWM_DUTY_X_PERCENT(100), 
+};
+
 // 定义 pwm 模式
 enum
 {
@@ -39,11 +64,12 @@ enum
     PWM_MODE_COLOR_CYAN,  // 青光
     PWM_MODE_COLOR_GREEN, // 绿光
 
-    PWM_MODE_PULSE_1, // 脉冲模式 1
-    PWM_MODE_PULSE_2, // 脉冲模式 2
-    PWM_MODE_PULSE_3,
-    PWM_MODE_PULSE_4,
-    PWM_MODE_PULSE_5,
+    // 亮度等级
+    PWM_MODE_BRIGHTNESS_LEV_1,
+    PWM_MODE_BRIGHTNESS_LEV_2,
+    PWM_MODE_BRIGHTNESS_LEV_3,
+    PWM_MODE_BRIGHTNESS_LEV_4,
+    PWM_MODE_BRIGHTNESS_LEV_5,
 };
 
 // 由温度限制的PWM占空比 （对所有PWM通道都生效）
@@ -62,6 +88,7 @@ extern volatile u16 expect_adjust_pwm_channel_1_duty; // 存放期望调节到�
 extern volatile u16 adjust_pwm_channel_1_duty;        // pwm_channle_1 要调整到的占空比
 
 extern volatile u8 pwm_mode;
+extern volatile u8 pwm_brightness_lev;
 
 void pwm_init(void);
 
