@@ -258,7 +258,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R3C1_LONG:
         {
             // printf("r3c1\n");
-            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5;
         }
         break;
     // =====================================================
@@ -267,7 +267,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R3C2_LONG:
         {
             // printf("r3c2\n");
-            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5;
+            pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_6;
         }
         break;
     // =====================================================
@@ -276,7 +276,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R4C1_LONG:
         {
             // printf("r4c1\n");
-            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
         }
         break;
         // =====================================================
@@ -294,7 +294,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R5C1_LONG:
         {
             // printf("r5c1\n");
-            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
         }
         break;
         // =====================================================
@@ -312,7 +312,7 @@ void rf_key_handle(void)
         // case RF_433_KEY_EVENT_R6C1_LONG:
         {
             // printf("r6c1\n");
-            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
+            pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
         }
         break;
         // =====================================================

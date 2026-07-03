@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 1   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE RF_RECV
@@ -62,7 +62,7 @@ line level    source
   50              0,                   // .filter_value
   51              0,                   // .filter_cnt
   52              RF_KEY_FILTER_TIMES, // .filter_time 按键消抖次数，与扫描频率有关（rf按键不消抖）
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 2   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 2   
 
   53          
   54              RF_LONG_PRESS_TIME_THRESHOLD_MS / RF_KEY_SCAN_CIRCLE_TIMES,                                     // .lo
@@ -126,7 +126,7 @@ line level    source
  106   3                  {
  107   4                      // 接收到了数据，但是地址不匹配，但是之前有接收到正确的数据
  108   4                      cur_key = last_key;
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 3   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 3   
 
  109   4                      // printf("rf addr err , last_key valid\n");
  110   4                  }
@@ -190,7 +190,7 @@ line level    source
  167   1      #if 0
                   if (key_event == KEY_EVENT_CLICK)
                   {
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 4   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 4   
 
                       key_event_index = 1;
                   }
@@ -254,7 +254,7 @@ line level    source
  228   2          // =====================================================
  229   2          case RF_433_KEY_EVENT_R1C2_PRESS:
  230   2              // case RF_433_KEY_EVENT_R1C2_CLICK:
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 5   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 5   
 
  231   2              // case RF_433_KEY_EVENT_R1C2_LONG:
  232   2              {
@@ -286,7 +286,7 @@ line level    source
  258   2              // case RF_433_KEY_EVENT_R3C1_LONG:
  259   2              {
  260   3                  // printf("r3c1\n");
- 261   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
+ 261   3                  pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5;
  262   3              }
  263   2              break;
  264   2          // =====================================================
@@ -295,7 +295,7 @@ line level    source
  267   2              // case RF_433_KEY_EVENT_R3C2_LONG:
  268   2              {
  269   3                  // printf("r3c2\n");
- 270   3                  pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5;
+ 270   3                  pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_6;
  271   3              }
  272   2              break;
  273   2          // =====================================================
@@ -304,7 +304,7 @@ line level    source
  276   2              // case RF_433_KEY_EVENT_R4C1_LONG:
  277   2              {
  278   3                  // printf("r4c1\n");
- 279   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
+ 279   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_1;
  280   3              }
  281   2              break;
  282   2              // =====================================================
@@ -318,13 +318,13 @@ line level    source
  290   2              break;
  291   2              // =====================================================
  292   2          case RF_433_KEY_EVENT_R5C1_PRESS:
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 6   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 6   
 
  293   2              // case RF_433_KEY_EVENT_R5C1_CLICK:
  294   2              // case RF_433_KEY_EVENT_R5C1_LONG:
  295   2              {
  296   3                  // printf("r5c1\n");
- 297   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
+ 297   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_2;
  298   3              }
  299   2              break;
  300   2              // =====================================================
@@ -342,7 +342,7 @@ line level    source
  312   2              // case RF_433_KEY_EVENT_R6C1_LONG:
  313   2              {
  314   3                  // printf("r6c1\n");
- 315   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_4;
+ 315   3                  pwm_mode = PWM_MODE_COLOR_TEMPERATURE_3;
  316   3              }
  317   2              break;
  318   2              // =====================================================
@@ -382,7 +382,7 @@ line level    source
               
                   P0_PU |= GPIO_P01_PULL_UP(0x01);      // 上拉
                   P0_MD0 &= ~(GPIO_P01_MODE_SEL(0x03)); // 输入模式
-C51 COMPILER V9.60.7.0   RF_RECV                                                           05/12/2026 18:55:46 PAGE 7   
+C51 COMPILER V9.60.7.0   RF_RECV                                                           07/03/2026 16:22:28 PAGE 7   
 
               
               #else // 实际用到的、非测试时使用的rf信号检测引脚：

@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 1   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIMER2
@@ -62,7 +62,7 @@ line level    source
   46   1          // 周期中断
   47   1          if (TMR2_CONH & TMR_PRD_PND(0x1)) // 约100us触发一次中断
   48   1          {
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 2   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 2   
 
   49   2              TMR2_CONH |= TMR_PRD_PND(0x1); // 清除pending
   50   2      
@@ -126,7 +126,7 @@ line level    source
  105   5                          if (low_level_cnt >= 30)
  106   5                          {
  107   6                              if (high_level_cnt >= 6 && high_level_cnt < 20)
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 3   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 3   
 
  108   6                              {
  109   7                                  __rf_data |= 0x01;
@@ -190,7 +190,7 @@ line level    source
  167   5                          {
  168   6                              // 如果接收成了24位的数据
  169   6                              __flag_is_recved_data = 1; // 接收完成标志位置一
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 4   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 4   
 
  170   6                          }
  171   5      
@@ -254,7 +254,7 @@ line level    source
  225   5                          cur_pwm_channel_1_duty--;
  226   5                      }
  227   4      
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 5   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 5   
 
  228   4                      set_pwm_channel_0_duty(cur_pwm_channel_0_duty);
  229   4                      set_pwm_channel_1_duty(cur_pwm_channel_1_duty);
@@ -318,7 +318,7 @@ line level    source
                                   dest_cnt = 1666;
                               }
                               else if (pwm_mode == PWM_MODE_PULSE_3)
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 6   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 6   
 
                               {
                                   // PWM_MODE_PULSE_3 6Hz,83.3ms亮，83.3ms灭
@@ -382,7 +382,7 @@ line level    source
                               {
                                   pwm_channel_0_enable();
                               }
-C51 COMPILER V9.60.7.0   TIMER2                                                            05/12/2026 18:55:45 PAGE 7   
+C51 COMPILER V9.60.7.0   TIMER2                                                            07/03/2026 16:22:28 PAGE 7   
 
               
                               if (!get_pwm_channel_1_status())

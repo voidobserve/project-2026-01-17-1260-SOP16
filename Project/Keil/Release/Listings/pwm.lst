@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 1   
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE PWM
@@ -62,7 +62,7 @@ line level    source
   45   1      
   46   1          // P15 15脚 作为第2路PWM输出
   47   1          STMR_CNTCLR |= STMR_1_CNT_CLR(0x1);                         // 清空计数值
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 2   
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 2   
 
   48   1          STMR1_PSC = STMR_PRESCALE_VAL(0x07);                        // 预分频
   49   1          STMR1_PRH = STMR_PRD_VAL_H((STMR1_PEROID_VAL >> 8) & 0xFF); // 周期值
@@ -126,7 +126,7 @@ line level    source
  105           * @return u8 0--pwm关闭，1--pwm开启
  106           */
  107          u8 get_pwm_channel_0_status(void)
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 3   
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 3   
 
  108          {
  109   1          if (STMR_PWMEN & 0x01) // 如果pwm0使能
@@ -190,7 +190,7 @@ line level    source
                   FOUT_S05 = GPIO_FOUT_AF_FUNC; //;
                   P05 = 1;                      // 高电平为关灯
               #else
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 4   
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 4   
 
  170   1          FOUT_S15 = GPIO_FOUT_AF_FUNC; //
  171   1          P15 = 1;                      // 高电平为关灯
@@ -254,7 +254,7 @@ line level    source
  225   3              }
  226   2          }
  227   1      #endif
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 5   
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 5   
 
  228   1      
  229   1          return tmp_pwm_duty; // 返回经过线控调光限制之后的、最终的目标占空比
@@ -292,79 +292,77 @@ line level    source
  261   3          }
  262   2          break;
  263   2          // ===========================================================
- 264   2          case PWM_MODE_COLOR_TEMPERATURE_4:
+ 264   2          case PWM_MODE_COLOR_BLUE:
  265   2          {
- 266   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
- 267   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
- 268   3          }
- 269   2          break;
- 270   2          // ===========================================================
- 271   2          case PWM_MODE_COLOR_BLUE:
- 272   2          {
- 273   3              // 获取最终的目标占空比
- 274   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_BLUE;
- 275   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_BLUE;
- 276   3          }
- 277   2          break;
- 278   2          // ===========================================================
- 279   2          case PWM_MODE_COLOR_CYAN:
- 280   2          {
- 281   3              // 获取最终的目标占空比
- 282   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_CYAN;
- 283   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_CYAN;
- 284   3          }
- 285   2          break;
- 286   2          // ===========================================================
- 287   2          case PWM_MODE_COLOR_GREEN:
- 288   2          {
- 289   3              // 获取最终的目标占空比
-C51 COMPILER V9.60.7.0   PWM                                                               05/12/2026 18:55:45 PAGE 6   
+ 266   3              // 获取最终的目标占空比
+ 267   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_BLUE;
+ 268   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_BLUE;
+ 269   3          }
+ 270   2          break;
+ 271   2          // ===========================================================
+ 272   2          case PWM_MODE_COLOR_CYAN:
+ 273   2          {
+ 274   3              // 获取最终的目标占空比
+ 275   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_CYAN;
+ 276   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_CYAN;
+ 277   3          }
+ 278   2          break;
+ 279   2          // ===========================================================
+ 280   2          case PWM_MODE_COLOR_GREEN:
+ 281   2          {
+ 282   3              // 获取最终的目标占空比
+ 283   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_GREEN;
+ 284   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_GREEN;
+ 285   3          }
+ 286   2          break;
+ 287   2      
+ 288   2              // ===========================================================
+ 289   2          default:
+C51 COMPILER V9.60.7.0   PWM                                                               07/03/2026 16:22:27 PAGE 6   
 
- 290   3              expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_GREEN;
- 291   3              expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_GREEN;
+ 290   2          {
+ 291   3              return;
  292   3          }
  293   2          break;
- 294   2      
- 295   2              // ===========================================================
- 296   2          default:
- 297   2          {
- 298   3              return;
- 299   3          }
- 300   2          break;
- 301   2          }
- 302   1      
- 303   1          switch (pwm_brightness_lev)
- 304   1          {
- 305   2          case PWM_MODE_BRIGHTNESS_LEV_1:
- 306   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 10 / 100;
- 307   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 10 / 100;
- 308   2              break;
- 309   2      
- 310   2          case PWM_MODE_BRIGHTNESS_LEV_2:
- 311   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 25 / 100;
- 312   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 25 / 100;
- 313   2              break;
- 314   2      
- 315   2          case PWM_MODE_BRIGHTNESS_LEV_3:
- 316   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 50 / 100;
- 317   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 50 / 100;
- 318   2              break;
- 319   2      
- 320   2          case PWM_MODE_BRIGHTNESS_LEV_4:
- 321   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 75 / 100;
- 322   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 75 / 100;
- 323   2              break;
- 324   2      
- 325   2          case PWM_MODE_BRIGHTNESS_LEV_5:
- 326   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 100 / 100;
- 327   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 100 / 100;
- 328   2              break;
- 329   2          }
- 330   1      }
+ 294   2          }
+ 295   1      
+ 296   1          switch (pwm_brightness_lev)
+ 297   1          {
+ 298   2          case PWM_MODE_BRIGHTNESS_LEV_1:
+ 299   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 5 / 100;
+ 300   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 5 / 100;
+ 301   2              break;
+ 302   2      
+ 303   2          case PWM_MODE_BRIGHTNESS_LEV_2:
+ 304   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 10 / 100;
+ 305   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 10 / 100;
+ 306   2              break;
+ 307   2      
+ 308   2          case PWM_MODE_BRIGHTNESS_LEV_3:
+ 309   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 25 / 100;
+ 310   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 25 / 100;
+ 311   2              break;
+ 312   2      
+ 313   2          case PWM_MODE_BRIGHTNESS_LEV_4:
+ 314   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 50 / 100;
+ 315   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 50 / 100;
+ 316   2              break;
+ 317   2      
+ 318   2          case PWM_MODE_BRIGHTNESS_LEV_5:
+ 319   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 75 / 100;
+ 320   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 75 / 100;
+ 321   2              break;
+ 322   2      
+ 323   2          case PWM_MODE_BRIGHTNESS_LEV_6:
+ 324   2              expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 100 / 100;
+ 325   2              expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 100 / 100;
+ 326   2              break;
+ 327   2          }
+ 328   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    765    ----
+   CODE SIZE        =    748    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     20       6
    PDATA SIZE       =   ----    ----

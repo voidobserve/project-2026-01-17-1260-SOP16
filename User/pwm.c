@@ -261,13 +261,6 @@ void pwm_mode_handle(void)
     }
     break;
     // ===========================================================
-    case PWM_MODE_COLOR_TEMPERATURE_4:
-    {
-        expect_adjust_pwm_channel_0_duty = PWM_0_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
-        expect_adjust_pwm_channel_1_duty = PWM_1_DUTY_VAL_IN_COLOR_TEMPERATURE_4;
-    }
-    break;
-    // ===========================================================
     case PWM_MODE_COLOR_BLUE:
     {
         // 获取最终的目标占空比
@@ -303,26 +296,31 @@ void pwm_mode_handle(void)
     switch (pwm_brightness_lev)
     {
     case PWM_MODE_BRIGHTNESS_LEV_1:
+        expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 5 / 100;
+        expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 5 / 100;
+        break;
+
+    case PWM_MODE_BRIGHTNESS_LEV_2:
         expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 10 / 100;
         expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 10 / 100;
         break;
 
-    case PWM_MODE_BRIGHTNESS_LEV_2:
+    case PWM_MODE_BRIGHTNESS_LEV_3:
         expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 25 / 100;
         expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 25 / 100;
         break;
 
-    case PWM_MODE_BRIGHTNESS_LEV_3:
+    case PWM_MODE_BRIGHTNESS_LEV_4:
         expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 50 / 100;
         expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 50 / 100;
         break;
 
-    case PWM_MODE_BRIGHTNESS_LEV_4:
+    case PWM_MODE_BRIGHTNESS_LEV_5:
         expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 75 / 100;
         expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 75 / 100;
         break;
 
-    case PWM_MODE_BRIGHTNESS_LEV_5:
+    case PWM_MODE_BRIGHTNESS_LEV_6:
         expect_adjust_pwm_channel_0_duty = (u32)expect_adjust_pwm_channel_0_duty * 100 / 100;
         expect_adjust_pwm_channel_1_duty = (u32)expect_adjust_pwm_channel_1_duty * 100 / 100;
         break;
