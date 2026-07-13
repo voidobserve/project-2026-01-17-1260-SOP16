@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   MAIN                                                              07/03/2026 16:22:27 PAGE 1   
+C51 COMPILER V9.60.7.0   MAIN                                                              07/13/2026 17:34:54 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
                   FOUT_S00 |= GPIO_FOUT_UART0_TX;              // 配置为UART0_TX
                   UART0_BAUD1 = (USER_UART0_BAUD >> 8) & 0xFF; // 配置波特率高八位
                   UART0_BAUD0 = USER_UART0_BAUD & 0xFF;        // 配置波特率低八位
-C51 COMPILER V9.60.7.0   MAIN                                                              07/03/2026 16:22:27 PAGE 2   
+C51 COMPILER V9.60.7.0   MAIN                                                              07/13/2026 17:34:54 PAGE 2   
 
                   UART0_CON0 = UART_STOP_BIT(0x0) |
                                UART_EN(0x1); // 8bit数据，1bit停止位
@@ -126,7 +126,7 @@ line level    source
  111   1          fan_ctl_config();
  112   1      
  113   1          P1_MD1 &= ~GPIO_P14_MODE_SEL(0x03); // P14 16脚
-C51 COMPILER V9.60.7.0   MAIN                                                              07/03/2026 16:22:27 PAGE 3   
+C51 COMPILER V9.60.7.0   MAIN                                                              07/13/2026 17:34:54 PAGE 3   
 
  114   1          P1_MD1 |= GPIO_P14_MODE_SEL(0x01);
  115   1          FOUT_S14 = GPIO_FOUT_AF_FUNC; // AF功能输出
@@ -138,36 +138,37 @@ line level    source
  121   1          limited_pwm_duty_due_to_temp = MAX_PWM_DUTY;
  122   1          limited_pwm_duty_due_to_unstable_engine = MAX_PWM_DUTY;
  123   1      
- 124   1          pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
- 125   1          pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5; // 最大亮度
- 126   1          power_on_handle();
- 127   1      
- 128   1          while (1)
- 129   1          {
- 130   2      #if 1
- 131   2              temperature_scan(); // 检测热敏电阻一端的电压值
- 132   2              fan_scan();         // 检测风扇的状态是否异常，并根据结果来限制pwm占空比
- 133   2              set_duty();         // 设定到要调节到的脉宽 (设置adjust_duty)
- 134   2      
- 135   2              key_driver_scan(&rf_key_para);
- 136   2              rf_key_handle();
- 137   2      
- 138   2              // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channel_x_
+ 124   1          // REVIEW 要注意是最大亮度
+ 125   1          pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
+ 126   1          pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_6; // 最大亮度
+ 127   1          power_on_handle();
+ 128   1      
+ 129   1          while (1)
+ 130   1          {
+ 131   2      #if 1
+ 132   2              temperature_scan(); // 检测热敏电阻一端的电压值
+ 133   2              fan_scan();         // 检测风扇的状态是否异常，并根据结果来限制pwm占空比
+ 134   2              set_duty();         // 设定到要调节到的脉宽 (设置adjust_duty)
+ 135   2      
+ 136   2              key_driver_scan(&rf_key_para);
+ 137   2              rf_key_handle();
+ 138   2      
+ 139   2              // 如果 expect_adjust_pwm_channel_x_duty 有变化，可以在这里修改 adjust_pwm_channel_x_
              -duty
- 139   2              adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
- 140   2              adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
- 141   2      
- 142   2              // 风扇控制：
- 143   2              // fan_ctl(); // 没有了线控调光，这里目前用不上，没有关灯的功能
- 144   2      #endif
- 145   2          }
- 146   1      }
- 147          
- 148          /**
- 149           * @}
- 150           */
- 151          
- 152          /*************************** (C) COPYRIGHT 2022 HUGE-IC ***** END OF FILE *****/
+ 140   2              adjust_pwm_channel_0_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_0_duty);
+ 141   2              adjust_pwm_channel_1_duty = get_pwm_channel_x_adjust_duty(expect_adjust_pwm_channel_1_duty);
+ 142   2      
+ 143   2              // 风扇控制：
+ 144   2              // fan_ctl(); // 没有了线控调光，这里目前用不上，没有关灯的功能
+ 145   2      #endif
+ 146   2          }
+ 147   1      }
+ 148          
+ 149          /**
+ 150           * @}
+ 151           */
+ 152          
+ 153          /*************************** (C) COPYRIGHT 2022 HUGE-IC ***** END OF FILE *****/
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

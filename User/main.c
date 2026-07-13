@@ -121,8 +121,9 @@ void main(void)
     limited_pwm_duty_due_to_temp = MAX_PWM_DUTY;
     limited_pwm_duty_due_to_unstable_engine = MAX_PWM_DUTY;
 
+    // REVIEW 要注意是最大亮度
     pwm_mode = PWM_MODE_COLOR_CYAN; // 开机缓启动之后，默认的模式
-    pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_5; // 最大亮度
+    pwm_brightness_lev = PWM_MODE_BRIGHTNESS_LEV_6; // 最大亮度
     power_on_handle();
 
     while (1)
